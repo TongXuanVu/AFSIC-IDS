@@ -387,7 +387,7 @@ def run_test(args):
             m = cnn_accy
             logging.info(
                 f'[TEST] {os.path.basename(_cp)} | Task {task} | '
-                f"Acc: {m['top1']:.2f}% | F1-Mac: {m.get('f1_macro',0):.2f}%"
+                f"Acc: {m['top1']:.2f}% | F1-Mac: {m.get('f1_macro',0):.2f}% | F1-Mic: {m.get('f1_micro',0):.2f}%"
             )
             writer.writerow([
                 os.path.basename(_cp), task, known_cls,
