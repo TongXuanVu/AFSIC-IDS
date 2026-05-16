@@ -48,6 +48,10 @@ def get_convnet(args, pretrained=False):
     elif name == 'memo_resnet32':
         _basenet, _adaptive_net = get_memo_resnet32()
         return _basenet, _adaptive_net
+
+    elif name == 'cnn1d':
+        from convs.cnn1d import CNN1DConvNet
+        return CNN1DConvNet()
     
     else:
         raise NotImplementedError("Unknown type {}".format(name))

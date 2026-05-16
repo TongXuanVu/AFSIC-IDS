@@ -4,7 +4,7 @@ import numpy as np
 import torch
 from torch import nn
 from torch.utils.data import DataLoader
-from utils.toolkit import tensor2numpy, accuracy
+from utils.toolkit import tensor2numpy, accuracy, calculate_metrics
 from scipy.spatial.distance import cdist
 import os
 
@@ -23,7 +23,7 @@ class BaseLearner(object):
         self._data_memory, self._targets_memory = np.array([]), np.array([])
         self.topk = 5
 
-        self._memory_size = args["memory_size"]
+        self._memory_size = args.get("memory_size", 5000)
         self._memory_per_class = args.get("memory_per_class", None)
         self._fixed_memory = args.get("fixed_memory", False)
         self._device = args["device"][0]
@@ -69,11 +69,24 @@ class BaseLearner(object):
     def after_task(self):
         pass
 
-    def _evaluate(self, y_pred, y_true):
+    def _evaluate(self, y_pred, y_true, loss=None):
         ret = {}
-        grouped = accuracy(y_pred.T[0], y_true, self._known_classes)
-        ret["grouped"] = grouped
-        ret["top1"] = grouped["total"]
+        metrics = accuracy(y_pred.T[0], y_true, self._known_classes)
+        ret["grouped"] = metrics
+        ret["top1"] = metrics["total"]
+        
+        ret["precision_micro"] = metrics["precision_micro"]
+        ret["precision_macro"] = metrics["precision_macro"]
+        ret["precision_weighted"] = metrics["precision_weighted"]
+        
+        ret["recall_micro"] = metrics["recall_micro"]
+        ret["recall_macro"] = metrics["recall_macro"]
+        ret["recall_weighted"] = metrics["recall_weighted"]
+        
+        ret["f1_micro"] = metrics["f1_micro"]
+        ret["f1_macro"] = metrics["f1_macro"]
+        ret["f1_weighted"] = metrics["f1_weighted"]
+        ret["loss"] = round(loss, 6) if loss is not None else 0.0
         ret["top{}".format(self.topk)] = np.around(
             (y_pred.T == np.tile(y_true, (self.topk, 1))).sum() * 100 / len(y_true),
             decimals=2,
@@ -82,11 +95,11 @@ class BaseLearner(object):
         return ret
 
     def eval_task(self, save_conf=False):
-        y_pred, y_true = self._eval_cnn(self.test_loader)
-        cnn_accy = self._evaluate(y_pred, y_true)
+        y_pred, y_true, cnn_loss = self._eval_cnn(self.test_loader)
+        cnn_accy = self._evaluate(y_pred, y_true, loss=cnn_loss)
 
         if hasattr(self, "_class_means"):
-            y_pred, y_true = self._eval_nme(self.test_loader, self._class_means)
+            y_pred, y_true, _ = self._eval_nme(self.test_loader, self._class_means)
             nme_accy = self._evaluate(y_pred, y_true)
         else:
             nme_accy = None
@@ -120,33 +133,38 @@ class BaseLearner(object):
 
     def _compute_accuracy(self, model, loader):
         model.eval()
-        correct, total = 0, 0
+        y_pred, y_true = [], []
         for i, (_, inputs, targets) in enumerate(loader):
             inputs = inputs.to(self._device)
             with torch.no_grad():
                 outputs = model(inputs)["logits"]
             predicts = torch.max(outputs, dim=1)[1]
-            correct += (predicts.cpu() == targets).sum()
-            total += len(targets)
+            y_pred.append(predicts.cpu().numpy())
+            y_true.append(targets.cpu().numpy())
 
-        return np.around(tensor2numpy(correct) * 100 / total, decimals=2)
+        return calculate_metrics(np.concatenate(y_true), np.concatenate(y_pred))
 
     def _eval_cnn(self, loader):
         self._network.eval()
         y_pred, y_true = [], []
+        total_loss, num_samples = 0.0, 0
+        criterion = torch.nn.CrossEntropyLoss()
         for _, (_, inputs, targets) in enumerate(loader):
             inputs = inputs.to(self._device)
+            targets_dev = targets.to(self._device).long()
             with torch.no_grad():
                 outputs = self._network(inputs)["logits"]
+                loss = criterion(outputs, targets_dev)
+                total_loss += loss.item() * inputs.size(0)
+                num_samples += inputs.size(0)
             predicts = torch.topk(
                 outputs, k=self.topk, dim=1, largest=True, sorted=True
-            )[
-                1
-            ]  # [bs, topk]
+            )[1]  # [bs, topk]
             y_pred.append(predicts.cpu().numpy())
             y_true.append(targets.cpu().numpy())
 
-        return np.concatenate(y_pred), np.concatenate(y_true)  # [N, topk]
+        avg_loss = total_loss / max(1, num_samples)
+        return np.concatenate(y_pred), np.concatenate(y_true), avg_loss  # [N, topk]
 
     def _eval_nme(self, loader, class_means):
         self._network.eval()
@@ -156,7 +174,7 @@ class BaseLearner(object):
         dists = cdist(class_means, vectors, "sqeuclidean")  # [nb_classes, N]
         scores = dists.T  # [N, nb_classes], choose the one with the smallest distance
 
-        return np.argsort(scores, axis=1)[:, : self.topk], y_true  # [N, topk]
+        return np.argsort(scores, axis=1)[:, : self.topk], y_true, None  # [N, topk]
 
     def _extract_vectors(self, loader):
         self._network.eval()
@@ -175,6 +193,8 @@ class BaseLearner(object):
             vectors.append(_vectors)
             targets.append(_targets)
 
+        if len(vectors) == 0:
+            return np.array([]), np.array([])
         return np.concatenate(vectors), np.concatenate(targets)
 
     def _reduce_exemplar(self, data_manager, m):
@@ -204,7 +224,7 @@ class BaseLearner(object):
                 [], source="train", mode="test", appendent=(dd, dt)
             )
             idx_loader = DataLoader(
-                idx_dataset, batch_size=batch_size, shuffle=False, num_workers=4
+                idx_dataset, batch_size=batch_size, shuffle=False, num_workers=0
             )
             vectors, _ = self._extract_vectors(idx_loader)
             vectors = (vectors.T / (np.linalg.norm(vectors.T, axis=0) + EPSILON)).T
@@ -222,40 +242,46 @@ class BaseLearner(object):
                 mode="test",
                 ret_data=True,
             )
+            num_samples = len(data)
+            selected_m = min(m, num_samples)
             idx_loader = DataLoader(
-                idx_dataset, batch_size=batch_size, shuffle=False, num_workers=4
+                idx_dataset, batch_size=batch_size, shuffle=False, num_workers=0
             )
             vectors, _ = self._extract_vectors(idx_loader)
-            vectors = (vectors.T / (np.linalg.norm(vectors.T, axis=0) + EPSILON)).T
+            # In-place L2 normalization using float32 to prevent allocating massive 10GB+ temporary float64 arrays
+            vectors = vectors.astype(np.float32, copy=False)
+            norms = np.linalg.norm(vectors, axis=1, keepdims=True).astype(np.float32)
+            np.divide(vectors, norms + np.float32(EPSILON), out=vectors)
             class_mean = np.mean(vectors, axis=0)
 
             # Select
             selected_exemplars = []
             exemplar_vectors = []  # [n, feature_dim]
-            for k in range(1, m + 1):
-                S = np.sum(
-                    exemplar_vectors, axis=0
-                )  # [feature_dim] sum of selected exemplars vectors
-                mu_p = (vectors + S) / k  # [n, feature_dim] sum to all vectors
-                i = np.argmin(np.sqrt(np.sum((class_mean - mu_p) ** 2, axis=1)))
-                selected_exemplars.append(
-                    np.array(data[i])
-                )  # New object to avoid passing by inference
-                exemplar_vectors.append(
-                    np.array(vectors[i])
-                )  # New object to avoid passing by inference
+            available_mask = np.ones(num_samples, dtype=bool)
+            S = np.zeros(vectors.shape[1], dtype=np.float32)
+            class_mean_f32 = class_mean.astype(np.float32)
+            vectors_f32 = vectors.astype(np.float32)
 
-                vectors = np.delete(
-                    vectors, i, axis=0
-                )  # Remove it to avoid duplicative selection
-                data = np.delete(
-                    data, i, axis=0
-                )  # Remove it to avoid duplicative selection
+            for k in range(1, selected_m + 1):
+                # We want to minimize || class_mean - (vectors + S) / k ||^2
+                # mathematically equivalent to maximizing: vectors @ (class_mean - S / k)
+                # because ||vectors|| is 1.
+                T = class_mean_f32 - (S / k)
+                scores = vectors_f32.dot(T)
+                scores[~available_mask] = -np.inf  # Ignore already selected vectors
+                
+                i = np.argmax(scores)
+                
+                selected_exemplars.append(np.array(data[i]))
+                exemplar_vectors.append(np.array(vectors[i]))
+                
+                S += vectors_f32[i]
+                available_mask[i] = False
 
             # uniques = np.unique(selected_exemplars, axis=0)
             # print('Unique elements: {}'.format(len(uniques)))
             selected_exemplars = np.array(selected_exemplars)
-            exemplar_targets = np.full(m, class_idx)
+            exemplar_targets = np.full(selected_m, class_idx)
             self._data_memory = (
                 np.concatenate((self._data_memory, selected_exemplars))
                 if len(self._data_memory) != 0
@@ -275,7 +301,7 @@ class BaseLearner(object):
                 appendent=(selected_exemplars, exemplar_targets),
             )
             idx_loader = DataLoader(
-                idx_dataset, batch_size=batch_size, shuffle=False, num_workers=4
+                idx_dataset, batch_size=batch_size, shuffle=False, num_workers=0
             )
             vectors, _ = self._extract_vectors(idx_loader)
             vectors = (vectors.T / (np.linalg.norm(vectors.T, axis=0) + EPSILON)).T
@@ -302,7 +328,7 @@ class BaseLearner(object):
                 [], source="train", mode="test", appendent=(class_data, class_targets)
             )
             class_loader = DataLoader(
-                class_dset, batch_size=batch_size, shuffle=False, num_workers=4
+                class_dset, batch_size=batch_size, shuffle=False, num_workers=0
             )
             vectors, _ = self._extract_vectors(class_loader)
             vectors = (vectors.T / (np.linalg.norm(vectors.T, axis=0) + EPSILON)).T
@@ -319,8 +345,10 @@ class BaseLearner(object):
                 mode="test",
                 ret_data=True,
             )
+            num_samples = len(data)
+            selected_m = min(m, num_samples)
             class_loader = DataLoader(
-                class_dset, batch_size=batch_size, shuffle=False, num_workers=4
+                class_dset, batch_size=batch_size, shuffle=False, num_workers=0
             )
 
             vectors, _ = self._extract_vectors(class_loader)
@@ -330,7 +358,7 @@ class BaseLearner(object):
             # Select
             selected_exemplars = []
             exemplar_vectors = []
-            for k in range(1, m + 1):
+            for k in range(1, selected_m + 1):
                 S = np.sum(
                     exemplar_vectors, axis=0
                 )  # [feature_dim] sum of selected exemplars vectors
@@ -352,7 +380,7 @@ class BaseLearner(object):
                 )  # Remove it to avoid duplicative selection
 
             selected_exemplars = np.array(selected_exemplars)
-            exemplar_targets = np.full(m, class_idx)
+            exemplar_targets = np.full(selected_m, class_idx)
             self._data_memory = (
                 np.concatenate((self._data_memory, selected_exemplars))
                 if len(self._data_memory) != 0
@@ -372,7 +400,7 @@ class BaseLearner(object):
                 appendent=(selected_exemplars, exemplar_targets),
             )
             exemplar_loader = DataLoader(
-                exemplar_dset, batch_size=batch_size, shuffle=False, num_workers=4
+                exemplar_dset, batch_size=batch_size, shuffle=False, num_workers=0
             )
             vectors, _ = self._extract_vectors(exemplar_loader)
             vectors = (vectors.T / (np.linalg.norm(vectors.T, axis=0) + EPSILON)).T

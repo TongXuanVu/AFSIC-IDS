@@ -1,5 +1,6 @@
 import logging
 import numpy as np
+import torch
 from PIL import Image
 from torch.utils.data import Dataset
 from torchvision import transforms
@@ -56,30 +57,28 @@ class DataManager(object):
         else:
             raise ValueError("Unknown mode {}.".format(mode))
 
-        data, targets = [], []
+        all_y = y
+        all_idx_list = []
         for idx in indices:
-            if m_rate is None:
-                class_data, class_targets = self._select(
-                    x, y, low_range=idx, high_range=idx + 1
-                )
-            else:
-                class_data, class_targets = self._select_rmm(
-                    x, y, low_range=idx, high_range=idx + 1, m_rate=m_rate
-                )
-            data.append(class_data)
-            targets.append(class_targets)
-
-        if appendent is not None and len(appendent) != 0:
-            appendent_data, appendent_targets = appendent
-            data.append(appendent_data)
-            targets.append(appendent_targets)
-
-        data, targets = np.concatenate(data), np.concatenate(targets)
+            idxes = np.where(np.logical_and(all_y >= idx, all_y < idx + 1))[0]
+            if m_rate is not None and m_rate != 0:
+                selected_idxes = np.random.randint(0, len(idxes), size=int((1 - m_rate) * len(idxes)))
+                idxes = np.sort(idxes[selected_idxes])
+            all_idx_list.append(idxes)
+            
+        final_idxes = np.concatenate(all_idx_list) if len(all_idx_list) > 0 else np.array([], dtype=int)
 
         if ret_data:
+            # We ONLY form the copied subsets when ret_data=True (e.g. for building memory per class)
+            data = x[final_idxes]
+            targets = all_y[final_idxes]
+            if appendent is not None and len(appendent) != 0:
+                appendent_data, appendent_targets = appendent
+                data = np.concatenate([data, appendent_data])
+                targets = np.concatenate([targets, appendent_targets])
             return data, targets, DummyDataset(data, targets, trsf, self.use_path)
         else:
-            return DummyDataset(data, targets, trsf, self.use_path)
+            return SubDummyDataset(x, all_y, final_idxes, trsf, self.use_path, appendent)
 
         
     def get_finetune_dataset(self,known_classes,total_classes,source,mode,appendent,type="ratio"):
@@ -256,9 +255,49 @@ class DummyDataset(Dataset):
     def __getitem__(self, idx):
         if self.use_path:
             image = self.trsf(pil_loader(self.images[idx]))
+        elif isinstance(self.images[idx], (torch.Tensor, np.ndarray)) and len(np.array(self.images[idx]).shape) == 1:
+            # Tabular data (1-D vector): trả về tensor trực tiếp, bỏ qua image transforms
+            image = torch.tensor(self.images[idx], dtype=torch.float32)
         else:
             image = self.trsf(Image.fromarray(self.images[idx]))
         label = self.labels[idx]
+
+        return idx, image, label
+
+
+class SubDummyDataset(Dataset):
+    def __init__(self, x_source, y_source, indices, trsf, use_path=False, appendent=None):
+        self.x_source = x_source
+        self.y_source = y_source
+        self.indices = indices
+        self.trsf = trsf
+        self.use_path = use_path
+        
+        self.append_x = appendent[0] if (appendent is not None and len(appendent) != 0) else None
+        self.append_y = appendent[1] if (appendent is not None and len(appendent) != 0) else None
+        
+        self.len_source = len(indices)
+        self.len_app = len(self.append_x) if self.append_x is not None else 0
+
+    def __len__(self):
+        return self.len_source + self.len_app
+
+    def __getitem__(self, idx):
+        if idx < self.len_source:
+            real_idx = self.indices[idx]
+            image = self.x_source[real_idx]
+            label = self.y_source[real_idx]
+        else:
+            app_idx = idx - self.len_source
+            image = self.append_x[app_idx]
+            label = self.append_y[app_idx]
+
+        if self.use_path:
+            image = self.trsf(pil_loader(image))
+        elif isinstance(image, (torch.Tensor, np.ndarray)) and len(np.array(image).shape) == 1:
+            image = torch.tensor(image, dtype=torch.float32)
+        else:
+            image = self.trsf(Image.fromarray(image))
 
         return idx, image, label
 
@@ -277,6 +316,9 @@ def _get_idata(dataset_name):
         return iImageNet1000()
     elif name == "imagenet100":
         return iImageNet100()
+    elif name in ("cic_iot23", "ciciot23", "cic-iot23"):
+        from utils.data_cic_iot23 import iCICIoT23
+        return iCICIoT23()
     else:
         raise NotImplementedError("Unknown dataset {}.".format(dataset_name))
 

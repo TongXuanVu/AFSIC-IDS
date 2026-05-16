@@ -3,6 +3,7 @@ import numpy as np
 import torch
 import  json
 from enum import Enum
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
 class ConfigEncoder(json.JSONEncoder):
     def default(self, o):
@@ -41,26 +42,26 @@ def makedirs(path):
 
 def accuracy(y_pred, y_true, nb_old, increment=10):
     assert len(y_pred) == len(y_true), "Data length error."
-    all_acc = {}
-    all_acc["total"] = np.around(
-        (y_pred == y_true).sum() * 100 / len(y_true), decimals=2
-    )
+    all_acc = calculate_metrics(y_true, y_pred)
 
     # Grouped accuracy
     for class_id in range(0, np.max(y_true), increment):
         idxes = np.where(
             np.logical_and(y_true >= class_id, y_true < class_id + increment)
         )[0]
-        label = "{}-{}".format(
+        label = "acc_{}-{}".format(
             str(class_id).rjust(2, "0"), str(class_id + increment - 1).rjust(2, "0")
         )
-        all_acc[label] = np.around(
-            (y_pred[idxes] == y_true[idxes]).sum() * 100 / len(idxes), decimals=2
-        )
+        if len(idxes) > 0:
+            all_acc[label] = np.around(
+                (y_pred[idxes] == y_true[idxes]).sum() * 100 / len(idxes), decimals=2
+            )
+        else:
+            all_acc[label] = 0.0
 
     # Old accuracy
     idxes = np.where(y_true < nb_old)[0]
-    all_acc["old"] = (
+    all_acc["old_acc"] = (
         0
         if len(idxes) == 0
         else np.around(
@@ -70,11 +71,33 @@ def accuracy(y_pred, y_true, nb_old, increment=10):
 
     # New accuracy
     idxes = np.where(y_true >= nb_old)[0]
-    all_acc["new"] = np.around(
-        (y_pred[idxes] == y_true[idxes]).sum() * 100 / len(idxes), decimals=2
+    all_acc["new_acc"] = (
+        0
+        if len(idxes) == 0
+        else np.around(
+            (y_pred[idxes] == y_true[idxes]).sum() * 100 / len(idxes), decimals=2
+        )
     )
 
     return all_acc
+
+
+def calculate_metrics(y_true, y_pred):
+    return {
+        "total": np.around(accuracy_score(y_true, y_pred) * 100, decimals=2),
+        
+        "precision_micro": np.around(precision_score(y_true, y_pred, average="micro", zero_division=0) * 100, decimals=2),
+        "precision_macro": np.around(precision_score(y_true, y_pred, average="macro", zero_division=0) * 100, decimals=2),
+        "precision_weighted": np.around(precision_score(y_true, y_pred, average="weighted", zero_division=0) * 100, decimals=2),
+        
+        "recall_micro": np.around(recall_score(y_true, y_pred, average="micro", zero_division=0) * 100, decimals=2),
+        "recall_macro": np.around(recall_score(y_true, y_pred, average="macro", zero_division=0) * 100, decimals=2),
+        "recall_weighted": np.around(recall_score(y_true, y_pred, average="weighted", zero_division=0) * 100, decimals=2),
+        
+        "f1_micro": np.around(f1_score(y_true, y_pred, average="micro", zero_division=0) * 100, decimals=2),
+        "f1_macro": np.around(f1_score(y_true, y_pred, average="macro", zero_division=0) * 100, decimals=2),
+        "f1_weighted": np.around(f1_score(y_true, y_pred, average="weighted", zero_division=0) * 100, decimals=2),
+    }
 
 
 def split_images_labels(imgs):
