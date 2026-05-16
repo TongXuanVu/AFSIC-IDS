@@ -14,6 +14,8 @@ import matplotlib.pyplot as plt
 from utils import factory
 from utils.data_manager import DataManager
 from utils.toolkit import count_parameters
+from sklearn.metrics import confusion_matrix
+import seaborn as sns
 
 
 def train(args):
@@ -383,8 +385,11 @@ def run_test(args):
                 batch_size=args.get('batch_size', 256), shuffle=False, num_workers=0
             )
 
-            cnn_accy, _ = model.eval_task()
+            cnn_accy, nme_accy, y_pred, y_true_eval = model.eval_task()
             m = cnn_accy
+            
+            # Ve Confusion Matrix cho tung checkpoint
+            plot_confusion_matrix(y_true_eval, y_pred, task, args.get('run_dir', '.'))
             logging.info(
                 f'[TEST] {os.path.basename(_cp)} | Task {task} | '
                 f"Acc: {m['top1']:.2f}% | F1-Mac: {m.get('f1_macro',0):.2f}% | F1-Mic: {m.get('f1_micro',0):.2f}%"
@@ -449,9 +454,29 @@ def run_test(args):
         plt.legend()
         plt.grid(True, alpha=0.3)
         plt.tight_layout()
-        safe_name = category_name.lower().replace("-", "_")
-        plt.savefig(os.path.join(args.get('run_dir', '.'), f'test_spcil_combined_{safe_name}.png'), dpi=150)
+        plt.savefig(os.path.join(args.get('run_dir', '.'), f'test_spcil_{category_name.lower()}_combined.png'), dpi=150)
         plt.close()
+
+    def plot_confusion_matrix(y_true, y_pred, task_id, run_dir):
+        """Ve va luu Confusion Matrix PNG"""
+        # y_pred thuong co dang [N, topk], lay top1
+        if len(y_pred.shape) > 1 and y_pred.shape[1] > 1:
+            y_pred_top1 = y_pred[:, 0]
+        else:
+            y_pred_top1 = y_pred.flatten()
+            
+        cm = confusion_matrix(y_true, y_pred_top1)
+        plt.figure(figsize=(12, 10))
+        sns.heatmap(cm, annot=False, fmt='d', cmap='Blues')
+        plt.xlabel('Predicted Label')
+        plt.ylabel('True Label')
+        plt.title(f'Confusion Matrix - Task {task_id}')
+        
+        save_path = os.path.join(run_dir, f'confusion_matrix_task_{task_id:02d}.png')
+        plt.savefig(save_path, dpi=150, bbox_inches='tight')
+        plt.close()
+        logging.info(f'[TEST] Da luu Confusion Matrix tai: {save_path}')
+
 
     if accuracy_history:
         x_axis = task_history

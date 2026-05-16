@@ -117,7 +117,7 @@ class BaseLearner(object):
             with open(_save_path, "a+") as f:
                 f.write(f"{self.args['time_str']},{self.args['model_name']},{_pred_path},{_target_path} \n")
 
-        return cnn_accy, nme_accy
+        return cnn_accy, nme_accy, y_pred, y_true
 
     def incremental_train(self):
         pass
