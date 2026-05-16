@@ -29,6 +29,10 @@ def setup_parser():
                         help='Tong so luong mau luu trong bo nho dem (Exemplar memory).')
     parser.add_argument('--batch_size', type=int, default=None,
                         help='Batch size cho training.')
+    parser.add_argument('--init_epoch', type=int, default=None,
+                        help='So epoch cho task dau tien.')
+    parser.add_argument('--epochs', type=int, default=None,
+                        help='So epoch cho cac task sau.')
     return parser
 
 def main():
