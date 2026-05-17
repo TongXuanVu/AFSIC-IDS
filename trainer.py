@@ -108,24 +108,33 @@ def _train(args):
         # Cần build rehearsal memory cho task này rồi chuyển sang task tiếp theo
         task_fully_done = (start_round >= max_epochs)
 
+        # Tắt build rehearsal memory tạm thời trong quá trình khôi phục nhanh kiến trúc
+        # để tránh việc trích xuất feature bằng trọng số ngẫu nhiên cực kỳ tốn thời gian
+        model.skip_rehearsal = True
+
         if task_fully_done:
             logging.info(
                 f"Task {start_task} Round {start_round}/{max_epochs}: Task đã hoàn tất. "
                 f"Sẽ bắt đầu training từ Task {start_task + 1}."
             )
-            # Dựng kiến trúc cho tất cả các task từ 0 đến start_task (đã xong)
-            for t in range(start_task):
+            # Dựng kiến trúc cho tất cả các task từ 0 đến start_task (bao gồm cả start_task)
+            for t in range(start_task + 1):
                 model.incremental_train(data_manager, skip_train=True)
                 model.after_task()
 
-            # Nạp trọng số của task start_task
+            # Nạp trọng số của task start_task (lúc này model đã có đầy đủ start_task + 1 convnets)
             model._network.load_state_dict(checkpoint["model_state_dict"])
             model._known_classes = checkpoint.get("known_classes", 0)
 
-            # Dựng lại rehearsal memory cho task start_task (dữ liệu mẫu nhắc lại)
-            model._cur_task = start_task
-            model._total_classes = model._known_classes
-            model.build_rehearsal_memory(data_manager, model.samples_per_class)
+            # Khôi phục/Dựng lại rehearsal memory cho tất cả các task đã hoàn thành (0 đến start_task)
+            # bằng cách sử dụng các trọng số chuẩn xác vừa được nạp từ checkpoint
+            model.skip_rehearsal = False
+            logging.info(f"[RESUME] Rebuilding rehearsal memory for completed tasks (0 to {start_task}) using loaded weights...")
+            for t in range(start_task + 1):
+                model._cur_task = t
+                model._known_classes = sum(data_manager.get_task_size(i) for i in range(t))
+                model._total_classes = model._known_classes + data_manager.get_task_size(t)
+                model.build_rehearsal_memory(data_manager, model.samples_per_class)
 
             # Bắt đầu vòng lặp chính từ task tiếp theo
             start_task = start_task + 1
@@ -135,18 +144,36 @@ def _train(args):
                 f"Task {start_task} còn dang dở tại Round {start_round}/{max_epochs}. "
                 f"Tiếp tục training Task {start_task} từ Round {start_round + 1}."
             )
-            # Dựng kiến trúc cho tất cả các task từ 0 đến start_task - 1
+            # Dựng kiến trúc cho tất cả các task từ 0 đến start_task - 1 (đã xong hoàn toàn)
             for t in range(start_task):
                 model.incremental_train(data_manager, skip_train=True)
                 model.after_task()
 
-            # Nạp trọng số
+            # Dựng kiến trúc cho Task start_task (đang dở dang) nhưng KHÔNG gọi after_task
+            model.incremental_train(data_manager, skip_train=True)
+
+            # Nạp trọng số của task start_task (lúc này model đã có đầy đủ start_task + 1 convnets)
             model._network.load_state_dict(checkpoint["model_state_dict"])
             model._known_classes = checkpoint.get("known_classes", 0)
+
+            # Khôi phục/Dựng lại rehearsal memory cho tất cả các task đã hoàn thành hoàn toàn (0 đến start_task - 1)
+            # bằng cách sử dụng các trọng số chuẩn xác vừa được nạp từ checkpoint
+            model.skip_rehearsal = False
+            logging.info(f"[RESUME] Rebuilding rehearsal memory for completed tasks (0 to {start_task - 1}) using loaded weights...")
+            for t in range(start_task):
+                model._cur_task = t
+                model._known_classes = sum(data_manager.get_task_size(i) for i in range(t))
+                model._total_classes = model._known_classes + data_manager.get_task_size(t)
+                model.build_rehearsal_memory(data_manager, model.samples_per_class)
+
+            # Khôi phục lại trạng thái của model trước khi bắt đầu vòng lặp chính để tiếp tục training
+            model._cur_task = start_task - 1
+            model._known_classes = sum(data_manager.get_task_size(i) for i in range(start_task))
 
         args["start_round"] = start_round
         model._network.to(args["device"][0])
         logging.info(f"[RESUME] Đã nạp checkpoint thành công. Bắt đầu từ Task {start_task}, Round {start_round}.")
+
 
     # ── Lịch sử metrics để vẽ biểu đồ ──────────────────────────────────────
     history = {

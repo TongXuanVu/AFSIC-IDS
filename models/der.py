@@ -60,7 +60,10 @@ class DER(BaseLearner):
             if not hasattr(self, 'train_loader'):
                 self.train_loader = None
             try:
-                self.build_rehearsal_memory(data_manager, self.samples_per_class)
+                if not getattr(self, 'skip_rehearsal', False):
+                    self.build_rehearsal_memory(data_manager, self.samples_per_class)
+                else:
+                    logging.info(f"[RESUME] skipping rehearsal memory generation for task {self._cur_task}")
             except Exception as e:
                 logging.warning(f"Could not build rehearsal memory for skipped task {self._cur_task}: {e}")
             return
