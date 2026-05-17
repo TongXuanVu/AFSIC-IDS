@@ -102,20 +102,51 @@ def _train(args):
         checkpoint = torch.load(args["resume"], map_location=args["device"][0], weights_only=False)
         start_task = checkpoint.get("task", 0)
         start_round = checkpoint.get("round", 0)
-        args["start_round"] = start_round  # Pass to model
-        
-        # Build model structure up to start_task (not including it)
-        # The main loop will handle the start_task itself
-        for t in range(start_task):
-            model.incremental_train(data_manager, skip_train=True)
-            model.after_task()
-            
-        # Load weights
-        model._network.load_state_dict(checkpoint["model_state_dict"])
-        model._known_classes = checkpoint.get("known_classes", 0)
-        model._network.known_classes = model._known_classes # Sync with network
-        
-        logging.info(f"Resumed successfully at Task {start_task}, Round {start_round}")
+        max_epochs = args.get("init_epoch" if start_task == 0 else "epochs", 30)
+
+        # Nếu round == max_epochs → Task này đã hoàn thành toàn bộ
+        # Cần build rehearsal memory cho task này rồi chuyển sang task tiếp theo
+        task_fully_done = (start_round >= max_epochs)
+
+        if task_fully_done:
+            logging.info(
+                f"Task {start_task} Round {start_round}/{max_epochs}: Task đã hoàn tất. "
+                f"Sẽ bắt đầu training từ Task {start_task + 1}."
+            )
+            # Dựng kiến trúc cho tất cả các task từ 0 đến start_task (đã xong)
+            for t in range(start_task):
+                model.incremental_train(data_manager, skip_train=True)
+                model.after_task()
+
+            # Nạp trọng số của task start_task
+            model._network.load_state_dict(checkpoint["model_state_dict"])
+            model._known_classes = checkpoint.get("known_classes", 0)
+
+            # Dựng lại rehearsal memory cho task start_task (dữ liệu mẫu nhắc lại)
+            model._cur_task = start_task
+            model._total_classes = model._known_classes
+            model.build_rehearsal_memory(data_manager, model.samples_per_class)
+
+            # Bắt đầu vòng lặp chính từ task tiếp theo
+            start_task = start_task + 1
+            start_round = 0
+        else:
+            logging.info(
+                f"Task {start_task} còn dang dở tại Round {start_round}/{max_epochs}. "
+                f"Tiếp tục training Task {start_task} từ Round {start_round + 1}."
+            )
+            # Dựng kiến trúc cho tất cả các task từ 0 đến start_task - 1
+            for t in range(start_task):
+                model.incremental_train(data_manager, skip_train=True)
+                model.after_task()
+
+            # Nạp trọng số
+            model._network.load_state_dict(checkpoint["model_state_dict"])
+            model._known_classes = checkpoint.get("known_classes", 0)
+
+        args["start_round"] = start_round
+        model._network.to(args["device"][0])
+        logging.info(f"[RESUME] Đã nạp checkpoint thành công. Bắt đầu từ Task {start_task}, Round {start_round}.")
 
     # ── Lịch sử metrics để vẽ biểu đồ ──────────────────────────────────────
     history = {
