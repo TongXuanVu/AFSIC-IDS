@@ -3,7 +3,7 @@ import numpy as np
 import torch
 import  json
 from enum import Enum
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 
 class ConfigEncoder(json.JSONEncoder):
     def default(self, o):
@@ -83,8 +83,19 @@ def accuracy(y_pred, y_true, nb_old, increment=10):
 
 
 def calculate_metrics(y_true, y_pred):
+    # Confusion matrix để tính FPR
+    # FPR = FP / (FP + TN) cho lớp Benign (thường là lớp 0)
+    cm = confusion_matrix(y_true, y_pred)
+    fpr = 0.0
+    if cm.shape[0] > 0:
+        tn = cm[0, 0]
+        fp = np.sum(cm[0, 1:])
+        if (fp + tn) > 0:
+            fpr = (fp / (fp + tn)) * 100
+
     return {
         "total": np.around(accuracy_score(y_true, y_pred) * 100, decimals=2),
+        "fpr": np.around(fpr, decimals=2),
         
         "precision_micro": np.around(precision_score(y_true, y_pred, average="micro", zero_division=0) * 100, decimals=2),
         "precision_macro": np.around(precision_score(y_true, y_pred, average="macro", zero_division=0) * 100, decimals=2),
