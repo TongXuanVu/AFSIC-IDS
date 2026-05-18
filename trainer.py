@@ -136,6 +136,11 @@ def _train(args):
                 model._total_classes = model._known_classes + data_manager.get_task_size(t)
                 model.build_rehearsal_memory(data_manager, model.samples_per_class)
 
+            # Khôi phục lại trạng thái của model sau khi dựng xong rehearsal memory của start_task
+            # để khi bước vào vòng lặp chính (bắt đầu từ start_task + 1), model sẽ hoạt động chuẩn xác
+            model._cur_task = start_task
+            model._known_classes = sum(data_manager.get_task_size(i) for i in range(start_task + 1))
+
             # Bắt đầu vòng lặp chính từ task tiếp theo
             start_task = start_task + 1
             start_round = 0
