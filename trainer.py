@@ -382,6 +382,9 @@ def run_test(args):
     from utils import factory
     from utils.data_manager import DataManager
 
+    _set_random()
+    _set_device(args)
+
     # Xac dinh thu muc checkpoint
     test_ckpt_root = args.get('test_checkpoint_dir', '') or args.get('run_dir', './')
     # Tim tat ca cac file .pth trong thu muc checkpoints
