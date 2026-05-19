@@ -437,6 +437,13 @@ def run_test(args):
             task        = state['task']
             known_cls   = state.get('known_classes', -1)
 
+            # --- Fix: Ensure model architecture is expanded to match the checkpoint task
+            model.skip_rehearsal = True
+            while model._cur_task < task:
+                model.incremental_train(data_manager, skip_train=True)
+                model.after_task()
+            # --- End Fix
+
             model._network.load_state_dict(state['model_state_dict'], strict=False)
             model._known_classes = known_cls
             model._network.eval()
