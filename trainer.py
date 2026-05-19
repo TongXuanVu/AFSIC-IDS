@@ -433,56 +433,72 @@ def run_test(args):
         ])
 
         for _cp in ckpt_files:
-            state = torch.load(_cp, map_location=args['device'][0], weights_only=False)
-            task        = state['task']
-            known_cls   = state.get('known_classes', -1)
+            try:
+                import re
+                state = torch.load(_cp, map_location=args['device'][0], weights_only=False)
+                
+                # Robustly determine the target task from filename (fallback to state dict)
+                m_task = re.search(r'ckpt_task(\d+)_', os.path.basename(_cp))
+                task = int(m_task.group(1)) if m_task else state.get('task', 0)
+                
+                known_cls = state.get('known_classes', -1)
 
-            # --- Fix: Ensure model architecture is expanded to match the checkpoint task
-            model.skip_rehearsal = True
-            while model._cur_task < task:
-                model.incremental_train(data_manager, skip_train=True)
-                model.after_task()
-            # --- End Fix
+                # --- Fix: Robustly ensure model architecture is expanded ---
+                model.skip_rehearsal = True
+                
+                # Loop until the model has enough convnets for the target task!
+                while len(model._network.convnets) <= task:
+                    model.incremental_train(data_manager, skip_train=True)
+                    model.after_task()
+                # --- End Fix ---
 
-            model._network.load_state_dict(state['model_state_dict'], strict=False)
-            model._known_classes = known_cls
-            model._network.eval()
+                # Always update model._cur_task manually to match the checkpoint task
+                model._cur_task = task
+                
+                model._network.load_state_dict(state['model_state_dict'], strict=False)
+                model._known_classes = known_cls
+                model._network.eval()
 
-            # Lay test loader cho task nay
-            model._cur_task  = task
-            model.test_loader = torch.utils.data.DataLoader(
-                data_manager.get_dataset(
-                    np.arange(0, known_cls if known_cls > 0 else args['init_cls']),
-                    source='test', mode='test'
-                ),
-                batch_size=args.get('batch_size', 256), shuffle=False, num_workers=0
-            )
+                # Lay test loader cho task nay
+                model.test_loader = torch.utils.data.DataLoader(
+                    data_manager.get_dataset(
+                        np.arange(0, known_cls if known_cls > 0 else args['init_cls']),
+                        source='test', mode='test'
+                    ),
+                    batch_size=args.get('batch_size', 256), shuffle=False, num_workers=0
+                )
 
-            cnn_accy, nme_accy, y_pred, y_true_eval = model.eval_task()
-            m = cnn_accy
-            
-            # Chỉ vẽ Confusion Matrix cho Task cuối cùng (checkpoint cuối cùng)
-            if _cp == ckpt_files[-1]:
-                plot_confusion_matrix(y_true_eval, y_pred, task, args.get('run_dir', '.'))
-            logging.info(
-                f'[TEST] {os.path.basename(_cp)} | Task {task} | '
-                f"Acc: {m['top1']:.2f}% | F1-Mac: {m.get('f1_macro',0):.2f}% | F1-Mic: {m.get('f1_micro',0):.2f}%"
-            )
-            writer.writerow([
-                os.path.basename(_cp), task, known_cls,
-                round(m['top1'], 4),
-                round(m.get('precision_micro', 0), 4),
-                round(m.get('precision_macro', 0), 4),
-                round(m.get('precision_weighted', 0), 4),
-                round(m.get('recall_micro', 0), 4),
-                round(m.get('recall_macro', 0), 4),
-                round(m.get('recall_weighted', 0), 4),
-                round(m.get('f1_micro', 0), 4),
-                round(m.get('f1_macro', 0), 4),
-                round(m.get('f1_weighted', 0), 4),
-                round(m.get('loss', 0), 6),
-            ])
-            fcsv.flush()
+                cnn_accy, nme_accy, y_pred, y_true_eval = model.eval_task()
+                m = cnn_accy
+                
+                # Chỉ vẽ Confusion Matrix cho Task cuối cùng (checkpoint cuối cùng)
+                if _cp == ckpt_files[-1]:
+                    plot_confusion_matrix(y_true_eval, y_pred, task, args.get('run_dir', '.'))
+                logging.info(
+                    f'[TEST] {os.path.basename(_cp)} | Task {task} | '
+                    f"Acc: {m['top1']:.2f}% | F1-Mac: {m.get('f1_macro',0):.2f}% | F1-Mic: {m.get('f1_micro',0):.2f}%"
+                )
+                writer.writerow([
+                    os.path.basename(_cp), task, known_cls,
+                    round(m['top1'], 4),
+                    round(m.get('precision_micro', 0), 4),
+                    round(m.get('precision_macro', 0), 4),
+                    round(m.get('precision_weighted', 0), 4),
+                    round(m.get('recall_micro', 0), 4),
+                    round(m.get('recall_macro', 0), 4),
+                    round(m.get('recall_weighted', 0), 4),
+                    round(m.get('f1_micro', 0), 4),
+                    round(m.get('f1_macro', 0), 4),
+                    round(m.get('f1_weighted', 0), 4),
+                    round(m.get('loss', 0), 6),
+                ])
+                fcsv.flush()
+                
+            except Exception as e:
+                logging.error(f"[TEST] Error evaluating checkpoint {os.path.basename(_cp)}: {e}")
+                import traceback
+                traceback.print_exc()
+                continue
 
             # Save to history for plotting
             accuracy_history.append(m['top1'])
