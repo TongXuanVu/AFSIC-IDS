@@ -455,14 +455,20 @@ def run_test(args):
                 # Always update model._cur_task manually to match the checkpoint task
                 model._cur_task = task
                 
+                # Compute the exact number of classes for this task directly from data_manager
+                target_classes = sum(data_manager.get_task_size(t) for t in range(task + 1))
+                
+                # IMPORTANT: DO NOT override model._known_classes with checkpoint's known_cls
+                # because the checkpoint might have saved it before the task was fully expanded.
+                # model._known_classes is correctly maintained by model.after_task() in the loop.
+                
                 model._network.load_state_dict(state['model_state_dict'], strict=False)
-                model._known_classes = known_cls
                 model._network.eval()
 
                 # Lay test loader cho task nay
                 model.test_loader = torch.utils.data.DataLoader(
                     data_manager.get_dataset(
-                        np.arange(0, known_cls if known_cls > 0 else args['init_cls']),
+                        np.arange(0, target_classes),
                         source='test', mode='test'
                     ),
                     batch_size=args.get('batch_size', 256), shuffle=False, num_workers=0
