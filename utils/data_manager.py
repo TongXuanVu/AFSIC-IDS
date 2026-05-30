@@ -8,9 +8,9 @@ from utils.data import iCIFAR10, iCIFAR100, iImageNet100, iImageNet1000
 from tqdm import tqdm
 
 class DataManager(object):
-    def __init__(self, dataset_name, shuffle, seed, init_cls, increment):
+    def __init__(self, dataset_name, shuffle, seed, init_cls, increment, client_id=None):
         self.dataset_name = dataset_name
-        self._setup_data(dataset_name, shuffle, seed)
+        self._setup_data(dataset_name, shuffle, seed, client_id)
         assert init_cls <= len(self._class_order), "No enough classes."
         self._increments = [init_cls]
         while sum(self._increments) + increment < len(self._class_order):
@@ -182,9 +182,9 @@ class DataManager(object):
             train_data, train_targets, trsf, self.use_path
         ), DummyDataset(val_data, val_targets, trsf, self.use_path)
 
-    def _setup_data(self, dataset_name, shuffle, seed):
+    def _setup_data(self, dataset_name, shuffle, seed, client_id):
         idata = _get_idata(dataset_name)
-        idata.download_data()
+        idata.download_data(client_id)
 
         # Data
         self._train_data, self._train_targets = idata.train_data, idata.train_targets

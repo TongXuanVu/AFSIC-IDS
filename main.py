@@ -33,6 +33,15 @@ def setup_parser():
                         help='So epoch cho task dau tien.')
     parser.add_argument('--epochs', type=int, default=None,
                         help='So epoch cho cac task sau.')
+    
+    # --- Federated Learning Arguments ---
+    parser.add_argument('--num_clients', type=int, default=10,
+                        help='So luong client tham gia FL.')
+    parser.add_argument('--num_rounds', type=int, default=10,
+                        help='So vong aggregation (rounds) moi task.')
+    parser.add_argument('--local_epochs', type=int, default=3,
+                        help='So epoch huan luyen cuc bo cua moi client.')
+    
     return parser
 
 def main():
@@ -50,9 +59,11 @@ def main():
     args.update(cli_args)
 
     if args.get("debug"):
-        print("[DEBUG] Che do debug: set init_epoch=2, epochs=2")
+        print("[DEBUG] Che do debug: set init_epoch=2, epochs=2, local_epochs=1, num_rounds=2")
         args["init_epoch"] = 2
         args["epochs"] = 2
+        args["local_epochs"] = 1
+        args["num_rounds"] = 2
 
     if args.get("mode", "train") == "test":
         # Giai doan Test: chi load checkpoint va chay evaluation
