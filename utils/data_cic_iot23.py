@@ -13,8 +13,7 @@ import os
 
 # --- Đường dẫn tới data ---
 _SPCIL_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-_FL_ROOT = os.path.join(os.path.dirname(_SPCIL_ROOT), "FL")
-_DATA_DIR = os.path.join(_FL_ROOT, "core", "data_split")
+_DATA_DIR = os.path.join(_SPCIL_ROOT, "data", "CIC_IoT23")
 _FEDERATED_DIR = os.path.join(_DATA_DIR, "federated_data")
 _TEST_FILE = os.path.join(_DATA_DIR, "global_test_data.pt")
 _NUM_TASKS = 6
