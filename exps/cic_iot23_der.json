@@ -13,5 +13,5 @@
     "seed": [42],
     "init_epoch": 30,
     "epochs": 30,
-    "batch_size": 1024
+    "batch_size": 4096
 }
