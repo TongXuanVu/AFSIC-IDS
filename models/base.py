@@ -25,6 +25,7 @@ class BaseLearner(object):
 
         self._memory_size = args.get("memory_size", 5000)
         self._memory_per_class = args.get("memory_per_class", None)
+        self._memory_ratio = args.get("memory_ratio", None)
         self._fixed_memory = args.get("fixed_memory", False)
         self._device = args["device"][0]
         self._multiple_gpus = args["device"]
@@ -207,7 +208,14 @@ class BaseLearner(object):
 
         for class_idx in range(self._known_classes):
             mask = np.where(dummy_targets == class_idx)[0]
-            dd, dt = dummy_data[mask][:m], dummy_targets[mask][:m]
+            
+            if self._memory_ratio is not None:
+                class_data = data_manager.get_dataset([class_idx], source="train", mode="test", ret_data=True)[0]
+                current_m = max(1, int(len(class_data) * self._memory_ratio))
+            else:
+                current_m = m
+                
+            dd, dt = dummy_data[mask][:current_m], dummy_targets[mask][:current_m]
             self._data_memory = (
                 np.concatenate((self._data_memory, dd))
                 if len(self._data_memory) != 0
@@ -243,7 +251,13 @@ class BaseLearner(object):
                 ret_data=True,
             )
             num_samples = len(data)
-            selected_m = min(m, num_samples)
+            
+            if self._memory_ratio is not None:
+                current_m = max(1, int(num_samples * self._memory_ratio))
+            else:
+                current_m = m
+                
+            selected_m = min(current_m, num_samples)
             idx_loader = DataLoader(
                 idx_dataset, batch_size=batch_size, shuffle=False, num_workers=0
             )
@@ -346,7 +360,13 @@ class BaseLearner(object):
                 ret_data=True,
             )
             num_samples = len(data)
-            selected_m = min(m, num_samples)
+            
+            if self._memory_ratio is not None:
+                current_m = max(1, int(num_samples * self._memory_ratio))
+            else:
+                current_m = m
+                
+            selected_m = min(current_m, num_samples)
             class_loader = DataLoader(
                 class_dset, batch_size=batch_size, shuffle=False, num_workers=0
             )

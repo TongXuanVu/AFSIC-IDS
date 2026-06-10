@@ -101,6 +101,13 @@ def _train_federated(args):
     start_round = 0
     results_all = []
 
+    # ── Lịch sử metrics để vẽ biểu đồ ──────────────────────────────────────
+    history = {
+        "cnn":  {"acc": [], "precision": [], "recall": [], "f1": []},
+        "nme":  {"acc": [], "precision": [], "recall": [], "f1": []},
+    }
+    cnn_curve, nme_curve = {"top1": [], "top5": []}, {"top1": [], "top5": []}
+
     if args.get("resume") and os.path.isfile(args["resume"]):
         logging.info(f"==> Resuming from checkpoint: {args['resume']}")
         checkpoint = torch.load(args["resume"], map_location='cpu', weights_only=False)
@@ -209,6 +216,24 @@ def _train_federated(args):
             ])
             csv_file.flush()
 
+            if round_idx == args["num_rounds"] - 1:
+                cnn_curve["top1"].append(cnn_accy["top1"])
+                cnn_curve["top5"].append(cnn_accy["top5"])
+                history["cnn"]["acc"].append(cnn_accy["top1"])
+                history["cnn"]["precision"].append(cnn_accy.get("precision_macro", 0))
+                history["cnn"]["recall"].append(cnn_accy.get("recall_macro", 0))
+                history["cnn"]["f1"].append(cnn_accy.get("f1_macro", 0))
+                
+                if nme_accy is not None:
+                    nme_curve["top1"].append(nme_accy["top1"])
+                    nme_curve["top5"].append(nme_accy["top5"])
+                    history["nme"]["acc"].append(nme_accy["top1"])
+                    history["nme"]["precision"].append(nme_accy.get("precision_macro", 0))
+                    history["nme"]["recall"].append(nme_accy.get("recall_macro", 0))
+                    history["nme"]["f1"].append(nme_accy.get("f1_macro", 0))
+                
+                plot_confusion_matrix(y_true, y_pred, task, run_dir)
+
             # Lưu Checkpoint mỗi Round
             client_states = []
             for c in range(args["num_clients"]):
@@ -242,6 +267,11 @@ def _train_federated(args):
         global_model.after_task()
 
     csv_file.close()
+    
+    # ── Vẽ biểu đồ ──────────────────────────────────────────────────────────
+    _plot_metrics(history, run_dir, args)
+    logging.info("Plots saved in: {}".format(run_dir))
+    
     logging.info("Training Finished.")
 
 
@@ -320,15 +350,7 @@ def run_test(args):
             # Vẽ Confusion Matrix cho checkpoint cuối
             if idx == len(ckpt_files) - 1:
                 try:
-                    cm = confusion_matrix(y_true, y_pred.T[0])
-                    plt.figure(figsize=(12, 10))
-                    sns.heatmap(cm, annot=False, fmt='d', cmap='Blues')
-                    plt.xlabel('Predicted')
-                    plt.ylabel('Actual')
-                    plt.title(f'Confusion Matrix - {os.path.basename(cp)}')
-                    plt.savefig(os.path.join(test_ckpt_root, 'test_spcil_final_cm.png'), dpi=150)
-                    plt.close()
-                    logging.info(f"[TEST] Saved Confusion Matrix to {test_ckpt_root}")
+                    plot_confusion_matrix(y_true, y_pred, task, test_ckpt_root)
                 except Exception as e:
                     logging.error(f"[TEST] Lỗi khi vẽ Confusion Matrix: {e}")
 
@@ -358,3 +380,119 @@ def _set_random():
 def print_args(args):
     for key, value in args.items():
         logging.info("{}: {}".format(key, value))
+
+
+def _plot_metrics(history, run_dir, args):
+    tasks = list(range(1, len(history["cnn"]["acc"]) + 1))
+    has_nme = len(history["nme"]["acc"]) > 0
+
+    metrics = ["acc", "precision", "recall", "f1"]
+    labels  = ["Accuracy (%)", "Precision (%)", "Recall (%)", "F1-Score (%)"]
+    colors  = ["#4C72B0", "#DD8452", "#55A868", "#C44E52"]
+
+    fig, axes = plt.subplots(2, 2, figsize=(14, 10))
+    fig.suptitle(
+        "DER + {} on {} — {}\nSeed: {}  |  Init: {}  Inc: {}".format(
+            args["convnet_type"], args["dataset"],
+            datetime.now().strftime("%Y-%m-%d %H:%M"),
+            args["seed"], args["init_cls"], args["increment"],
+        ),
+        fontsize=13, fontweight="bold",
+    )
+
+    for idx, (metric, label, color) in enumerate(zip(metrics, labels, colors)):
+        ax = axes[idx // 2][idx % 2]
+        cnn_vals = history["cnn"][metric]
+
+        ax.plot(tasks, cnn_vals, "o-", color=color, linewidth=2,
+                markersize=6, label="CNN")
+        if has_nme and len(history["nme"][metric]) == len(tasks):
+            nme_vals = history["nme"][metric]
+            ax.plot(tasks, nme_vals, "s--", color=color, linewidth=2,
+                    markersize=6, alpha=0.6, label="NME")
+
+        ax.set_title(label, fontsize=11)
+        ax.set_xlabel("Task", fontsize=10)
+        ax.set_ylabel(label, fontsize=10)
+        ax.set_xticks(tasks)
+        ax.set_ylim(0, 105)
+        ax.grid(True, linestyle="--", alpha=0.5)
+        ax.legend(fontsize=9)
+
+        # Annotate each point
+        for t, v in zip(tasks, cnn_vals):
+            ax.annotate(f"{v:.1f}", (t, v),
+                        textcoords="offset points", xytext=(0, 6),
+                        ha="center", fontsize=8, color=color)
+
+    plt.tight_layout()
+    plot_path = os.path.join(run_dir, "metrics_plot.png")
+    plt.savefig(plot_path, dpi=150, bbox_inches="tight")
+    plt.close()
+
+    # ── Biểu đồ tổng hợp 4 metrics trên 1 axes ──────────────────────────────
+    fig2, ax2 = plt.subplots(figsize=(10, 6))
+    for metric, label, color in zip(metrics, labels, colors):
+        ax2.plot(tasks, history["cnn"][metric], "o-", color=color,
+                 linewidth=2, markersize=6, label=label)
+    ax2.set_title("CNN — All Metrics per Task", fontsize=12, fontweight="bold")
+    ax2.set_xlabel("Task")
+    ax2.set_ylabel("Score (%)")
+    ax2.set_xticks(tasks)
+    ax2.set_ylim(0, 105)
+    ax2.grid(True, linestyle="--", alpha=0.5)
+    ax2.legend(fontsize=10)
+    plt.tight_layout()
+    combined_path = os.path.join(run_dir, "all_metrics_combined.png")
+    plt.savefig(combined_path, dpi=150, bbox_inches="tight")
+    plt.close()
+
+
+def save_test_plot(x_vals, y_vals, metric_name, color, marker, args):
+    plt.figure(figsize=(10, 6))
+    plt.plot(x_vals, y_vals, f'{color}-{marker}', linewidth=2, markersize=4)
+    plt.xlabel('Task')
+    plt.ylabel(f'{metric_name} (%)' if metric_name != 'Loss' else 'Loss')
+    plt.title(f'[TEST - SPCIL] {metric_name} over Tasks')
+    plt.grid(True, alpha=0.3)
+    plt.tight_layout()
+    safe_name = metric_name.lower().replace("-", "_")
+    plt.savefig(os.path.join(args.get('run_dir', '.'), f'test_spcil_{safe_name}.png'), dpi=150)
+    plt.close()
+
+
+def save_combined_plot(x_vals, y_mic, y_mac, y_wei, category_name, args):
+    plt.figure(figsize=(10, 6))
+    plt.plot(x_vals, y_mic, 'b-o', label=f'Micro-{category_name}', linewidth=1.5, markersize=3)
+    plt.plot(x_vals, y_mac, 'g-s', label=f'Macro-{category_name}', linewidth=1.5, markersize=3)
+    plt.plot(x_vals, y_wei, 'r-^', label=f'Weighted-{category_name}', linewidth=1.5, markersize=3)
+    plt.xlabel('Task')
+    plt.ylabel(f'{category_name} (%)')
+    plt.title(f'[TEST - SPCIL] {category_name} (Micro vs Macro vs Weighted)')
+    plt.legend()
+    plt.grid(True, alpha=0.3)
+    plt.tight_layout()
+    plt.savefig(os.path.join(args.get('run_dir', '.'), f'test_spcil_{category_name.lower()}_combined.png'), dpi=150)
+    plt.close()
+
+
+def plot_confusion_matrix(y_true, y_pred, task_id, run_dir):
+    """Ve va luu Confusion Matrix PNG"""
+    # y_pred thuong co dang [N, topk], lay top1
+    if len(y_pred.shape) > 1 and y_pred.shape[1] > 1:
+        y_pred_top1 = y_pred[:, 0]
+    else:
+        y_pred_top1 = y_pred.flatten()
+        
+    cm = confusion_matrix(y_true, y_pred_top1)
+    plt.figure(figsize=(12, 10))
+    sns.heatmap(cm, annot=False, fmt='d', cmap='Blues')
+    plt.xlabel('Predicted Label')
+    plt.ylabel('True Label')
+    plt.title(f'Confusion Matrix - Task {task_id}')
+    
+    save_path = os.path.join(run_dir, f'confusion_matrix_task_{task_id:02d}.png')
+    plt.savefig(save_path, dpi=150, bbox_inches='tight')
+    plt.close()
+    logging.info(f'[TEST] Da luu Confusion Matrix tai: {save_path}')
+
