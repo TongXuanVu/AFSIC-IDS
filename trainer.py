@@ -148,6 +148,9 @@ def _train_federated(args):
                 local_models[c].train_loader = None
 
         if task < start_task:
+            for c in range(args["num_clients"]):
+                local_models[c].after_task()
+            global_model.after_task()
             continue
 
         logging.info(f"========== Bắt đầu Task {task} ==========")

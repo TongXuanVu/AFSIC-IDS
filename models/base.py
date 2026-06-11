@@ -211,6 +211,8 @@ class BaseLearner(object):
             
             if self._memory_ratio is not None:
                 class_data = data_manager.get_dataset([class_idx], source="train", mode="test", ret_data=True)[0]
+                if len(class_data) == 0:
+                    continue
                 current_m = max(1, int(len(class_data) * self._memory_ratio))
             else:
                 current_m = m
@@ -251,6 +253,8 @@ class BaseLearner(object):
                 ret_data=True,
             )
             num_samples = len(data)
+            if num_samples == 0:
+                continue
             
             if self._memory_ratio is not None:
                 current_m = max(1, int(num_samples * self._memory_ratio))
@@ -360,6 +364,8 @@ class BaseLearner(object):
                 ret_data=True,
             )
             num_samples = len(data)
+            if num_samples == 0:
+                continue
             
             if self._memory_ratio is not None:
                 current_m = max(1, int(num_samples * self._memory_ratio))
