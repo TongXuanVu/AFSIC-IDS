@@ -127,6 +127,15 @@ def _train_federated(args):
             local_models[c].incremental_train(client_dms[c], skip_train=True)
             local_models[c].skip_rehearsal = False
 
+        if args.get("resume") and task == checkpoint['task']:
+            logging.info(f"Phục hồi trạng thái cho Task {task} từ Checkpoint...")
+            global_model._network.load_state_dict(checkpoint['model_state_dict'])
+            for c in range(args["num_clients"]):
+                c_state = checkpoint['client_states'][c]
+                local_models[c]._data_memory = c_state['data_memory']
+                local_models[c]._targets_memory = c_state['targets_memory']
+
+        for c in range(args["num_clients"]):
             train_dataset = client_dms[c].get_dataset(
                 np.arange(local_models[c]._known_classes, local_models[c]._total_classes),
                 source="train", mode="train", appendent=local_models[c]._get_memory(),
@@ -140,24 +149,6 @@ def _train_federated(args):
 
         if task < start_task:
             continue
-
-        if task == start_task and args.get("resume"):
-            logging.info(f"Phục hồi trạng thái cho Task {task} từ Checkpoint...")
-            global_model._network.load_state_dict(checkpoint['model_state_dict'])
-            for c in range(args["num_clients"]):
-                c_state = checkpoint['client_states'][c]
-                local_models[c]._data_memory = c_state['data_memory']
-                local_models[c]._targets_memory = c_state['targets_memory']
-                
-                # Tạo lại loader sau khi có memory
-                train_dataset = client_dms[c].get_dataset(
-                    np.arange(local_models[c]._known_classes, local_models[c]._total_classes),
-                    source="train", mode="train", appendent=local_models[c]._get_memory(),
-                )
-                if len(train_dataset) > 0:
-                    local_models[c].train_loader = torch.utils.data.DataLoader(
-                        train_dataset, batch_size=args["batch_size"], shuffle=True, num_workers=0
-                    )
 
         logging.info(f"========== Bắt đầu Task {task} ==========")
         current_start_round = start_round if task == start_task else 0
