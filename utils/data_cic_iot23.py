@@ -67,19 +67,24 @@ class iCICIoT23:
                 
         del task_data_list
 
-        # Load test set (global 30% split)
-        assert os.path.exists(_TEST_FILE), f"[iCICIoT23] Không tìm thấy file test: {_TEST_FILE}"
-        test_data_dict = torch.load(_TEST_FILE, weights_only=False)
-        if isinstance(test_data_dict, dict):
-            self.test_data = test_data_dict["x"].numpy().astype(np.float32)
-            self.test_targets = test_data_dict["y"].numpy().astype(np.int64)
-        else:
-            self.test_data = test_data_dict[0].numpy().astype(np.float32)
-            self.test_targets = test_data_dict[1].numpy().astype(np.int64)
+        # Load test set (global 30% split) ONLY for client 0 to save RAM
+        if client_id == 0:
+            assert os.path.exists(_TEST_FILE), f"[iCICIoT23] Không tìm thấy file test: {_TEST_FILE}"
+            test_data_dict = torch.load(_TEST_FILE, weights_only=False)
+            if isinstance(test_data_dict, dict):
+                self.test_data = test_data_dict["x"].numpy().astype(np.float32)
+                self.test_targets = test_data_dict["y"].numpy().astype(np.int64)
+            else:
+                self.test_data = test_data_dict[0].numpy().astype(np.float32)
+                self.test_targets = test_data_dict[1].numpy().astype(np.int64)
 
-        # class_order: giữ thứ tự tự nhiên 0, 1, 2, ..., 33
-        # Use a hardcoded or global known classes if possible, but taking unique from test targets covers all classes
-        self.class_order = sorted(np.unique(self.test_targets).tolist())
+            # class_order: giữ thứ tự tự nhiên 0, 1, 2, ..., 33
+            self.class_order = sorted(np.unique(self.test_targets).tolist())
+        else:
+            # Các client khác không bao giờ dùng test_data nên không cần load (Tiết kiệm ~1.85GB RAM mỗi client)
+            self.test_data = np.empty((0, num_features), dtype=np.float32)
+            self.test_targets = np.empty((0,), dtype=np.int64)
+            self.class_order = list(range(34)) # Default cho CIC-IoT23
 
         _print_stats(self, client_id)
 
