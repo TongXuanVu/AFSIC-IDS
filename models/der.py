@@ -151,19 +151,9 @@ class DER(BaseLearner):
                 )
             prog_bar.set_description(info)
             
-            # --- SAVE INTRA-TASK CHECKPOINT ---
-            run_dir = self.args.get("run_dir", ".")
-            ckpt_dir = os.path.join(run_dir, 'checkpoints')
-            os.makedirs(ckpt_dir, exist_ok=True)
-            ckpt_name = f'ckpt_task{self._cur_task:02d}_round{epoch + 1:03d}.pth'
-            torch.save({
-                'task':             self._cur_task,
-                'round':            epoch + 1,
-                'model_state_dict': self._network.state_dict(),
-                'known_classes':    self._known_classes,
-            }, os.path.join(ckpt_dir, ckpt_name))
-            
-            
+            # --- BỎ QUA INTRA-TASK CHECKPOINT ---
+            # Chỉ lưu Global Checkpoint trong trainer.py để tránh lỗi KeyError 'client_states' khi Resume
+            pass
 
         logging.info(info)
         # Reset start_round for the next tasks so they start from 0
