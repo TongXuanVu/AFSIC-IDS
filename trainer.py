@@ -108,14 +108,18 @@ def _train_federated(args):
     }
     cnn_curve, nme_curve = {"top1": [], "top5": []}, {"top1": [], "top5": []}
 
-    if args.get("resume") and os.path.isfile(args["resume"]):
-        logging.info(f"==> Resuming from checkpoint: {args['resume']}")
-        checkpoint = torch.load(args["resume"], map_location='cpu', weights_only=False)
-        start_task = checkpoint['task']
-        start_round = checkpoint['round'] + 1
-        if start_round >= args["num_rounds"]:
-            start_task += 1
-            start_round = 0
+    checkpoint = None
+    if args.get("resume"):
+        if os.path.isfile(args["resume"]):
+            logging.info(f"==> Resuming from checkpoint: {args['resume']}")
+            checkpoint = torch.load(args["resume"], map_location='cpu', weights_only=False)
+            start_task = checkpoint['task']
+            start_round = checkpoint['round'] + 1
+            if start_round >= args["num_rounds"]:
+                start_task += 1
+                start_round = 0
+        else:
+            raise FileNotFoundError(f"Checkpoint file not found: {args['resume']}")
             
     for task in range(nb_tasks):
         # 1. Mở rộng kiến trúc (nhưng không train) để lấy đúng kích thước mô hình
@@ -127,7 +131,7 @@ def _train_federated(args):
             local_models[c].incremental_train(client_dms[c], skip_train=True)
             local_models[c].skip_rehearsal = False
 
-        if args.get("resume") and task == checkpoint['task']:
+        if checkpoint is not None and task == checkpoint['task']:
             logging.info(f"Phục hồi trạng thái cho Task {task} từ Checkpoint...")
             global_model._network.load_state_dict(checkpoint['model_state_dict'])
             for c in range(args["num_clients"]):
