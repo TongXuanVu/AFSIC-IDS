@@ -140,7 +140,11 @@ def _train_federated(args):
                 np.arange(local_models[c]._known_classes, local_models[c]._total_classes),
                 source="train", mode="train", appendent=local_models[c]._get_memory(),
             )
-            if len(train_dataset) > 0:
+            
+            # Ngăn chặn Model Collapse: Nếu client chỉ có Rehearsal Memory mà không có data mới, thì BỎ QUA không train
+            has_new_data = getattr(train_dataset, 'len_source', len(train_dataset)) > 0
+            
+            if len(train_dataset) > 0 and has_new_data:
                 local_models[c].train_loader = torch.utils.data.DataLoader(
                     train_dataset, batch_size=args["batch_size"], shuffle=True, num_workers=0
                 )
