@@ -35,11 +35,11 @@ def setup_parser():
                         help='So epoch cho cac task sau.')
     
     # --- Federated Learning Arguments ---
-    parser.add_argument('--num_clients', type=int, default=10,
+    parser.add_argument('--num_clients', type=int, default=None,
                         help='So luong client tham gia FL.')
-    parser.add_argument('--num_rounds', type=int, default=10,
+    parser.add_argument('--num_rounds', type=int, default=None,
                         help='So vong aggregation (rounds) moi task.')
-    parser.add_argument('--local_epochs', type=int, default=3,
+    parser.add_argument('--local_epochs', type=int, default=None,
                         help='So epoch huan luyen cuc bo cua moi client.')
     
     return parser
