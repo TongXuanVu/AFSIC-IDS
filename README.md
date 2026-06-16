@@ -8,7 +8,7 @@ It extends the core ideas of the SPCIL framework into a non-IID Federated Learni
 
 ## 🎯 Architecture Overview
 
-![AFSIC-IDS Architecture](Đề xuất SPCIL-FL.png)
+![AFSIC-IDS Architecture](architecture_afsics_ids.png)
 
 The AFSIC-IDS framework consists of several key innovations designed specifically for Federated IDS:
 
@@ -35,7 +35,7 @@ The AFSIC-IDS framework consists of several key innovations designed specificall
 ## 🚀 How to Run
 
 ### 1. Setup Data
-The system is pre-configured to run with the **CIC-IoT23** dataset. Make sure your pre-processed data is located in the appropriate directory as specified in the `utils/data_manager.py`.
+The system is pre-configured to run with the **CIC-IoT23** dataset. The `.pt` files must be mapped and located in the appropriate federated directory.
 
 ### 2. Configure Experiments
 All hyperparameters and incremental steps are defined cleanly in `configs/exps/cic_iot23_afsic.json`.
@@ -46,12 +46,12 @@ Example configuration:
   "dataset": "cic_iot23",
   "memory_ratio": 0.01,
   "task_increments": [6, 6, 6, 6, 5, 5],
-  "class_order": [1, 0, 11, 12, 27, 26, 2, 14, 25, 24, 20, 28, 3, 7, 30, 29, 19, 16, 15, 6, 8, 22, 23, 21, 5, 13, 10, 17, 18, 4, 31, 32, 33, 9],
   "model_name": "afsic-ids",
   "num_clients": 10,
   "num_rounds": 30
 }
 ```
+*(Note: `class_order` is automatically handled by the python adapter to prevent double mapping).*
 
 ### 3. Start Training
 To start the federated training loop:
@@ -60,7 +60,7 @@ python main.py --config configs/exps/cic_iot23_afsic.json
 ```
 
 ### 4. Evaluate & Metrics
-The training orchestrator automatically computes and logs 14 critical metrics per round (saved in `metrics_round_by_round.csv`), including:
+The training orchestrator automatically computes and logs critical metrics per round (saved in `metrics_round_by_round.csv`), including:
 - **Accuracy** (Top-1)
 - **F1-Score** (Micro, Macro, Weighted)
 - **Precision / Recall** (Micro, Macro, Weighted)
