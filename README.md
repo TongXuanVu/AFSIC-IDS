@@ -1,256 +1,73 @@
-# SPCIL-FL / AFSIC-IDS
+# SPCIL-FL: Adaptive Federated Few-Shot Class-Incremental Learning for IDS
 
-Project này triển khai setting **supervised federated task-incremental learning** cho bài toán IDS trên dữ liệu CIC-IoT23 đã chia theo client/task.
+This repository contains the implementation of an advanced **Federated Few-Shot Class-Incremental Learning** framework designed for Intrusion Detection Systems (IDS), named **AFSIC-IDS** (Adaptive Federated Stability-plasticity Incremental Classifier).
 
-Setting mặc định hiện tại:
+It extends the core ideas of the SPCIL framework into a non-IID Federated Learning environment, solving the challenges of detecting new network attacks dynamically across decentralized clients.
 
-- Federated learning nhiều client.
-- Task-incremental supervised learning.
-- Task split: `[6, 6, 6, 6, 5, 5]`.
-- Unknown buffer/new attack discovery đang **tắt** trong config mặc định.
-- Evaluation dùng `global_test_data.pt`, nhưng chỉ test trên các class đã học tới task hiện tại.
+---
 
-## 1. Cấu trúc thư mục
+## 🎯 Architecture Overview
 
-```text
-.
-├── main.py                         # Entry point train/test
-├── trainer.py                      # Federated task-incremental training loop
-├── configs/
-│   └── exps/
-│       └── cic_iot23_afsic_ids.json # Config mặc định hiện tại
-├── models/                         # Learner/model implementations
-├── utils/                          # Data manager, memory, prototype, buffer
-├── convs/                          # Backbone/classifier layers
-├── losses/                         # Losses kế thừa từ SPCIL
-├── docs/                           # Proposal, notes, figures
-├── tools/                          # Script phụ trợ
-└── data/                           # Local data, không push lên GitHub
-```
+![SPCIL-FL Architecture](Đề xuất SPCIL-FL.png)
 
-Xem thêm mô tả cấu trúc ở `PROJECT_STRUCTURE.md`.
+The AFSIC-IDS framework consists of several key innovations designed specifically for Federated IDS:
 
-## 2. Cài môi trường
+1. **Frozen Global Stability Encoder + Lightweight Plasticity Adapters**:
+   Instead of expanding the entire backbone for every new attack class, we freeze the stability encoder (to prevent catastrophic forgetting) and train a lightweight local adapter (to learn plasticity for new attacks). A dynamically learned **Vector Gate** $g_i^t(x)$ fuses these two branches depending on the input traffic.
 
-Khuyến nghị dùng Python 3.10+.
+2. **Prototype-Assisted Classifier Fusion**:
+   For new attack classes where only a few samples (e.g., 5-10 shots) are available, we initialize the classification weights using aggregated class Prototypes instead of random initialization.
 
-```bash
-pip install torch torchvision numpy scikit-learn scipy matplotlib seaborn pillow tqdm
-```
+3. **Privacy-Aware Memory (Replay)**:
+   - **Local Exemplar Memory**: Each client stores exactly 1% of representative samples using the **Herding Selection** algorithm to preserve long-term memory without eating up local RAM.
+   - **Global Prototype Memory**: The server only receives and aggregates vectors (Prototypes) instead of raw packet/flow data.
 
-Nếu chạy CPU, config mặc định đang dùng:
+4. **Multi-Objective Loss Function**:
+   The model optimizes a sophisticated loss suite:
+   $L = L_{CE} + \lambda_{KD} L_{KD} + \lambda_{FSP} L_{FSP} + \lambda_{proto} L_{proto} + \lambda_{RS} L_{RS} + \lambda_{prox} L_{prox}$
+   This balances class preservation, few-shot feature learning (Sparse Pairwise Loss), and reduces client drift in Non-IID settings.
 
+5. **Adaptive Robust Aggregation**:
+   The server doesn't use simple `FedAvg`. It calculates a quality score ($Q_i^t$) based on accuracy, prototype consistency, novelty, drift, and update norms to apply an adaptive Softmax weight $\alpha_i^t$. It also utilizes **MAD Z-Score filtering** to block poisoned or overly dispersed client updates.
+
+---
+
+## 🚀 How to Run
+
+### 1. Setup Data
+The system is pre-configured to run with the **CIC-IoT23** dataset. Make sure your pre-processed data is located in the appropriate directory as specified in the `utils/data_manager.py`.
+
+### 2. Configure Experiments
+All hyperparameters and incremental steps are defined cleanly in `configs/exps/cic_iot23_afsic.json`.
+Example configuration:
 ```json
-"device": ["cpu"]
+{
+  "prefix": "cic_iot23",
+  "dataset": "cic_iot23",
+  "memory_ratio": 0.01,
+  "task_increments": [6, 6, 6, 6, 5, 5],
+  "class_order": [1, 0, 11, 12, 27, 26, 2, 14, 25, 24, 20, 28, 3, 7, 30, 29, 19, 16, 15, 6, 8, 22, 23, 21, 5, 13, 10, 17, 18, 4, 31, 32, 33, 9],
+  "model_name": "afsic-ids",
+  "num_clients": 10,
+  "num_rounds": 30
+}
 ```
 
-Nếu chạy GPU, sửa trong `configs/exps/cic_iot23_afsic_ids.json`, ví dụ:
-
-```json
-"device": [0]
-```
-
-## 3. Chuẩn bị dữ liệu
-
-Code hiện tại expect dữ liệu ở:
-
-```text
-data/CIC_IoT23/
-├── federated_data/
-│   ├── client_0_task_1.pt
-│   ├── client_0_task_2.pt
-│   ├── ...
-│   ├── client_4_task_6.pt
-└── global_test_data.pt
-```
-
-Format `.pt` có thể là dict:
-
-```python
-{"x": tensor_features, "y": tensor_labels}
-```
-
-hoặc tuple:
-
-```python
-(x, y)
-```
-
-Trong đó:
-
-- `x`: tensor shape `[N, 31]`.
-- `y`: nhãn gốc CIC-IoT23.
-
-Lưu ý: thư mục `data/` được ignore trong `.gitignore`, không commit dữ liệu lớn lên GitHub.
-
-## 4. Setting task mặc định
-
-Config mặc định nằm ở:
-
-```text
-configs/exps/cic_iot23_afsic_ids.json
-```
-
-Task split đang theo hình phân phối dữ liệu:
-
-```json
-"task_increments": [6, 6, 6, 6, 5, 5],
-"class_order": [
-  1, 0, 11, 12, 27, 26,
-  2, 14, 25, 24, 20, 28,
-  3, 7, 30, 29, 19, 16,
-  15, 6, 8, 22, 23, 21,
-  5, 13, 10, 17, 18,
-  4, 31, 32, 33, 9
-]
-```
-
-Unknown discovery đang tắt:
-
-```json
-"supervised_task_incremental": true,
-"use_unknown_discovery": false,
-"fewshot_enabled": false
-```
-
-Vì `fewshot_enabled=false`, mỗi task dùng toàn bộ labeled task data hiện có tại client.
-
-## 5. Chạy nhanh debug
-
-Debug mode giảm epoch/round để kiểm tra pipeline:
-
+### 3. Start Training
+To start the federated training loop:
 ```bash
-python main.py --debug
+python main.py --config configs/exps/cic_iot23_afsic.json
 ```
 
-Hoặc chỉ rõ config:
+### 4. Evaluate & Metrics
+The training orchestrator automatically computes and logs 14 critical metrics per round (saved in `metrics_round_by_round.csv`), including:
+- **Accuracy** (Top-1)
+- **F1-Score** (Micro, Macro, Weighted)
+- **Precision / Recall** (Micro, Macro, Weighted)
+- **Catastrophic Forgetting** tracking
 
+To run an offline test pipeline on saved checkpoints:
 ```bash
-python main.py --config ./configs/exps/cic_iot23_afsic_ids.json --debug
+python main.py --config configs/exps/cic_iot23_afsic.json --test
 ```
-
-## 6. Chạy train đầy đủ
-
-```bash
-python main.py --config ./configs/exps/cic_iot23_afsic_ids.json
-```
-
-Một số tham số có thể override bằng CLI:
-
-```bash
-python main.py ^
-  --config ./configs/exps/cic_iot23_afsic_ids.json ^
-  --num_clients 5 ^
-  --num_rounds 5 ^
-  --local_epochs 2 ^
-  --batch_size 4096
-```
-
-Trên Linux/macOS thay `^` bằng `\`.
-
-## 7. Resume training
-
-Sau khi train, checkpoint được lưu trong:
-
-```text
-logs/<model>_federated/<dataset>/<run_name>/checkpoints/
-```
-
-Resume từ checkpoint:
-
-```bash
-python main.py ^
-  --config ./configs/exps/cic_iot23_afsic_ids.json ^
-  --resume logs/afsic-ids_federated/cic_iot23/<run_name>/checkpoints/<checkpoint>.pth
-```
-
-## 8. Test checkpoint
-
-Chạy evaluation trên toàn bộ checkpoint trong một run:
-
-```bash
-python main.py ^
-  --mode test ^
-  --config ./configs/exps/cic_iot23_afsic_ids.json ^
-  --test_checkpoint_dir logs/afsic-ids_federated/cic_iot23/<run_name>
-```
-
-Evaluation dùng `global_test_data.pt`, nhưng chỉ lấy các class đã học tới checkpoint/task đó:
-
-- Task 1: test class remapped `0..5`.
-- Task 2: test class remapped `0..11`.
-- ...
-- Task 6: test class remapped `0..33`.
-
-## 9. Output chính
-
-Mỗi run tạo thư mục:
-
-```text
-logs/afsic-ids_federated/cic_iot23/<timestamp_seed_convnet_clients>/
-```
-
-Bên trong gồm:
-
-- `training.log`: log train/eval.
-- `metrics_round_by_round.csv`: metrics từng round.
-- `checkpoints/`: checkpoint từng round.
-- `metrics_plot.png`: biểu đồ metrics.
-- `all_metrics_combined.png`: biểu đồ tổng hợp.
-- `confusion_matrix_task_*.png`: confusion matrix theo task.
-
-## 10. Kiến trúc hiện tại
-
-Các thành phần chính:
-
-- `models/afsic_ids.py`: learner AFSIC-IDS.
-- `utils/inc_net.py`: network, frozen encoder, plastic adapter, cosine classifier.
-- `utils/memory.py`: local exemplar memory và global prototype memory.
-- `trainer.py`: FL rounds, prototype aggregation, robust aggregation, evaluation.
-
-Workflow figure:
-
-```text
-docs/figures/simple_supervised_architecture_2clients.png
-```
-
-## 11. Bật unknown discovery sau này
-
-Khi chuyển sang setting open-set/new attack discovery, sửa config:
-
-```json
-"use_unknown_discovery": true,
-"fewshot_enabled": true,
-"kshot": 10
-```
-
-Các ngưỡng unknown:
-
-```json
-"delta_p": 0.5,
-"delta_d": 0.7
-```
-
-Điều kiện đưa mẫu vào unknown buffer:
-
-```text
-max_c P(y=c|x) < delta_p
-and
-min_c (1 - cos(z(x), p_c)) > delta_d
-```
-
-Trong setting hiện tại, nhánh này chưa dùng.
-
-## 12. Ghi chú GitHub
-
-Không commit các file lớn/local:
-
-- `data/`
-- `logs/`
-- `checkpoints/`
-- `*.pth`
-- `*.csv`
-- `*.png`
-- `no-use/cache/`
-
-Các mục này đã hoặc nên được ignore để repo nhẹ và dễ clone.
+*(Make sure to set the checkpoint directory path in your arguments or config file).*
