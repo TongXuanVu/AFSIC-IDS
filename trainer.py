@@ -307,8 +307,18 @@ def _train_federated(args):
                 local_models[c].train_loader = None
                 continue
             else:
-                train_dataset = _build_standard_train_dataset(client_dms[c], local_models[c], args)
-            
+                train_dataset = None
+                has_file = True
+                if args["dataset"] == "cic_iot23":
+                    from utils.data_cic_iot23 import _FEDERATED_DIR
+                    import os
+                    task_file = os.path.join(_FEDERATED_DIR, f"client_{c}_task_{task+1}.pt")
+                    if not os.path.exists(task_file):
+                        has_file = False
+                        logging.info(f"Client {c} không có file {os.path.basename(task_file)}. Tự động bỏ qua.")
+                
+                if has_file:
+                    train_dataset = _build_standard_train_dataset(client_dms[c], local_models[c], args)
             # Ngăn chặn Model Collapse: Nếu client chỉ có Rehearsal Memory mà không có data mới, thì BỎ QUA không train
             has_new_data = (
                 train_dataset is not None
