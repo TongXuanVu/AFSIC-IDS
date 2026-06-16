@@ -55,7 +55,7 @@
   "_comment_loss_prox": "L_prox: Chống lệch client (Client Drift) bằng chuẩn L2",
   "lambda_prox": 0.01,
   "_comment_robust": "Bộ lọc Z-Score MAD. beta_... tính điểm Quality (Q_i) cho client",
-  "robust_filter_updates": true,
+  "robust_filter_updates": false,
   "robust_z": 5.0,
   "_comment_beta_acc": "beta_acc: Thưởng cho Accuracy cục bộ",
   "beta_acc": 1.0,
