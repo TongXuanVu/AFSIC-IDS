@@ -56,7 +56,7 @@
   "_comment_beta_novelty": "beta_novelty: Thưởng cho lượng dữ liệu mới",
   "beta_novelty": 0.5,
   "_comment_beta_drift": "beta_drift: Phạt khi Prototype bị lệch hướng",
-  "beta_drift": 0.5,
+  "beta_drift": 0.01,
   "_comment_beta_update": "beta_update: Phạt khi cập nhật Model quá lớn",
-  "beta_update": 0.2
+  "beta_update": 0.01
 }
