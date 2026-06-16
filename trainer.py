@@ -311,7 +311,6 @@ def _train_federated(args):
                 has_file = True
                 if args["dataset"] == "cic_iot23":
                     from utils.data_cic_iot23 import _FEDERATED_DIR
-                    import os
                     task_file = os.path.join(_FEDERATED_DIR, f"client_{c}_task_{task+1}.pt")
                     if not os.path.exists(task_file):
                         has_file = False
