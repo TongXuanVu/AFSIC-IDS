@@ -1,4 +1,4 @@
-# SPCIL-FL: Adaptive Federated Few-Shot Class-Incremental Learning for IDS
+# AFSIC-IDS: Adaptive Federated Few-Shot Class-Incremental Learning for IDS
 
 This repository contains the implementation of an advanced **Federated Few-Shot Class-Incremental Learning** framework designed for Intrusion Detection Systems (IDS), named **AFSIC-IDS** (Adaptive Federated Stability-plasticity Incremental Classifier).
 
@@ -8,7 +8,7 @@ It extends the core ideas of the SPCIL framework into a non-IID Federated Learni
 
 ## 🎯 Architecture Overview
 
-![SPCIL-FL Architecture](Đề xuất SPCIL-FL.png)
+![AFSIC-IDS Architecture](Đề xuất SPCIL-FL.png)
 
 The AFSIC-IDS framework consists of several key innovations designed specifically for Federated IDS:
 

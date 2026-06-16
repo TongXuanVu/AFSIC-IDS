@@ -564,7 +564,7 @@ def _train_federated(args):
 
             # Ghi file CSV
             csv_writer.writerow([
-                task, round_idx + 1, global_round + 1, "SPCIL-FL",
+                task, round_idx + 1, global_round + 1, "AFSIC-IDS",
                 round(cnn_accy["top1"], 4),
                 round(cnn_accy.get("precision_micro", 0), 4),
                 round(cnn_accy.get("precision_macro", 0), 4),
