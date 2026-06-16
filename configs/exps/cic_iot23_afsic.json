@@ -3,7 +3,7 @@
   "dataset": "cic_iot23",
   "memory_ratio": 0.01,
   "fixed_memory": false,
-  "shuffle": true,
+  "shuffle": false,
   "_comment_tasks": "Cấu hình 6 Task lần lượt thêm 6,6,6,6,5,5 lớp",
   "init_cls": 6,
   "increment": 6,
