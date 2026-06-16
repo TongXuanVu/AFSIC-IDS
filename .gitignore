@@ -31,7 +31,9 @@ wheels/
 data/
 logs/
 checkpoints/
+no-use/
 *.pth
 *.csv
 *.png
+!docs/figures/*.png
 .ipynb_checkpoints/

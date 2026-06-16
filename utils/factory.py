@@ -63,5 +63,8 @@ def get_model(model_name, args):
     elif name == "simplecil":
         from models.simplecil import SimpleCIL
         return SimpleCIL(args)
+    elif name == "afsic-ids":
+        from models.afsic_ids import AFSIC_IDS
+        return AFSIC_IDS(args)
     else:
         assert 0

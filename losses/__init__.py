@@ -1,15 +1,12 @@
-# encoding: utf-8
-"""
-@author:  l1aoxingyu
-@contact: sherlockliao01@gmail.com
-"""
+from .kd_loss import compute_kd_loss
+from .fsp_loss import compute_fsp_loss
+from .proto_loss import compute_proto_loss
+from .regularization import compute_sparse_regularization, compute_fedprox_regularization
 
-# from .circle_loss import *
-# from .cross_entroy_loss import cross_entropy_loss, log_accuracy
-# from .triplet_loss import triplet_loss
-# from .adasp_loss import *
-# from .supcon_loss import *
-# from .ms_loss import *
-# from .ep_loss import *
-
-__all__ = [k for k in globals().keys() if not k.startswith("_")]
+__all__ = [
+    "compute_kd_loss",
+    "compute_fsp_loss",
+    "compute_proto_loss",
+    "compute_sparse_regularization",
+    "compute_fedprox_regularization"
+]

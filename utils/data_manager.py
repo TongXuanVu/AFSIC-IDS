@@ -8,16 +8,32 @@ from utils.data import iCIFAR10, iCIFAR100, iImageNet100, iImageNet1000
 from tqdm import tqdm
 
 class DataManager(object):
-    def __init__(self, dataset_name, shuffle, seed, init_cls, increment, client_id=None):
+    def __init__(
+        self,
+        dataset_name,
+        shuffle,
+        seed,
+        init_cls,
+        increment,
+        client_id=None,
+        class_order=None,
+        task_increments=None,
+    ):
         self.dataset_name = dataset_name
-        self._setup_data(dataset_name, shuffle, seed, client_id)
+        self._setup_data(dataset_name, shuffle, seed, client_id, class_order)
         assert init_cls <= len(self._class_order), "No enough classes."
-        self._increments = [init_cls]
-        while sum(self._increments) + increment < len(self._class_order):
-            self._increments.append(increment)
-        offset = len(self._class_order) - sum(self._increments)
-        if offset > 0:
-            self._increments.append(offset)
+        if task_increments is not None:
+            self._increments = [int(x) for x in task_increments]
+            assert sum(self._increments) == len(self._class_order), (
+                "task_increments must sum to the number of classes in class_order."
+            )
+        else:
+            self._increments = [init_cls]
+            while sum(self._increments) + increment < len(self._class_order):
+                self._increments.append(increment)
+            offset = len(self._class_order) - sum(self._increments)
+            if offset > 0:
+                self._increments.append(offset)
 
     @property
     def nb_tasks(self):
@@ -182,7 +198,7 @@ class DataManager(object):
             train_data, train_targets, trsf, self.use_path
         ), DummyDataset(val_data, val_targets, trsf, self.use_path)
 
-    def _setup_data(self, dataset_name, shuffle, seed, client_id):
+    def _setup_data(self, dataset_name, shuffle, seed, client_id, class_order=None):
         idata = _get_idata(dataset_name)
         idata.download_data(client_id)
 
@@ -201,6 +217,8 @@ class DataManager(object):
         if shuffle:
             np.random.seed(seed)
             order = np.random.permutation(len(order)).tolist()
+        elif class_order is not None:
+            order = [int(x) for x in class_order]
         else:
             order = idata.class_order
         self._class_order = order

@@ -18,6 +18,23 @@ _FEDERATED_DIR = os.path.join(_DATA_DIR, "federated_data")
 _TEST_FILE = os.path.join(_DATA_DIR, "global_test_data.pt")
 _NUM_TASKS = 6
 
+# Default supervised task-incremental order from data/final_pt_data_distribution.png.
+# Original CIC-IoT23 labels are remapped by DataManager into incremental ids:
+# Task 1: [1, 0, 11, 12, 27, 26]
+# Task 2: [2, 14, 25, 24, 20, 28]
+# Task 3: [3, 7, 30, 29, 19, 16]
+# Task 4: [15, 6, 8, 22, 23, 21]
+# Task 5: [5, 13, 10, 17, 18]
+# Task 6: [4, 31, 32, 33, 9]
+DEFAULT_TASK_CLASS_ORDER = [
+    1, 0, 11, 12, 27, 26,
+    2, 14, 25, 24, 20, 28,
+    3, 7, 30, 29, 19, 16,
+    15, 6, 8, 22, 23, 21,
+    5, 13, 10, 17, 18,
+    4, 31, 32, 33, 9,
+]
+
 
 class iCICIoT23:
     """
@@ -79,12 +96,12 @@ class iCICIoT23:
                 self.test_targets = test_data_dict[1].numpy().astype(np.int64)
 
             # class_order: giữ thứ tự tự nhiên 0, 1, 2, ..., 33
-            self.class_order = sorted(np.unique(self.test_targets).tolist())
+            self.class_order = DEFAULT_TASK_CLASS_ORDER
         else:
             # Các client khác không bao giờ dùng test_data nên không cần load (Tiết kiệm ~1.85GB RAM mỗi client)
             self.test_data = np.empty((0, num_features), dtype=np.float32)
             self.test_targets = np.empty((0,), dtype=np.int64)
-            self.class_order = list(range(34)) # Default cho CIC-IoT23
+            self.class_order = DEFAULT_TASK_CLASS_ORDER
 
         _print_stats(self, client_id)
 

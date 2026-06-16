@@ -7,14 +7,18 @@ import glob
 from datetime import datetime
 
 import torch
+import torch.nn.functional as F
+from torch.utils.data import DataLoader
 import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+from torchvision import transforms
 
 from utils import factory
-from utils.data_manager import DataManager
+from utils.data_manager import DataManager, DummyDataset
 from utils.toolkit import count_parameters
+from utils.aggregation import is_aggregated_state_key, compute_aggregation_weights
 import seaborn as sns
 from sklearn.metrics import confusion_matrix
 
@@ -29,6 +33,148 @@ def average_weights(w):
         else:
             w_avg[key] = torch.div(w_avg[key], len(w))
     return w_avg
+
+
+def _make_transform(data_manager, mode):
+    if mode == "train":
+        return transforms.Compose([*data_manager._train_trsf, *data_manager._common_trsf])
+    return transforms.Compose([*data_manager._test_trsf, *data_manager._common_trsf])
+
+
+def _concat_or_none(parts):
+    parts = [p for p in parts if p is not None and len(p) > 0]
+    if not parts:
+        return None
+    return np.concatenate(parts, axis=0)
+
+
+def _take_items(values, indices):
+    if isinstance(values, np.ndarray):
+        return values[indices]
+    return [values[int(i)] for i in indices]
+
+
+def _build_fewshot_train_dataset(data_manager, local_model, args, task, client_id):
+    """Build few-shot new-class data plus local exemplar replay."""
+    kshot = args.get("kshot", None) if args.get("fewshot_enabled", True) else None
+    rng = np.random.default_rng(args.get("seed", 0) + task * 1009 + client_id * 9173)
+    data_parts, target_parts = [], []
+    new_count = 0
+
+    for class_idx in range(local_model._known_classes, local_model._total_classes):
+        data, targets, _ = data_manager.get_dataset(
+            np.arange(class_idx, class_idx + 1),
+            source="train",
+            mode="test",
+            ret_data=True,
+        )
+        if len(data) == 0:
+            continue
+        if kshot is None:
+            keep = len(data)
+            data_parts.append(data)
+            target_parts.append(targets)
+        else:
+            keep = min(int(kshot), len(data))
+            selected = rng.choice(len(data), size=keep, replace=False)
+            data_parts.append(_take_items(data, selected))
+            target_parts.append(_take_items(targets, selected))
+        new_count += keep
+
+    memory = local_model._get_memory()
+    if memory is not None and len(memory) != 0:
+        mem_data, mem_targets = memory
+        data_parts.append(mem_data)
+        target_parts.append(mem_targets)
+
+    data = _concat_or_none(data_parts)
+    targets = _concat_or_none(target_parts)
+    if data is None or targets is None:
+        return None
+
+    dataset = DummyDataset(data, targets, _make_transform(data_manager, "train"), data_manager.use_path)
+    dataset.len_new_data = new_count
+    return dataset
+
+
+def _build_standard_train_dataset(data_manager, local_model, args):
+    dataset = data_manager.get_dataset(
+        np.arange(local_model._known_classes, local_model._total_classes),
+        source="train",
+        mode="train",
+        appendent=local_model._get_memory(),
+    )
+    dataset.len_new_data = getattr(dataset, "len_source", len(dataset))
+    return dataset
+
+
+def _build_local_eval_loader(data_manager, total_classes, batch_size):
+    indices = np.arange(0, total_classes)
+    dataset = data_manager.get_dataset(indices, source="test", mode="test")
+    if len(dataset) == 0:
+        dataset = data_manager.get_dataset(indices, source="train", mode="test")
+    if len(dataset) == 0:
+        return None
+    return DataLoader(dataset, batch_size=batch_size, shuffle=False, num_workers=0)
+
+
+def _build_global_learned_test_loader(global_data_manager, total_classes, batch_size):
+    """Evaluate only classes that have already been introduced.
+
+    CIC-IoT23 global_test_data can contain all 34 classes, while task 0 may
+    expose only 6 classes. Filtering here prevents penalizing the model for
+    classes that are intentionally unseen at the current incremental stage.
+    """
+    learned_classes = np.arange(0, total_classes)
+    dataset = global_data_manager.get_dataset(learned_classes, source="test", mode="test")
+    if len(dataset) == 0:
+        return None
+    return DataLoader(dataset, batch_size=batch_size, shuffle=False, num_workers=0)
+
+
+def _aggregate_client_prototypes(global_model, client_protos, num_clients, quality_scores=None):
+    for class_id in range(global_model._total_classes):
+        active_protos = []
+        weights = []
+        dispersions = []
+        for c in range(num_clients):
+            if quality_scores is not None and c not in quality_scores:
+                continue
+            if class_id not in client_protos[c]:
+                continue
+            info = client_protos[c][class_id]
+            active_protos.append(info["prototype"])
+            quality = 1.0 if quality_scores is None else max(0.0, float(quality_scores.get(c, 1.0)))
+            weights.append(max(1, int(info.get("count", 1))) * quality)
+            dispersions.append(float(info.get("dispersion", 0.0)))
+
+        if not active_protos:
+            continue
+
+        stacked = torch.stack(active_protos)
+        w_tensor = torch.tensor(weights, dtype=stacked.dtype).unsqueeze(1)
+        w_tensor = w_tensor / (torch.sum(w_tensor) + 1e-8)
+        global_proto = torch.sum(stacked * w_tensor, dim=0)
+        global_proto = global_proto / (torch.norm(global_proto, p=2) + 1e-8)
+        total_count = int(sum(
+            max(1, int(client_protos[c][class_id].get("count", 1)))
+            for c in range(num_clients)
+            if class_id in client_protos[c] and (quality_scores is None or c in quality_scores)
+        ))
+        mean_dispersion = sum(dispersions) / len(dispersions)
+        mean_quality = float(sum(weights) / max(1, total_count))
+        global_model.global_proto_memory.update_prototype(class_id, global_proto, total_count, mean_dispersion, mean_quality)
+
+
+def _calibrate_classifier_from_prototypes(model):
+    if not hasattr(model, "global_proto_memory"):
+        return
+    if not model.args.get("calibrate_with_prototypes", True):
+        return
+    model._network.init_new_class_weights_from_prototypes(
+        model.global_proto_memory.get_all_prototypes(),
+        range(model._total_classes),
+    )
 
 
 def train(args):
@@ -86,13 +232,23 @@ def _train_federated(args):
     logging.info(f"Initializing DataManagers for {args['num_clients']} clients...")
     client_dms = []
     for c in range(args["num_clients"]):
-        dm = DataManager(args["dataset"], args["shuffle"], args["seed"], args["init_cls"], args["increment"], client_id=c)
+        dm = DataManager(
+            args["dataset"],
+            args["shuffle"],
+            args["seed"],
+            args["init_cls"],
+            args["increment"],
+            client_id=c,
+            class_order=args.get("class_order"),
+            task_increments=args.get("task_increments"),
+        )
         if args.get("debug"):
             dm._train_data = dm._train_data[:2000]
             dm._train_targets = dm._train_targets[:2000]
         client_dms.append(dm)
 
     nb_tasks = client_dms[0].nb_tasks
+    logging.info(f"Task increments: {client_dms[0]._increments}")
 
     global_model = factory.get_model(args["model_name"], args)
     local_models = [factory.get_model(args["model_name"], args) for _ in range(args["num_clients"])]
@@ -122,6 +278,9 @@ def _train_federated(args):
             raise FileNotFoundError(f"Checkpoint file not found: {args['resume']}")
             
     for task in range(nb_tasks):
+        # Save previous global network BEFORE expansion. AFSIC KD needs this old model.
+        prev_global_network = copy.deepcopy(global_model._network) if args["model_name"] == "afsic-ids" and task > 0 else None
+
         # 1. Mở rộng kiến trúc (nhưng không train) để lấy đúng kích thước mô hình
         global_model.incremental_train(client_dms[0], skip_train=True)
         global_model._network.to(args["device"][0])
@@ -134,21 +293,29 @@ def _train_federated(args):
         if checkpoint is not None and task == checkpoint['task']:
             logging.info(f"Phục hồi trạng thái cho Task {task} từ Checkpoint...")
             global_model._network.load_state_dict(checkpoint['model_state_dict'])
+            if args["model_name"] == "afsic-ids" and checkpoint.get('global_proto_memory') is not None:
+                global_model.global_proto_memory = checkpoint['global_proto_memory']
             for c in range(args["num_clients"]):
                 c_state = checkpoint['client_states'][c]
-                local_models[c]._data_memory = c_state['data_memory']
-                local_models[c]._targets_memory = c_state['targets_memory']
+                local_models[c]._data_memory = c_state.get('data_memory')
+                local_models[c]._targets_memory = c_state.get('targets_memory')
+                if args["model_name"] == "afsic-ids" and c_state.get('local_memory') is not None:
+                    local_models[c].local_memory = c_state['local_memory']
 
         for c in range(args["num_clients"]):
-            train_dataset = client_dms[c].get_dataset(
-                np.arange(local_models[c]._known_classes, local_models[c]._total_classes),
-                source="train", mode="train", appendent=local_models[c]._get_memory(),
-            )
+            if args["model_name"] == "afsic-ids" and task > 0:
+                local_models[c].train_loader = None
+                continue
+            else:
+                train_dataset = _build_standard_train_dataset(client_dms[c], local_models[c], args)
             
             # Ngăn chặn Model Collapse: Nếu client chỉ có Rehearsal Memory mà không có data mới, thì BỎ QUA không train
-            has_new_data = getattr(train_dataset, 'len_source', len(train_dataset)) > 0
+            has_new_data = (
+                train_dataset is not None
+                and getattr(train_dataset, 'len_new_data', getattr(train_dataset, 'len_source', len(train_dataset))) > 0
+            )
             
-            if len(train_dataset) > 0 and has_new_data:
+            if train_dataset is not None and len(train_dataset) > 0 and has_new_data:
                 local_models[c].train_loader = torch.utils.data.DataLoader(
                     train_dataset, batch_size=args["batch_size"], shuffle=True, num_workers=0
                 )
@@ -163,31 +330,189 @@ def _train_federated(args):
 
         logging.info(f"========== Bắt đầu Task {task} ==========")
         current_start_round = start_round if task == start_task else 0
+        # Stage t >= 1: Supervised task-incremental registration and prototype initialization
+        if args["model_name"] == "afsic-ids" and task > 0:
+            logging.info("Supervised task-incremental registration: computing prototypes from labeled task data.")
+            client_protos = []
+            for c in range(args["num_clients"]):
+                local_models[c]._network.load_state_dict(global_model._network.state_dict())
+                local_models[c]._network.to(args["device"][0])
+                old_protos = local_models[c].compute_local_prototypes(
+                    client_dms[c],
+                    class_ids=range(local_models[c]._known_classes),
+                    seed=args.get("seed", 0) + c,
+                )
+                max_samples = args.get("kshot", 10) if args.get("fewshot_enabled", True) else None
+                new_protos = local_models[c].compute_local_prototypes(
+                    client_dms[c],
+                    class_ids=range(local_models[c]._known_classes, local_models[c]._total_classes),
+                    max_samples_per_class=max_samples,
+                    seed=args.get("seed", 0) + task * 1009 + c,
+                )
+                protos = {}
+                protos.update(old_protos)
+                protos.update(new_protos)
+                client_protos.append(protos)
+            
+            _aggregate_client_prototypes(global_model, client_protos, args["num_clients"])
+            
+            for c in range(args["num_clients"]):
+                local_models[c].global_proto_memory = copy.deepcopy(global_model.global_proto_memory)
+                _calibrate_classifier_from_prototypes(local_models[c])
+            
+            _calibrate_classifier_from_prototypes(global_model)
+            logging.info("Class classifier weights successfully initialized from prototypes.")
+
+            for c in range(args["num_clients"]):
+                train_dataset = _build_fewshot_train_dataset(
+                    client_dms[c],
+                    local_models[c],
+                    args,
+                    task,
+                    c
+                )
+                has_new_data = (
+                    train_dataset is not None
+                    and getattr(train_dataset, 'len_new_data', getattr(train_dataset, 'len_source', len(train_dataset))) > 0
+                )
+                if train_dataset is not None and len(train_dataset) > 0 and has_new_data:
+                    local_models[c].train_loader = torch.utils.data.DataLoader(
+                        train_dataset, batch_size=args["batch_size"], shuffle=True, num_workers=0
+                    )
+                else:
+                    local_models[c].train_loader = None
+
+        # Keep track of best accuracies for forgetting calculations
+        if 'best_accs' not in locals():
+            best_accs = {}
 
         for round_idx in range(current_start_round, args["num_rounds"]):
             global_round = task * args["num_rounds"] + round_idx
             logging.info(f"--- Task {task} | Round {round_idx+1}/{args['num_rounds']} (Global {global_round+1}) ---")
             client_weights = []
+            client_accs = []
+            client_protos = []
+            
+            global_state_round_start = copy.deepcopy(global_model._network.state_dict())
             
             for c in range(args["num_clients"]):
-                if local_models[c].train_loader is None: continue
+                if local_models[c].train_loader is None: 
+                    client_accs.append(0.0)
+                    client_protos.append({})
+                    continue
+                
                 local_models[c]._network.load_state_dict(global_model._network.state_dict())
                 local_models[c]._network.to(args["device"][0])
+                
+                if args["model_name"] == "afsic-ids":
+                    local_models[c].global_proto_memory = copy.deepcopy(global_model.global_proto_memory)
+                    if task > 0 and prev_global_network is not None:
+                        local_models[c]._old_network = copy.deepcopy(prev_global_network).to(args["device"][0])
+                        local_models[c]._old_network.eval()
+                        for p in local_models[c]._old_network.parameters():
+                            p.requires_grad = False
+                
                 local_models[c].args["epochs"] = args["local_epochs"]
                 local_models[c].args["start_round"] = 0
                 local_models[c]._train(local_models[c].train_loader, None)
+                
                 client_weights.append(copy.deepcopy(local_models[c]._network.state_dict()))
+                
+                if args["model_name"] == "afsic-ids":
+                    # Fast eval for client quality validation Acc
+                    local_models[c]._network.eval()
+                    quality_loader = _build_local_eval_loader(client_dms[c], local_models[c]._total_classes, args["batch_size"])
+                    if quality_loader is not None:
+                        test_acc_dict = local_models[c]._compute_accuracy(local_models[c]._network, quality_loader)
+                        client_accs.append(test_acc_dict["total"] / 100.0)
+                    else:
+                        client_accs.append(0.0)
+                    
+                    # Compute local prototypes
+                    old_protos = local_models[c].compute_local_prototypes(
+                        client_dms[c],
+                        class_ids=range(local_models[c]._known_classes),
+                        seed=args.get("seed", 0) + c,
+                    )
+                    new_protos = local_models[c].compute_local_prototypes(
+                        client_dms[c],
+                        class_ids=range(local_models[c]._known_classes, local_models[c]._total_classes),
+                        max_samples_per_class=(
+                            args.get("kshot", 10)
+                            if task > 0 and args.get("fewshot_enabled", True)
+                            else None
+                        ),
+                        seed=args.get("seed", 0) + task * 1009 + c,
+                    )
+                    protos = {}
+                    protos.update(old_protos)
+                    protos.update(new_protos)
+                    client_protos.append(protos)
+                else:
+                    client_accs.append(0.0)
+                    client_protos.append({})
             
             if client_weights:
-                global_weights = average_weights(client_weights)
-                global_model._network.load_state_dict(global_weights)
+                if args["model_name"] == "afsic-ids":
+                    # a. Update global prototypes on the server
+                    _aggregate_client_prototypes(global_model, client_protos, args["num_clients"])
+                    
+                    for c in range(args["num_clients"]):
+                        local_models[c].global_proto_memory = copy.deepcopy(global_model.global_proto_memory)
+                    
+                    # b. Compute quality scores and aggregation weights
+                    active_client_indices = [c for c in range(args["num_clients"]) if local_models[c].train_loader is not None]
+                    
+                    alpha, accepted_positions, Q_list = compute_aggregation_weights(
+                        args=args,
+                        global_model=global_model,
+                        client_accs=client_accs,
+                        client_protos=client_protos,
+                        client_weights=client_weights,
+                        global_state_round_start=global_state_round_start,
+                        active_client_indices=active_client_indices,
+                        task=task
+                    )
+                    
+                    active_client_indices = [active_client_indices[pos] for pos in accepted_positions]
+                    client_weights_accepted = [client_weights[pos] for pos in accepted_positions]
+                    
+                    for idx, c in enumerate(active_client_indices):
+                        logging.info(f"Client {c} Aggregation Weight alpha_i: {alpha[idx]:.4f}")
+
+                    quality_scores = {c: alpha[idx] for idx, c in enumerate(active_client_indices)}
+                    _aggregate_client_prototypes(global_model, client_protos, args["num_clients"], quality_scores)
+                    for c in range(args["num_clients"]):
+                        local_models[c].global_proto_memory = copy.deepcopy(global_model.global_proto_memory)
+                    
+                    # Perform quality-aware weighted aggregation
+                    global_dict = copy.deepcopy(global_model._network.state_dict())
+                    aggregate_backbone = args.get("aggregate_backbone", False)
+                    
+                    for k in global_dict.keys():
+                        if is_aggregated_state_key(k, task, aggregate_backbone):
+                            val = client_weights_accepted[0][k].float() * alpha[0]
+                            for c_idx in range(1, len(client_weights_accepted)):
+                                val += client_weights_accepted[c_idx][k].float() * alpha[c_idx]
+                            global_dict[k] = val.to(global_dict[k].dtype)
+                    global_model._network.load_state_dict(global_dict)
+                    _calibrate_classifier_from_prototypes(global_model)
+                else:
+                    global_weights = average_weights(client_weights)
+                    global_model._network.load_state_dict(global_weights)
 
             # ── Đánh giá Global Model cuối MỖI ROUND ──
-            test_dataset = client_dms[0].get_dataset(
-                np.arange(0, global_model._total_classes), source="test", mode="test"
+            global_model.test_loader = _build_global_learned_test_loader(
+                client_dms[0],
+                global_model._total_classes,
+                args["batch_size"],
             )
-            global_model.test_loader = torch.utils.data.DataLoader(
-                test_dataset, batch_size=args["batch_size"], shuffle=False, num_workers=0
+            if global_model.test_loader is None:
+                logging.warning("Global learned-class test set is empty; skipping evaluation for this round.")
+                continue
+            logging.info(
+                f"Evaluating on global_test_data filtered to learned classes: "
+                f"0-{global_model._total_classes - 1}"
             )
             
             cnn_accy, nme_accy, y_pred, y_true = global_model.eval_task()
@@ -195,9 +520,36 @@ def _train_federated(args):
             results_all.append(cnn_accy)
             avg_acc = sum(r['top1'] for r in results_all) / len(results_all)
             
+            # Calculate parameter growth and communication cost
+            total_params = sum(p.numel() for p in global_model._network.parameters())
+            trainable_params = sum(p.numel() for p in global_model._network.parameters() if p.requires_grad)
+            comm_cost = trainable_params * 4 / (1024 * 1024) # MB
+            
+            # Grouped forgetting calculation
+            forgetting_vals = []
+            for t in range(task):
+                start_cls = t * args.get("increment", 10)
+                end_cls = start_cls + args.get("increment", 10) - 1
+                group_key = f"acc_{start_cls:02d}-{end_cls:02d}"
+                if group_key in cnn_accy:
+                    curr_acc = cnn_accy[group_key]
+                    best_acc_key = f"best_{group_key}"
+                    if best_acc_key not in best_accs:
+                        best_accs[best_acc_key] = curr_acc
+                    else:
+                        best_accs[best_acc_key] = max(best_accs[best_acc_key], curr_acc)
+                    
+                    forgetting = max(0.0, best_accs[best_acc_key] - curr_acc)
+                    forgetting_vals.append(forgetting)
+            mean_forgetting = sum(forgetting_vals) / len(forgetting_vals) if forgetting_vals else 0.0
+
             logging.info(
                 f"[Task {task} | Round {round_idx+1}] "
-                f"Acc: {cnn_accy['top1']:.2f}% | F1-Mac: {cnn_accy.get('f1_macro', 0):.2f}% | Loss: {cnn_accy.get('loss', 0):.4f}"
+                f"Acc: {cnn_accy['top1']:.2f}% | "
+                f"Old Acc: {cnn_accy.get('old_acc', 0):.2f}% | "
+                f"New Acc: {cnn_accy.get('new_acc', 0):.2f}% | "
+                f"Forgetting: {mean_forgetting:.2f}% | "
+                f"Params: {total_params:,} | Comm Cost: {comm_cost:.2f} MB"
             )
 
             # Ghi file CSV
@@ -240,8 +592,9 @@ def _train_federated(args):
             client_states = []
             for c in range(args["num_clients"]):
                 client_states.append({
-                    'data_memory': local_models[c]._data_memory,
-                    'targets_memory': local_models[c]._targets_memory
+                    'data_memory': getattr(local_models[c], '_data_memory', None),
+                    'targets_memory': getattr(local_models[c], '_targets_memory', None),
+                    'local_memory': getattr(local_models[c], 'local_memory', None),
                 })
             ckpt_name = f'ckpt_round{global_round+1:04d}_task{task:02d}_r{round_idx+1:03d}_acc{cnn_accy["top1"]:.1f}.pth'
             torch.save({
@@ -251,6 +604,7 @@ def _train_federated(args):
                 'model_state_dict': global_model._network.state_dict(),
                 'known_classes': global_model._known_classes,
                 'client_states': client_states,
+                'global_proto_memory': getattr(global_model, 'global_proto_memory', None),
                 'metrics': cnn_accy
             }, os.path.join(ckpt_dir, ckpt_name))
 
@@ -297,7 +651,16 @@ def run_test(args):
     logging.info(f"[TEST] Tìm thấy {len(ckpt_files)} checkpoint. Bắt đầu đánh giá...")
     
     # Init DataManager cho Client 0 để lấy Test Set chung
-    dm = DataManager(args["dataset"], False, args["seed"], args["init_cls"], args["increment"], client_id=0)
+    dm = DataManager(
+        args["dataset"],
+        False,
+        args["seed"],
+        args["init_cls"],
+        args["increment"],
+        client_id=0,
+        class_order=args.get("class_order"),
+        task_increments=args.get("task_increments"),
+    )
     
     csv_path = os.path.join(test_ckpt_root, "test_results.csv")
     with open(csv_path, "w", newline="", encoding="utf-8") as f_csv:
@@ -324,12 +687,14 @@ def run_test(args):
             global_model._network.to(args["device"][0])
             global_model._network.eval()
             
-            test_dataset = dm.get_dataset(
-                np.arange(0, global_model._total_classes), source="test", mode="test"
+            global_model.test_loader = _build_global_learned_test_loader(
+                dm,
+                global_model._total_classes,
+                args["batch_size"],
             )
-            global_model.test_loader = torch.utils.data.DataLoader(
-                test_dataset, batch_size=args["batch_size"], shuffle=False, num_workers=0
-            )
+            if global_model.test_loader is None:
+                logging.warning(f"[TEST] Empty learned-class global test set for checkpoint: {os.path.basename(cp)}")
+                continue
             
             cnn_accy, _, y_pred, y_true = global_model.eval_task()
             
@@ -363,7 +728,7 @@ def _set_device(args):
     device_type = args["device"]
     gpus = []
     for device in device_type:
-        if str(device) == "-1":
+        if str(device) == "-1" or str(device).lower() == "cpu":
             device = torch.device("cpu")
         else:
             device = torch.device("cuda:{}".format(device))
@@ -497,4 +862,3 @@ def plot_confusion_matrix(y_true, y_pred, task_id, run_dir):
     plt.savefig(save_path, dpi=150, bbox_inches='tight')
     plt.close()
     logging.info(f'[TEST] Da luu Confusion Matrix tai: {save_path}')
-

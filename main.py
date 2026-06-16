@@ -10,7 +10,7 @@ def load_json(settings_path):
 
 def setup_parser():
     parser = argparse.ArgumentParser(description='Reproduce of multiple continual learning algorthms.')
-    parser.add_argument('--config', type=str, default='./exps/cic_iot23_der.json',
+    parser.add_argument('--config', type=str, default='./configs/exps/cic_iot23_afsic.json',
                         help='Json file of settings.')
     parser.add_argument('--mode', type=str, default='train',
                         choices=['train', 'test'],
