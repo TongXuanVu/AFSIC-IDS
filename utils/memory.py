@@ -34,32 +34,36 @@ class LocalExemplarMemory:
             m = int(np.ceil(float(self.memory_ratio) * num_samples))
             m = max(1, min(m, num_samples))
         
-        if isinstance(features, torch.Tensor):
-            features = features.detach().cpu().numpy()
-        
-        # Normalize features
-        norms = np.linalg.norm(features, axis=1, keepdims=True) + 1e-8
-        norm_features = features / norms
-        class_mean = np.mean(norm_features, axis=0)
-        class_mean = class_mean / (np.linalg.norm(class_mean) + 1e-8)
-        
-        selected_indices = []
-        selected_vectors = []
-        
-        for k in range(1, m + 1):
-            S = np.sum(selected_vectors, axis=0) if selected_vectors else np.zeros(features.shape[1])
-            mu_p = (norm_features + S) / k
-            diff = class_mean - mu_p
-            dist = np.sqrt(np.sum(diff ** 2, axis=1))
+        if num_samples > 50000:
+            # Fallback to Random Selection for huge datasets to prevent timeout
+            selected_indices = np.random.choice(num_samples, size=m, replace=False).tolist()
+        else:
+            if isinstance(features, torch.Tensor):
+                features = features.detach().cpu().numpy()
             
-            # Mask out already selected indices
-            for idx in selected_indices:
-                dist[idx] = np.inf
+            # Normalize features
+            norms = np.linalg.norm(features, axis=1, keepdims=True) + 1e-8
+            norm_features = features / norms
+            class_mean = np.mean(norm_features, axis=0)
+            class_mean = class_mean / (np.linalg.norm(class_mean) + 1e-8)
+            
+            selected_indices = []
+            selected_vectors = []
+            
+            for k in range(1, m + 1):
+                S = np.sum(selected_vectors, axis=0) if selected_vectors else np.zeros(features.shape[1])
+                mu_p = (norm_features + S) / k
+                diff = class_mean - mu_p
+                dist = np.sqrt(np.sum(diff ** 2, axis=1))
                 
-            i = np.argmin(dist)
-            selected_indices.append(i)
-            selected_vectors.append(norm_features[i])
-            
+                # Mask out already selected indices
+                for idx in selected_indices:
+                    dist[idx] = np.inf
+                    
+                i = np.argmin(dist)
+                selected_indices.append(i)
+                selected_vectors.append(norm_features[i])
+                
         self.data_memory[class_id] = np.array([data[idx] for idx in selected_indices])
         self.targets_memory[class_id] = np.array([targets[idx] for idx in selected_indices])
 
