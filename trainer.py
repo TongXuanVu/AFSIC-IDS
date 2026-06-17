@@ -270,10 +270,12 @@ def _train_federated(args):
             logging.info(f"==> Resuming from checkpoint: {args['resume']}")
             checkpoint = torch.load(args["resume"], map_location='cpu', weights_only=False)
             start_task = checkpoint['task']
-            start_round = checkpoint['round'] + 1
-            if start_round >= args["num_rounds"]:
-                start_task += 1
-                start_round = 0
+            if checkpoint.get('is_memory_phase', False):
+                start_round = args["num_rounds"]
+            else:
+                start_round = checkpoint['round'] + 1
+                if start_round >= args["num_rounds"]:
+                    start_round = args["num_rounds"]
         else:
             raise FileNotFoundError(f"Checkpoint file not found: {args['resume']}")
             
@@ -619,14 +621,41 @@ def _train_federated(args):
 
         # Cuối Task, xây dựng lại bộ nhớ Rehearsal
         logging.info(f"Xây dựng Rehearsal Memory cho các Clients tại cuối Task {task}...")
+        current_client_start = checkpoint.get('last_client_done', -1) + 1 if (checkpoint is not None and task == checkpoint['task']) else 0
+        
         for c in range(args["num_clients"]):
-            if local_models[c].train_loader is not None:
-                local_models[c]._network.load_state_dict(global_model._network.state_dict())
-                local_models[c]._network.to(args["device"][0])
-                try:
-                    local_models[c].build_rehearsal_memory(client_dms[c], local_models[c].samples_per_class)
-                except Exception as e:
-                    logging.warning(f"Lỗi khi build memory cho client {c}: {e}")
+            if c >= current_client_start:
+                if local_models[c].train_loader is not None:
+                    local_models[c]._network.load_state_dict(global_model._network.state_dict())
+                    local_models[c]._network.to(args["device"][0])
+                    try:
+                        local_models[c].build_rehearsal_memory(client_dms[c], local_models[c].samples_per_class)
+                    except Exception as e:
+                        logging.warning(f"Lỗi khi build memory cho client {c}: {e}")
+                
+                # ===== LƯU CHECKPOINT NGAY SAU KHI CLIENT C TẠO XONG MEMORY =====
+                client_states = []
+                for state_c in range(args["num_clients"]):
+                    client_states.append({
+                        'data_memory': getattr(local_models[state_c], '_data_memory', None),
+                        'targets_memory': getattr(local_models[state_c], '_targets_memory', None),
+                        'local_memory': getattr(local_models[state_c], 'local_memory', None),
+                    })
+                    
+                ckpt_name = f'ckpt_task{task:02d}_memory_client{c:02d}.pth'
+                torch.save({
+                    'task': task,
+                    'round': args["num_rounds"] - 1,
+                    'global_round': checkpoint['global_round'] if (checkpoint is not None and 'global_round' in checkpoint) else (task * args["num_rounds"] + args["num_rounds"] - 1),
+                    'is_memory_phase': True,
+                    'last_client_done': c,
+                    'model_state_dict': global_model._network.state_dict(),
+                    'client_states': client_states,
+                    'known_classes': global_model._known_classes,
+                    'global_proto_memory': getattr(global_model, 'global_proto_memory', None)
+                }, os.path.join(ckpt_dir, ckpt_name))
+                logging.info(f"Đã lưu Checkpoint Memory an toàn cho Client {c}")
+                
             local_models[c].after_task()
 
         global_model.after_task()
