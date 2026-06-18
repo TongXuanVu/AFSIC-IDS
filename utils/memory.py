@@ -43,22 +43,38 @@ class LocalExemplarMemory:
         class_mean = np.mean(norm_features, axis=0)
         class_mean = class_mean / (np.linalg.norm(class_mean) + 1e-8)
         
+        # Giới hạn không gian tìm kiếm (Candidate Pooling) để tránh treo máy
+        # Công thức gốc: x* = argmin_x | (1/k) Σ_{j=1}^{k} h(x_j) - p_{i,c} |
+        # Về mặt toán học với vector chuẩn hoá L2, argmin_x |x - T|^2 tương đương với argmax_x (x · T)
+        MAX_CANDIDATES = max(m * 3, 50000)
+        if num_samples > MAX_CANDIDATES:
+            candidate_indices = np.random.choice(num_samples, MAX_CANDIDATES, replace=False)
+        else:
+            candidate_indices = np.arange(num_samples)
+            
+        candidate_features = norm_features[candidate_indices]
+        
         selected_indices = []
-        selected_vectors = []
+        S = np.zeros(features.shape[1], dtype=np.float32)
+        mask = np.zeros(len(candidate_indices), dtype=bool)
         
         for k in range(1, m + 1):
-            S = np.sum(selected_vectors, axis=0) if selected_vectors else np.zeros(features.shape[1])
-            mu_p = (norm_features + S) / k
-            diff = class_mean - mu_p
-            dist = np.sqrt(np.sum(diff ** 2, axis=1))
+            # T = k * p_{i,c} - S
+            target_vector = k * class_mean - S
             
-            # Mask out already selected indices
-            for idx in selected_indices:
-                dist[idx] = np.inf
-                
-            i = np.argmin(dist)
-            selected_indices.append(i)
-            selected_vectors.append(norm_features[i])
+            # Tính Tích vô hướng (Dot Product)
+            scores = np.dot(candidate_features, target_vector)
+            
+            # Loại bỏ các mẫu đã chọn
+            scores[mask] = -np.inf
+            
+            # Tìm x* tối ưu hoá phương trình
+            i = np.argmax(scores)
+            mask[i] = True
+            
+            real_idx = candidate_indices[i]
+            selected_indices.append(real_idx)
+            S += candidate_features[i]
             
         self.data_memory[class_id] = np.array([data[idx] for idx in selected_indices])
         self.targets_memory[class_id] = np.array([targets[idx] for idx in selected_indices])
