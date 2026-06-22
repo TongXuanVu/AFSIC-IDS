@@ -15,20 +15,15 @@ import os
 _SPCIL_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 _LOCAL_DATA_DIR = os.path.join(_SPCIL_ROOT, "data", "CIC_IoT23")
 
-# Danh sách các đường dẫn Kaggle có thể xảy ra
-KAGGLE_PATHS = [
-    "/kaggle/input/dataset-fl/data",
-    "/kaggle/input/tongxuanvu/dataset-fl/data",
-    "/kaggle/input/datasets/tongxuanvu/dataset-fl/data",
-    "/kaggle/input/dataset-fl/CIC_IoT23",
-    "/kaggle/input/cic-iot23-federated"
-]
-
+# Tự động quét toàn bộ thư mục Kaggle để tìm đúng chỗ chứa file global_test_data.pt
 _DATA_DIR = _LOCAL_DATA_DIR
-for p in KAGGLE_PATHS:
-    if os.path.exists(os.path.join(p, "global_test_data.pt")):
-        _DATA_DIR = p
-        break
+if os.path.exists("/kaggle/input"):
+    import glob
+    # Quét sâu tối đa để tìm file test
+    found_paths = glob.glob("/kaggle/input/**/global_test_data.pt", recursive=True)
+    if found_paths:
+        _DATA_DIR = os.path.dirname(found_paths[0])
+        print(f"[iCICIoT23] Auto-detected Kaggle dataset at: {_DATA_DIR}")
 
 # Lấy thư mục federated_data (Ưu tiên thư mục fewshot nếu có, không thì lấy thư mục gốc)
 _FEDERATED_DIR = os.path.join(_DATA_DIR, "federated_data_fewshot")
