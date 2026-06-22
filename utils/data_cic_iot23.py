@@ -13,8 +13,25 @@ import os
 
 # --- Đường dẫn tới data ---
 _SPCIL_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-_DATA_DIR = os.path.join(_SPCIL_ROOT, "data", "CIC_IoT23")
-_FEDERATED_DIR = os.path.join(_DATA_DIR, "federated_data")
+_LOCAL_DATA_DIR = os.path.join(_SPCIL_ROOT, "data", "CIC_IoT23")
+
+# Danh sách các đường dẫn Kaggle có thể xảy ra
+KAGGLE_PATHS = [
+    "/kaggle/input/dataset-fl/data",
+    "/kaggle/input/tongxuanvu/dataset-fl/data",
+    "/kaggle/input/datasets/tongxuanvu/dataset-fl/data",
+    "/kaggle/input/dataset-fl/CIC_IoT23",
+    "/kaggle/input/cic-iot23-federated"
+]
+
+_DATA_DIR = _LOCAL_DATA_DIR
+for p in KAGGLE_PATHS:
+    if os.path.exists(os.path.join(p, "global_test_data.pt")):
+        _DATA_DIR = p
+        break
+
+# Sử dụng thư mục data few-shot đã được trích xuất (1%):
+_FEDERATED_DIR = os.path.join(_DATA_DIR, "federated_data_fewshot")
 _TEST_FILE = os.path.join(_DATA_DIR, "global_test_data.pt")
 _NUM_TASKS = 6
 
