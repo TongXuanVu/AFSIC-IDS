@@ -30,8 +30,11 @@ for p in KAGGLE_PATHS:
         _DATA_DIR = p
         break
 
-# Sử dụng thư mục data few-shot đã được trích xuất (1%):
+# Lấy thư mục federated_data (Ưu tiên thư mục fewshot nếu có, không thì lấy thư mục gốc)
 _FEDERATED_DIR = os.path.join(_DATA_DIR, "federated_data_fewshot")
+if not os.path.exists(_FEDERATED_DIR):
+    _FEDERATED_DIR = os.path.join(_DATA_DIR, "federated_data")
+
 _TEST_FILE = os.path.join(_DATA_DIR, "global_test_data.pt")
 _NUM_TASKS = 6
 
