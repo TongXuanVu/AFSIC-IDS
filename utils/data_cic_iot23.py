@@ -15,22 +15,35 @@ import os
 _SPCIL_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 _LOCAL_DATA_DIR = os.path.join(_SPCIL_ROOT, "data", "CIC_IoT23")
 
-# Tự động quét toàn bộ thư mục Kaggle để tìm đúng chỗ chứa file global_test_data.pt
-_DATA_DIR = _LOCAL_DATA_DIR
+# Mặc định lấy theo local
+_TEST_FILE = os.path.join(_LOCAL_DATA_DIR, "global_test_data.pt")
+_FEDERATED_DIR = os.path.join(_LOCAL_DATA_DIR, "federated_data_fewshot")
+if not os.path.exists(_FEDERATED_DIR):
+    _FEDERATED_DIR = os.path.join(_LOCAL_DATA_DIR, "federated_data")
+
+# Quét độc lập file test và thư mục data trên Kaggle (Vì chúng có thể nằm ở 2 nhánh khác nhau)
 if os.path.exists("/kaggle/input"):
     import glob
-    # Quét sâu tối đa để tìm file test
-    found_paths = glob.glob("/kaggle/input/**/global_test_data.pt", recursive=True)
-    if found_paths:
-        _DATA_DIR = os.path.dirname(found_paths[0])
-        print(f"[iCICIoT23] Auto-detected Kaggle dataset at: {_DATA_DIR}")
+    print("[iCICIoT23] Đang quét toàn bộ /kaggle/input để tìm dữ liệu...")
+    
+    # 1. Tìm global_test_data.pt
+    test_paths = glob.glob("/kaggle/input/**/global_test_data.pt", recursive=True)
+    if test_paths:
+        _TEST_FILE = test_paths[0]
+        print(f"[iCICIoT23] Auto-detected Test File: {_TEST_FILE}")
 
-# Lấy thư mục federated_data (Ưu tiên thư mục fewshot nếu có, không thì lấy thư mục gốc)
-_FEDERATED_DIR = os.path.join(_DATA_DIR, "federated_data_fewshot")
-if not os.path.exists(_FEDERATED_DIR):
-    _FEDERATED_DIR = os.path.join(_DATA_DIR, "federated_data")
-
-_TEST_FILE = os.path.join(_DATA_DIR, "global_test_data.pt")
+    # 2. Tìm thư mục chứa file huấn luyện của client (ưu tiên _fewshot)
+    # Lấy thử 1 file bất kỳ để dò đường dẫn thư mục
+    fewshot_files = glob.glob("/kaggle/input/**/federated_data_fewshot/client_*_task_*.pt", recursive=True)
+    if fewshot_files:
+        _FEDERATED_DIR = os.path.dirname(fewshot_files[0])
+        print(f"[iCICIoT23] Auto-detected Few-shot Data Dir: {_FEDERATED_DIR}")
+    else:
+        # Fallback nếu dùng data thường
+        normal_files = glob.glob("/kaggle/input/**/federated_data/client_*_task_*.pt", recursive=True)
+        if normal_files:
+            _FEDERATED_DIR = os.path.dirname(normal_files[0])
+            print(f"[iCICIoT23] Auto-detected Normal Data Dir: {_FEDERATED_DIR}")
 _NUM_TASKS = 6
 
 # Default supervised task-incremental order from data/final_pt_data_distribution.png.
