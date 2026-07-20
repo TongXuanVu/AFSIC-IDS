@@ -1,0 +1,1081 @@
+7.2s 1 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+7.2s 2 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+7.2s 3 0.00s - to python to disable frozen modules.
+7.2s 4 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+7.8s 5 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+7.8s 6 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+7.8s 7 0.00s - to python to disable frozen modules.
+7.8s 8 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+10.0s 9 /kaggle/input/datasets/tongxuanvu/dataset-fl/global_test_data.pt
+10.0s 10 /kaggle/input/datasets/tongxuanvu/dataset-fl/analyse_data.py
+10.0s 11 /kaggle/input/datasets/tongxuanvu/dataset-fl/visualize_data_split.py
+10.0s 12 /kaggle/input/datasets/tongxuanvu/dataset-fl/inspect_spcil_data.py
+10.0s 13 /kaggle/input/datasets/tongxuanvu/dataset-fl/partitioned_data.py
+10.0s 14 /kaggle/input/datasets/tongxuanvu/dataset-fl/README.md
+10.0s 15 /kaggle/input/datasets/tongxuanvu/dataset-fl/visualize_heatmap.py
+10.0s 16 /kaggle/input/datasets/tongxuanvu/dataset-fl/output.txt
+10.0s 17 /kaggle/input/datasets/tongxuanvu/dataset-fl/compare_old_new.py
+10.0s 18 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_2_task_2.pt
+10.0s 19 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_7_task_4.pt
+10.0s 20 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_9_task_6.pt
+10.0s 21 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_0_task_3.pt
+10.0s 22 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_5_task_6.pt
+10.0s 23 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_3_task_1.pt
+10.0s 24 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_1_task_3.pt
+10.0s 25 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_6_task_3.pt
+10.0s 26 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_8_task_5.pt
+10.0s 27 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_1_task_4.pt
+10.0s 28 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_5_task_3.pt
+10.0s 29 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_0_task_1.pt
+10.0s 30 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_3_task_6.pt
+10.0s 31 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_6_task_6.pt
+10.0s 32 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_4_task_6.pt
+10.0s 33 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_7_task_6.pt
+10.0s 34 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_5_task_5.pt
+10.0s 35 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_2_task_1.pt
+10.0s 36 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_7_task_5.pt
+10.0s 37 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_3_task_5.pt
+10.0s 38 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_6_task_4.pt
+10.0s 39 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_5_task_4.pt
+10.0s 40 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_0_task_2.pt
+10.0s 41 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_1_task_1.pt
+10.0s 42 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_4_task_3.pt
+10.0s 43 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_3_task_2.pt
+10.0s 44 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_1_task_2.pt
+10.0s 45 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_2_task_6.pt
+10.0s 46 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_2_task_5.pt
+10.0s 47 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_1_task_5.pt
+10.0s 48 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_8_task_6.pt
+10.0s 49 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_1_task_6.pt
+10.0s 50 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_4_task_4.pt
+10.0s 51 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_4_task_5.pt
+10.0s 52 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_4_task_1.pt
+10.0s 53 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_5_task_2.pt
+10.0s 54 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_3_task_4.pt
+10.0s 55 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_2_task_4.pt
+10.0s 56 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_3_task_3.pt
+10.0s 57 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_0_task_5.pt
+10.0s 58 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_6_task_5.pt
+10.0s 59 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_0_task_4.pt
+10.0s 60 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_4_task_2.pt
+10.0s 61 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_0_task_6.pt
+10.0s 62 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/client_2_task_3.pt
+10.0s 63 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_2_task_2.pt
+10.0s 64 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_7_task_4.pt
+10.0s 65 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_9_task_6.pt
+10.0s 66 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_0_task_3.pt
+10.0s 67 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_5_task_6.pt
+10.0s 68 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_3_task_1.pt
+10.0s 69 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_1_task_3.pt
+10.0s 70 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_6_task_3.pt
+10.0s 71 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_8_task_5.pt
+10.0s 72 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_1_task_4.pt
+10.0s 73 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_5_task_3.pt
+10.0s 74 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_0_task_1.pt
+10.0s 75 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_3_task_6.pt
+10.0s 76 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_6_task_6.pt
+10.0s 77 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_4_task_6.pt
+10.0s 78 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_7_task_6.pt
+10.0s 79 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_5_task_5.pt
+10.0s 80 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_2_task_1.pt
+10.0s 81 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_7_task_5.pt
+10.0s 82 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_3_task_5.pt
+10.0s 83 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_6_task_4.pt
+10.0s 84 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_5_task_4.pt
+10.0s 85 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_0_task_2.pt
+10.0s 86 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_1_task_1.pt
+10.0s 87 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_4_task_3.pt
+10.0s 88 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_3_task_2.pt
+10.0s 89 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_1_task_2.pt
+10.0s 90 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_2_task_6.pt
+10.0s 91 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_2_task_5.pt
+10.0s 92 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_1_task_5.pt
+10.0s 93 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_8_task_6.pt
+10.0s 94 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_1_task_6.pt
+10.0s 95 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_4_task_4.pt
+10.0s 96 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_4_task_5.pt
+10.0s 97 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_4_task_1.pt
+10.0s 98 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_5_task_2.pt
+10.0s 99 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_3_task_4.pt
+10.0s 100 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_2_task_4.pt
+10.0s 101 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_3_task_3.pt
+10.0s 102 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_0_task_5.pt
+10.0s 103 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_6_task_5.pt
+10.0s 104 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_0_task_4.pt
+10.0s 105 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_4_task_2.pt
+10.0s 106 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_0_task_6.pt
+10.0s 107 /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data/federated_data_final/client_2_task_3.pt
+10.0s 108 /kaggle/input/datasets/tongxuanvu/dataset-fl/centralized_data/centralized_task_1.pt
+10.0s 109 /kaggle/input/datasets/tongxuanvu/dataset-fl/centralized_data/centralized_task_2.pt
+10.0s 110 /kaggle/input/datasets/tongxuanvu/dataset-fl/centralized_data/centralized_task_5.pt
+10.0s 111 /kaggle/input/datasets/tongxuanvu/dataset-fl/centralized_data/centralized_task_3.pt
+10.0s 112 /kaggle/input/datasets/tongxuanvu/dataset-fl/centralized_data/centralized_task_4.pt
+10.0s 113 /kaggle/input/datasets/tongxuanvu/dataset-fl/centralized_data/centralized_task_6.pt
+10.0s 114 /kaggle/input/datasets/tongxuanvu/dataset-fl/centralized_data/centralized_data_final/centralized_task_1.pt
+10.0s 115 /kaggle/input/datasets/tongxuanvu/dataset-fl/centralized_data/centralized_data_final/centralized_task_2.pt
+10.0s 116 /kaggle/input/datasets/tongxuanvu/dataset-fl/centralized_data/centralized_data_final/centralized_task_5.pt
+10.0s 117 /kaggle/input/datasets/tongxuanvu/dataset-fl/centralized_data/centralized_data_final/centralized_task_3.pt
+10.0s 118 /kaggle/input/datasets/tongxuanvu/dataset-fl/centralized_data/centralized_data_final/centralized_task_4.pt
+10.0s 119 /kaggle/input/datasets/tongxuanvu/dataset-fl/centralized_data/centralized_data_final/centralized_task_6.pt
+10.9s 120 Cloning into 'Spcil-FL'...
+11.6s 121 remote: Enumerating objects: 334, done.[K
+11.6s 122 remote: Counting objects:   0% (1/334)[Kremote: Counting objects:   1% (4/334)[Kremote: Counting objects:   2% (7/334)[Kremote: Counting objects:   3% (11/334)[Kremote: Counting objects:   4% (14/334)[Kremote: Counting objects:   5% (17/334)[Kremote: Counting objects:   6% (21/334)[Kremote: Counting objects:   7% (24/334)[Kremote: Counting objects:   8% (27/334)[Kremote: Counting objects:   9% (31/334)[Kremote: Counting objects:  10% (34/334)[Kremote: Counting objects:  11% (37/334)[Kremote: Counting objects:  12% (41/334)[Kremote: Counting objects:  13% (44/334)[Kremote: Counting objects:  14% (47/334)[Kremote: Counting objects:  15% (51/334)[Kremote: Counting objects:  16% (54/334)[Kremote: Counting objects:  17% (57/334)[Kremote: Counting objects:  18% (61/334)[Kremote: Counting objects:  19% (64/334)[Kremote: Counting objects:  20% (67/334)[Kremote: Counting objects:  21% (71/334)[Kremote: Counting objects:  22% (74/334)[Kremote: Counting objects:  23% (77/334)[Kremote: Counting objects:  24% (81/334)[Kremote: Counting objects:  25% (84/334)[Kremote: Counting objects:  26% (87/334)[Kremote: Counting objects:  27% (91/334)[Kremote: Counting objects:  28% (94/334)[Kremote: Counting objects:  29% (97/334)[Kremote: Counting objects:  30% (101/334)[Kremote: Counting objects:  31% (104/334)[Kremote: Counting objects:  32% (107/334)[Kremote: Counting objects:  33% (111/334)[Kremote: Counting objects:  34% (114/334)[Kremote: Counting objects:  35% (117/334)[Kremote: Counting objects:  36% (121/334)[Kremote: Counting objects:  37% (124/334)[Kremote: Counting objects:  38% (127/334)[Kremote: Counting objects:  39% (131/334)[Kremote: Counting objects:  40% (134/334)[Kremote: Counting objects:  41% (137/334)[Kremote: Counting objects:  42% (141/334)[Kremote: Counting objects:  43% (144/334)[Kremote: Counting objects:  44% (147/334)[Kremote: Counting objects:  45% (151/334)[Kremote: Counting objects:  46% (154/334)[Kremote: Counting objects:  47% (157/334)[Kremote: Counting objects:  48% (161/334)[Kremote: Counting objects:  49% (164/334)[Kremote: Counting objects:  50% (167/334)[Kremote: Counting objects:  51% (171/334)[Kremote: Counting objects:  52% (174/334)[Kremote: Counting objects:  53% (178/334)[Kremote: Counting objects:  54% (181/334)[Kremote: Counting objects:  55% (184/334)[Kremote: Counting objects:  56% (188/334)[Kremote: Counting objects:  57% (191/334)[Kremote: Counting objects:  58% (194/334)[Kremote: Counting objects:  59% (198/334)[Kremote: Counting objects:  60% (201/334)[Kremote: Counting objects:  61% (204/334)[Kremote: Counting objects:  62% (208/334)[Kremote: Counting objects:  63% (211/334)[Kremote: Counting objects:  64% (214/334)[Kremote: Counting objects:  65% (218/334)[Kremote: Counting objects:  66% (221/334)[Kremote: Counting objects:  67% (224/334)[Kremote: Counting objects:  68% (228/334)[Kremote: Counting objects:  69% (231/334)[Kremote: Counting objects:  70% (234/334)[Kremote: Counting objects:  71% (238/334)[Kremote: Counting objects:  72% (241/334)[Kremote: Counting objects:  73% (244/334)[Kremote: Counting objects:  74% (248/334)[Kremote: Counting objects:  75% (251/334)[Kremote: Counting objects:  76% (254/334)[Kremote: Counting objects:  77% (258/334)[Kremote: Counting objects:  78% (261/334)[Kremote: Counting objects:  79% (264/334)[Kremote: Counting objects:  80% (268/334)[Kremote: Counting objects:  81% (271/334)[Kremote: Counting objects:  82% (274/334)[Kremote: Counting objects:  83% (278/334)[Kremote: Counting objects:  84% (281/334)[Kremote: Counting objects:  85% (284/334)[Kremote: Counting objects:  86% (288/334)[Kremote: Counting objects:  87% (291/334)[Kremote: Counting objects:  88% (294/334)[Kremote: Counting objects:  89% (298/334)[Kremote: Counting objects:  90% (301/334)[Kremote: Counting objects:  91% (304/334)[Kremote: Counting objects:  92% (308/334)[Kremote: Counting objects:  93% (311/334)[Kremote: Counting objects:  94% (314/334)[Kremote: Counting objects:  95% (318/334)[Kremote: Counting objects:  96% (321/334)[Kremote: Counting objects:  97% (324/334)[Kremote: Counting objects:  98% (328/334)[Kremote: Counting objects:  99% (331/334)[Kremote: Counting objects: 100% (334/334)[Kremote: Counting objects: 100% (334/334), done.[K
+11.7s 123 remote: Compressing objects:   0% (1/191)[Kremote: Compressing objects:   1% (2/191)[Kremote: Compressing objects:   2% (4/191)[Kremote: Compressing objects:   3% (6/191)[Kremote: Compressing objects:   4% (8/191)[Kremote: Compressing objects:   5% (10/191)[Kremote: Compressing objects:   6% (12/191)[Kremote: Compressing objects:   7% (14/191)[Kremote: Compressing objects:   8% (16/191)[Kremote: Compressing objects:   9% (18/191)[Kremote: Compressing objects:  10% (20/191)[Kremote: Compressing objects:  11% (22/191)[Kremote: Compressing objects:  12% (23/191)[Kremote: Compressing objects:  13% (25/191)[Kremote: Compressing objects:  14% (27/191)[Kremote: Compressing objects:  15% (29/191)[Kremote: Compressing objects:  16% (31/191)[Kremote: Compressing objects:  17% (33/191)[Kremote: Compressing objects:  18% (35/191)[Kremote: Compressing objects:  19% (37/191)[Kremote: Compressing objects:  20% (39/191)[Kremote: Compressing objects:  21% (41/191)[Kremote: Compressing objects:  22% (43/191)[Kremote: Compressing objects:  23% (44/191)[Kremote: Compressing objects:  24% (46/191)[Kremote: Compressing objects:  25% (48/191)[Kremote: Compressing objects:  26% (50/191)[Kremote: Compressing objects:  27% (52/191)[Kremote: Compressing objects:  28% (54/191)[Kremote: Compressing objects:  29% (56/191)[Kremote: Compressing objects:  30% (58/191)[Kremote: Compressing objects:  31% (60/191)[Kremote: Compressing objects:  32% (62/191)[Kremote: Compressing objects:  33% (64/191)[Kremote: Compressing objects:  34% (65/191)[Kremote: Compressing objects:  35% (67/191)[Kremote: Compressing objects:  36% (69/191)[Kremote: Compressing objects:  37% (71/191)[Kremote: Compressing objects:  38% (73/191)[Kremote: Compressing objects:  39% (75/191)[Kremote: Compressing objects:  40% (77/191)[Kremote: Compressing objects:  41% (79/191)[Kremote: Compressing objects:  42% (81/191)[Kremote: Compressing objects:  43% (83/191)[Kremote: Compressing objects:  44% (85/191)[Kremote: Compressing objects:  45% (86/191)[Kremote: Compressing objects:  46% (88/191)[Kremote: Compressing objects:  47% (90/191)[Kremote: Compressing objects:  48% (92/191)[Kremote: Compressing objects:  49% (94/191)[Kremote: Compressing objects:  50% (96/191)[Kremote: Compressing objects:  51% (98/191)[Kremote: Compressing objects:  52% (100/191)[Kremote: Compressing objects:  53% (102/191)[Kremote: Compressing objects:  54% (104/191)[Kremote: Compressing objects:  55% (106/191)[Kremote: Compressing objects:  56% (107/191)[Kremote: Compressing objects:  57% (109/191)[Kremote: Compressing objects:  58% (111/191)[Kremote: Compressing objects:  59% (113/191)[Kremote: Compressing objects:  60% (115/191)[Kremote: Compressing objects:  61% (117/191)[Kremote: Compressing objects:  62% (119/191)[Kremote: Compressing objects:  63% (121/191)[Kremote: Compressing objects:  64% (123/191)[Kremote: Compressing objects:  65% (125/191)[Kremote: Compressing objects:  66% (127/191)[Kremote: Compressing objects:  67% (128/191)[Kremote: Compressing objects:  68% (130/191)[Kremote: Compressing objects:  69% (132/191)[Kremote: Compressing objects:  70% (134/191)[Kremote: Compressing objects:  71% (136/191)[Kremote: Compressing objects:  72% (138/191)[Kremote: Compressing objects:  73% (140/191)[Kremote: Compressing objects:  74% (142/191)[Kremote: Compressing objects:  75% (144/191)[Kremote: Compressing objects:  76% (146/191)[Kremote: Compressing objects:  77% (148/191)[Kremote: Compressing objects:  78% (149/191)[Kremote: Compressing objects:  79% (151/191)[Kremote: Compressing objects:  80% (153/191)[Kremote: Compressing objects:  81% (155/191)[Kremote: Compressing objects:  82% (157/191)[Kremote: Compressing objects:  83% (159/191)[Kremote: Compressing objects:  84% (161/191)[Kremote: Compressing objects:  85% (163/191)[Kremote: Compressing objects:  86% (165/191)[Kremote: Compressing objects:  87% (167/191)[Kremote: Compressing objects:  88% (169/191)[Kremote: Compressing objects:  89% (170/191)[Kremote: Compressing objects:  90% (172/191)[Kremote: Compressing objects:  91% (174/191)[Kremote: Compressing objects:  92% (176/191)[Kremote: Compressing objects:  93% (178/191)[Kremote: Compressing objects:  94% (180/191)[Kremote: Compressing objects:  95% (182/191)[Kremote: Compressing objects:  96% (184/191)[Kremote: Compressing objects:  97% (186/191)[Kremote: Compressing objects:  98% (188/191)[Kremote: Compressing objects:  99% (190/191)[Kremote: Compressing objects: 100% (191/191)[Kremote: Compressing objects: 100% (191/191), done.[K
+12.0s 124 Receiving objects:   0% (1/334)Receiving objects:   1% (4/334)Receiving objects:   2% (7/334)Receiving objects:   3% (11/334)Receiving objects:   4% (14/334)Receiving objects:   5% (17/334)Receiving objects:   6% (21/334)Receiving objects:   7% (24/334)Receiving objects:   8% (27/334)Receiving objects:   9% (31/334)Receiving objects:  10% (34/334)Receiving objects:  11% (37/334)Receiving objects:  12% (41/334)Receiving objects:  13% (44/334)Receiving objects:  14% (47/334)Receiving objects:  15% (51/334)Receiving objects:  16% (54/334)Receiving objects:  17% (57/334)Receiving objects:  18% (61/334)Receiving objects:  19% (64/334)Receiving objects:  20% (67/334)Receiving objects:  21% (71/334)Receiving objects:  22% (74/334)Receiving objects:  23% (77/334)Receiving objects:  24% (81/334)Receiving objects:  25% (84/334)Receiving objects:  26% (87/334)Receiving objects:  27% (91/334)Receiving objects:  28% (94/334)Receiving objects:  29% (97/334)Receiving objects:  30% (101/334)Receiving objects:  31% (104/334)Receiving objects:  32% (107/334)Receiving objects:  33% (111/334)Receiving objects:  34% (114/334)Receiving objects:  35% (117/334)Receiving objects:  36% (121/334)Receiving objects:  37% (124/334)Receiving objects:  38% (127/334)Receiving objects:  39% (131/334)Receiving objects:  40% (134/334)Receiving objects:  41% (137/334)Receiving objects:  42% (141/334)Receiving objects:  43% (144/334)Receiving objects:  44% (147/334)Receiving objects:  45% (151/334)Receiving objects:  46% (154/334)Receiving objects:  47% (157/334)Receiving objects:  48% (161/334)Receiving objects:  49% (164/334)Receiving objects:  50% (167/334)Receiving objects:  51% (171/334)Receiving objects:  52% (174/334)Receiving objects:  53% (178/334)Receiving objects:  54% (181/334)Receiving objects:  55% (184/334)Receiving objects:  56% (188/334)Receiving objects:  57% (191/334)Receiving objects:  58% (194/334)Receiving objects:  59% (198/334)Receiving objects:  60% (201/334)Receiving objects:  61% (204/334)Receiving objects:  62% (208/334)Receiving objects:  63% (211/334)Receiving objects:  64% (214/334)Receiving objects:  65% (218/334)Receiving objects:  66% (221/334)Receiving objects:  67% (224/334)Receiving objects:  68% (228/334)Receiving objects:  69% (231/334)Receiving objects:  70% (234/334)Receiving objects:  71% (238/334)Receiving objects:  72% (241/334)Receiving objects:  73% (244/334)Receiving objects:  74% (248/334)Receiving objects:  75% (251/334)Receiving objects:  76% (254/334)Receiving objects:  77% (258/334)Receiving objects:  78% (261/334)Receiving objects:  79% (264/334)Receiving objects:  80% (268/334)Receiving objects:  81% (271/334)Receiving objects:  82% (274/334)Receiving objects:  83% (278/334)Receiving objects:  84% (281/334)remote: Total 334 (delta 144), reused 313 (delta 124), pack-reused 0 (from 0)[K
+12.0s 125 Receiving objects:  85% (284/334)Receiving objects:  86% (288/334)Receiving objects:  87% (291/334)Receiving objects:  88% (294/334)Receiving objects:  89% (298/334)Receiving objects:  90% (301/334)Receiving objects:  91% (304/334)Receiving objects:  92% (308/334)Receiving objects:  93% (311/334)Receiving objects:  94% (314/334)Receiving objects:  95% (318/334)Receiving objects:  96% (321/334)Receiving objects:  97% (324/334)Receiving objects:  98% (328/334)Receiving objects:  99% (331/334)Receiving objects: 100% (334/334)Receiving objects: 100% (334/334), 11.18 MiB | 40.76 MiB/s, done.
+12.0s 126 Resolving deltas:   0% (0/144)Resolving deltas:   1% (2/144)Resolving deltas:   2% (3/144)Resolving deltas:   3% (5/144)Resolving deltas:   4% (6/144)Resolving deltas:   5% (8/144)Resolving deltas:   6% (9/144)Resolving deltas:   7% (11/144)Resolving deltas:   8% (12/144)Resolving deltas:   9% (13/144)Resolving deltas:  10% (15/144)Resolving deltas:  11% (16/144)Resolving deltas:  12% (18/144)Resolving deltas:  13% (19/144)Resolving deltas:  14% (21/144)Resolving deltas:  15% (22/144)Resolving deltas:  16% (24/144)Resolving deltas:  17% (25/144)Resolving deltas:  18% (26/144)Resolving deltas:  19% (28/144)Resolving deltas:  20% (29/144)Resolving deltas:  21% (31/144)Resolving deltas:  22% (32/144)Resolving deltas:  23% (34/144)Resolving deltas:  24% (35/144)Resolving deltas:  25% (36/144)Resolving deltas:  26% (38/144)Resolving deltas:  27% (39/144)Resolving deltas:  28% (41/144)Resolving deltas:  29% (42/144)Resolving deltas:  30% (44/144)Resolving deltas:  31% (45/144)Resolving deltas:  32% (47/144)Resolving deltas:  33% (48/144)Resolving deltas:  34% (49/144)Resolving deltas:  35% (51/144)Resolving deltas:  36% (52/144)Resolving deltas:  37% (54/144)Resolving deltas:  38% (55/144)Resolving deltas:  39% (57/144)Resolving deltas:  40% (58/144)Resolving deltas:  41% (60/144)Resolving deltas:  42% (61/144)Resolving deltas:  43% (62/144)Resolving deltas:  44% (64/144)Resolving deltas:  45% (65/144)Resolving deltas:  46% (67/144)Resolving deltas:  47% (68/144)Resolving deltas:  48% (70/144)Resolving deltas:  49% (71/144)Resolving deltas:  50% (72/144)Resolving deltas:  51% (74/144)Resolving deltas:  52% (75/144)Resolving deltas:  53% (77/144)Resolving deltas:  54% (78/144)Resolving deltas:  55% (80/144)Resolving deltas:  56% (81/144)Resolving deltas:  57% (83/144)Resolving deltas:  58% (84/144)Resolving deltas:  59% (85/144)Resolving deltas:  60% (87/144)Resolving deltas:  61% (88/144)Resolving deltas:  62% (90/144)Resolving deltas:  63% (91/144)Resolving deltas:  64% (93/144)Resolving deltas:  65% (94/144)Resolving deltas:  66% (96/144)Resolving deltas:  67% (97/144)Resolving deltas:  68% (98/144)Resolving deltas:  69% (100/144)Resolving deltas:  70% (101/144)Resolving deltas:  71% (103/144)Resolving deltas:  72% (104/144)Resolving deltas:  73% (106/144)Resolving deltas:  74% (107/144)Resolving deltas:  75% (108/144)Resolving deltas:  76% (110/144)Resolving deltas:  77% (111/144)Resolving deltas:  78% (113/144)Resolving deltas:  79% (114/144)Resolving deltas:  80% (116/144)Resolving deltas:  81% (117/144)Resolving deltas:  82% (119/144)Resolving deltas:  83% (120/144)Resolving deltas:  84% (121/144)Resolving deltas:  85% (123/144)Resolving deltas:  86% (124/144)Resolving deltas:  87% (126/144)Resolving deltas:  88% (127/144)Resolving deltas:  89% (129/144)Resolving deltas:  90% (130/144)Resolving deltas:  91% (132/144)Resolving deltas:  92% (133/144)Resolving deltas:  93% (134/144)Resolving deltas:  94% (136/144)Resolving deltas:  95% (137/144)Resolving deltas:  96% (139/144)Resolving deltas:  97% (140/144)Resolving deltas:  98% (142/144)Resolving deltas:  99% (143/144)Resolving deltas: 100% (144/144)Resolving deltas: 100% (144/144), done.
+12.2s 127 /kaggle/working/Spcil-FL
+12.5s 128 total 12
+12.5s 129 drwxr-xr-x 2 root root 4096 Jun 16 13:06 .
+12.5s 130 drwxr-xr-x 3 root root 4096 Jun 16 13:06 ..
+12.5s 131 lrwxrwxrwx 1 root root   59 Jun 16 13:06 federated_data -> /kaggle/input/datasets/tongxuanvu/dataset-fl/federated_data
+12.5s 132 lrwxrwxrwx 1 root root   64 Jun 16 13:06 global_test_data.pt -> /kaggle/input/datasets/tongxuanvu/dataset-fl/global_test_data.pt
+26.5s 133 2026-06-16 13:07:13,340 [trainer.py] => prefix: cic_iot23
+26.5s 134 2026-06-16 13:07:13,341 [trainer.py] => dataset: cic_iot23
+26.5s 135 2026-06-16 13:07:13,341 [trainer.py] => memory_ratio: 0.01
+26.5s 136 2026-06-16 13:07:13,341 [trainer.py] => fixed_memory: False
+26.5s 137 2026-06-16 13:07:13,341 [trainer.py] => shuffle: False
+26.5s 138 2026-06-16 13:07:13,341 [trainer.py] => _comment_tasks: Cấu hình 6 Task lần lượt thêm 6,6,6,6,5,5 lớp
+26.5s 139 2026-06-16 13:07:13,341 [trainer.py] => init_cls: 6
+26.5s 140 2026-06-16 13:07:13,341 [trainer.py] => increment: 6
+26.5s 141 2026-06-16 13:07:13,341 [trainer.py] => task_increments: [6, 6, 6, 6, 5, 5]
+26.5s 142 2026-06-16 13:07:13,341 [trainer.py] => class_order: [1, 0, 11, 12, 27, 26, 2, 14, 25, 24, 20, 28, 3, 7, 30, 29, 19, 16, 15, 6, 8, 22, 23, 21, 5, 13, 10, 17, 18, 4, 31, 32, 33, 9]
+26.5s 143 2026-06-16 13:07:13,341 [trainer.py] => model_name: afsic-ids
+26.5s 144 2026-06-16 13:07:13,341 [trainer.py] => convnet_type: cnn1d
+26.5s 145 2026-06-16 13:07:13,341 [trainer.py] => device: [device(type='cuda', index=0)]
+26.5s 146 2026-06-16 13:07:13,342 [trainer.py] => seed: 42
+26.5s 147 2026-06-16 13:07:13,342 [trainer.py] => _comment_training: Tham số vòng lặp: 10 client (gia nhập dần), 30 vòng/task, 1 epoch nội bộ
+26.5s 148 2026-06-16 13:07:13,342 [trainer.py] => batch_size: 8192
+26.5s 149 2026-06-16 13:07:13,342 [trainer.py] => num_clients: 10
+26.5s 150 2026-06-16 13:07:13,342 [trainer.py] => num_rounds: 30
+26.5s 151 2026-06-16 13:07:13,342 [trainer.py] => local_epochs: 1
+26.5s 152 2026-06-16 13:07:13,342 [trainer.py] => lr: 0.001
+26.5s 153 2026-06-16 13:07:13,342 [trainer.py] => weight_decay: 0.0002
+26.5s 154 2026-06-16 13:07:13,342 [trainer.py] => milestones: [10, 20]
+26.5s 155 2026-06-16 13:07:13,342 [trainer.py] => gamma: 0.1
+26.5s 156 2026-06-16 13:07:13,342 [trainer.py] => supervised_task_incremental: True
+26.5s 157 2026-06-16 13:07:13,342 [trainer.py] => use_unknown_discovery: False
+26.5s 158 2026-06-16 13:07:13,342 [trainer.py] => fewshot_enabled: False
+26.5s 159 2026-06-16 13:07:13,342 [trainer.py] => unknown_buffer_size: 500
+26.5s 160 2026-06-16 13:07:13,342 [trainer.py] => _comment_tau: tau_classifier hiệu chỉnh bộ phân loại; tau_aggregation điều chỉnh softmax khi tổng hợp weights
+26.5s 161 2026-06-16 13:07:13,342 [trainer.py] => tau_classifier: 1.0
+26.5s 162 2026-06-16 13:07:13,342 [trainer.py] => tau_aggregation: 1.0
+26.5s 163 2026-06-16 13:07:13,342 [trainer.py] => _comment_losses: Các trọng số lambda cho hàm Loss của AFSIC-IDS
+26.5s 164 2026-06-16 13:07:13,342 [trainer.py] => _comment_loss_kd: L_KD: Giữ kiến thức cũ (Knowledge Distillation)
+26.5s 165 2026-06-16 13:07:13,343 [trainer.py] => lambda_kd: 1.0
+26.5s 166 2026-06-16 13:07:13,343 [trainer.py] => _comment_loss_fsp: L_FSP: Đẩy xa/kéo gần các mẫu ít dữ liệu (Few-Shot Sparse Pairwise)
+26.5s 167 2026-06-16 13:07:13,343 [trainer.py] => lambda_fsp: 0.5
+26.5s 168 2026-06-16 13:07:13,343 [trainer.py] => _comment_loss_proto: L_proto: Căn chỉnh đặc trưng cục bộ với Prototype toàn cục
+26.5s 169 2026-06-16 13:07:13,343 [trainer.py] => lambda_proto: 0.5
+26.5s 170 2026-06-16 13:07:13,343 [trainer.py] => _comment_loss_rs: L_RS: Tạo tính thưa thớt (Sparsity) bằng chuẩn L1
+26.5s 171 2026-06-16 13:07:13,343 [trainer.py] => lambda_rs: 0.0001
+26.5s 172 2026-06-16 13:07:13,343 [trainer.py] => _comment_loss_prox: L_prox: Chống lệch client (Client Drift) bằng chuẩn L2
+26.5s 173 2026-06-16 13:07:13,343 [trainer.py] => lambda_prox: 0.01
+26.5s 174 2026-06-16 13:07:13,343 [trainer.py] => _comment_robust: Bộ lọc Z-Score MAD. beta_... tính điểm Quality (Q_i) cho client
+26.5s 175 2026-06-16 13:07:13,343 [trainer.py] => robust_filter_updates: True
+26.5s 176 2026-06-16 13:07:13,343 [trainer.py] => robust_z: 5.0
+26.5s 177 2026-06-16 13:07:13,343 [trainer.py] => _comment_beta_acc: beta_acc: Thưởng cho Accuracy cục bộ
+26.5s 178 2026-06-16 13:07:13,343 [trainer.py] => beta_acc: 1.0
+26.5s 179 2026-06-16 13:07:13,343 [trainer.py] => _comment_beta_proto: beta_proto: Thưởng cho độ nhất quán Prototype
+26.5s 180 2026-06-16 13:07:13,343 [trainer.py] => beta_proto: 1.0
+26.5s 181 2026-06-16 13:07:13,343 [trainer.py] => _comment_beta_novelty: beta_novelty: Thưởng cho lượng dữ liệu mới
+26.5s 182 2026-06-16 13:07:13,343 [trainer.py] => beta_novelty: 0.5
+26.5s 183 2026-06-16 13:07:13,343 [trainer.py] => _comment_beta_drift: beta_drift: Phạt khi Prototype bị lệch hướng
+26.5s 184 2026-06-16 13:07:13,343 [trainer.py] => beta_drift: 0.5
+26.5s 185 2026-06-16 13:07:13,344 [trainer.py] => _comment_beta_update: beta_update: Phạt khi cập nhật Model quá lớn
+26.5s 186 2026-06-16 13:07:13,344 [trainer.py] => beta_update: 0.2
+26.5s 187 2026-06-16 13:07:13,344 [trainer.py] => config: ./configs/exps/cic_iot23_afsic.json
+26.5s 188 2026-06-16 13:07:13,344 [trainer.py] => mode: train
+26.5s 189 2026-06-16 13:07:13,344 [trainer.py] => test_checkpoint_dir:
+26.5s 190 2026-06-16 13:07:13,344 [trainer.py] => debug: False
+26.5s 191 2026-06-16 13:07:13,344 [trainer.py] => resume:
+26.5s 192 2026-06-16 13:07:13,344 [trainer.py] => Run directory: logs/afsic-ids_federated/cic_iot23/16-06-26_13-07_seed42_cnn1d_clients10
+26.5s 193 2026-06-16 13:07:13,344 [trainer.py] => Initializing DataManagers for 10 clients...
+41.5s 194 [iCICIoT23 - Client 0] Loaded: train=(5375909, 33), test=(14002687, 33)
+41.7s 195 2026-06-16 13:07:28,633 [data_manager.py] => [1, 0, 11, 12, 27, 26, 2, 14, 25, 24, 20, 28, 3, 7, 30, 29, 19, 16, 15, 6, 8, 22, 23, 21, 5, 13, 10, 17, 18, 4, 31, 32, 33, 9]
+58.3s 196 [iCICIoT23 - Client 1] Loaded: train=(2640392, 33), test=(0, 33)
+58.4s 197 2026-06-16 13:07:45,294 [data_manager.py] => [1, 0, 11, 12, 27, 26, 2, 14, 25, 24, 20, 28, 3, 7, 30, 29, 19, 16, 15, 6, 8, 22, 23, 21, 5, 13, 10, 17, 18, 4, 31, 32, 33, 9]
+63.2s 198 [iCICIoT23 - Client 2] Loaded: train=(3276624, 33), test=(0, 33)
+63.4s 199 2026-06-16 13:07:50,209 [data_manager.py] => [1, 0, 11, 12, 27, 26, 2, 14, 25, 24, 20, 28, 3, 7, 30, 29, 19, 16, 15, 6, 8, 22, 23, 21, 5, 13, 10, 17, 18, 4, 31, 32, 33, 9]
+69.1s 200 [iCICIoT23 - Client 3] Loaded: train=(5783284, 33), test=(0, 33)
+69.3s 201 2026-06-16 13:07:56,151 [data_manager.py] => [1, 0, 11, 12, 27, 26, 2, 14, 25, 24, 20, 28, 3, 7, 30, 29, 19, 16, 15, 6, 8, 22, 23, 21, 5, 13, 10, 17, 18, 4, 31, 32, 33, 9]
+77.1s 202 [iCICIoT23 - Client 4] Loaded: train=(5451165, 33), test=(0, 33)
+77.3s 203 2026-06-16 13:08:04,131 [data_manager.py] => [1, 0, 11, 12, 27, 26, 2, 14, 25, 24, 20, 28, 3, 7, 30, 29, 19, 16, 15, 6, 8, 22, 23, 21, 5, 13, 10, 17, 18, 4, 31, 32, 33, 9]
+84.3s 204 [iCICIoT23 - Client 5] Loaded: train=(4406140, 33), test=(0, 33)
+84.4s 205 2026-06-16 13:08:11,300 [data_manager.py] => [1, 0, 11, 12, 27, 26, 2, 14, 25, 24, 20, 28, 3, 7, 30, 29, 19, 16, 15, 6, 8, 22, 23, 21, 5, 13, 10, 17, 18, 4, 31, 32, 33, 9]
+91.3s 206 [iCICIoT23 - Client 6] Loaded: train=(2777950, 33), test=(0, 33)
+91.4s 207 2026-06-16 13:08:18,245 [data_manager.py] => [1, 0, 11, 12, 27, 26, 2, 14, 25, 24, 20, 28, 3, 7, 30, 29, 19, 16, 15, 6, 8, 22, 23, 21, 5, 13, 10, 17, 18, 4, 31, 32, 33, 9]
+95.0s 208 [iCICIoT23 - Client 7] Loaded: train=(2358513, 33), test=(0, 33)
+95.0s 209 2026-06-16 13:08:21,933 [data_manager.py] => [1, 0, 11, 12, 27, 26, 2, 14, 25, 24, 20, 28, 3, 7, 30, 29, 19, 16, 15, 6, 8, 22, 23, 21, 5, 13, 10, 17, 18, 4, 31, 32, 33, 9]
+98.2s 210 [iCICIoT23 - Client 8] Loaded: train=(435469, 33), test=(0, 33)
+98.2s 211 2026-06-16 13:08:25,105 [data_manager.py] => [1, 0, 11, 12, 27, 26, 2, 14, 25, 24, 20, 28, 3, 7, 30, 29, 19, 16, 15, 6, 8, 22, 23, 21, 5, 13, 10, 17, 18, 4, 31, 32, 33, 9]
+98.6s 212 [iCICIoT23 - Client 9] Loaded: train=(178382, 33), test=(0, 33)
+98.6s 213 2026-06-16 13:08:25,529 [data_manager.py] => [1, 0, 11, 12, 27, 26, 2, 14, 25, 24, 20, 28, 3, 7, 30, 29, 19, 16, 15, 6, 8, 22, 23, 21, 5, 13, 10, 17, 18, 4, 31, 32, 33, 9]
+98.9s 214 2026-06-16 13:08:25,824 [trainer.py] => Task increments: [6, 6, 6, 6, 5, 5]
+99.6s 215 2026-06-16 13:08:26,442 [afsic_ids.py] => Learning on classes 0-6
+99.8s 216 2026-06-16 13:08:26,663 [afsic_ids.py] => Skipping training for task 0
+99.8s 217 2026-06-16 13:08:26,666 [afsic_ids.py] => Learning on classes 0-6
+100.0s 218 2026-06-16 13:08:26,872 [afsic_ids.py] => Skipping training for task 0
+100.0s 219 2026-06-16 13:08:26,873 [afsic_ids.py] => Learning on classes 0-6
+100.0s 220 2026-06-16 13:08:26,873 [afsic_ids.py] => Skipping training for task 0
+100.0s 221 2026-06-16 13:08:26,874 [afsic_ids.py] => Learning on classes 0-6
+100.0s 222 2026-06-16 13:08:26,875 [afsic_ids.py] => Skipping training for task 0
+100.0s 223 2026-06-16 13:08:26,876 [afsic_ids.py] => Learning on classes 0-6
+100.0s 224 2026-06-16 13:08:26,876 [afsic_ids.py] => Skipping training for task 0
+100.0s 225 2026-06-16 13:08:26,877 [afsic_ids.py] => Learning on classes 0-6
+100.0s 226 2026-06-16 13:08:26,877 [afsic_ids.py] => Skipping training for task 0
+100.0s 227 2026-06-16 13:08:26,878 [afsic_ids.py] => Learning on classes 0-6
+100.0s 228 2026-06-16 13:08:26,878 [afsic_ids.py] => Skipping training for task 0
+100.0s 229 2026-06-16 13:08:26,879 [afsic_ids.py] => Learning on classes 0-6
+100.0s 230 2026-06-16 13:08:26,879 [afsic_ids.py] => Skipping training for task 0
+100.0s 231 2026-06-16 13:08:26,880 [afsic_ids.py] => Learning on classes 0-6
+100.0s 232 2026-06-16 13:08:26,881 [afsic_ids.py] => Skipping training for task 0
+100.0s 233 2026-06-16 13:08:26,881 [afsic_ids.py] => Learning on classes 0-6
+100.0s 234 2026-06-16 13:08:26,882 [afsic_ids.py] => Skipping training for task 0
+100.0s 235 2026-06-16 13:08:26,883 [afsic_ids.py] => Learning on classes 0-6
+100.0s 236 2026-06-16 13:08:26,883 [afsic_ids.py] => Skipping training for task 0
+100.3s 237 2026-06-16 13:08:27,201 [trainer.py] => ========== Bắt đầu Task 0 ==========
+100.3s 238 2026-06-16 13:08:27,201 [trainer.py] => --- Task 0 | Round 1/30 (Global 1) ---
+181.6s 239 2026-06-16 13:09:48,471 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.912, Train_accy 96.31
+276.0s 240 2026-06-16 13:11:22,871 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.663, Train_accy 51.12
+334.9s 241 2026-06-16 13:12:21,772 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.840, Train_accy 98.62
+482.3s 242 2026-06-16 13:14:49,202 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.030, Train_accy 96.10
+596.4s 243 2026-06-16 13:16:43,299 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.873, Train_accy 96.99
+623.1s 244 2026-06-16 13:17:09,973 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.793, Train_accy 4.92
+625.1s 245 2026-06-16 13:17:12,014 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.613, Train_accy 68.31
+627.4s 246 2026-06-16 13:17:14,276 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.731, Train_accy 44.15
+630.7s 247 2026-06-16 13:17:17,627 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.501, Train_accy 78.06
+633.5s 248 2026-06-16 13:17:20,387 [aggregation.py] => Client 0 => Q_i: -1.1496 | Acc: 94.48% | ProtoCons: 0.8444 | Novelty: 0.5000 | Drift: 4.5554 | UpdateNorm: 4.5554
+633.5s 249 2026-06-16 13:17:20,391 [aggregation.py] => Client 1 => Q_i: 1.1091 | Acc: 34.63% | ProtoCons: 0.5547 | Novelty: 0.5000 | Drift: 0.0599 | UpdateNorm: 0.0599
+633.5s 250 2026-06-16 13:17:20,395 [aggregation.py] => Client 2 => Q_i: -0.2667 | Acc: 99.07% | ProtoCons: 0.8406 | Novelty: 0.5000 | Drift: 3.3543 | UpdateNorm: 3.3543
+633.5s 251 2026-06-16 13:17:20,399 [aggregation.py] => Client 3 => Q_i: -1.5398 | Acc: 96.25% | ProtoCons: 0.8524 | Novelty: 0.5000 | Drift: 5.1495 | UpdateNorm: 5.1495
+633.5s 252 2026-06-16 13:17:20,402 [aggregation.py] => Client 4 => Q_i: 1.0193 | Acc: 99.53% | ProtoCons: 0.8751 | Novelty: 0.5000 | Drift: 1.5730 | UpdateNorm: 1.5730
+633.5s 253 2026-06-16 13:17:20,406 [aggregation.py] => Client 5 => Q_i: 1.0673 | Acc: 12.76% | ProtoCons: 0.7006 | Novelty: 0.5000 | Drift: 0.0156 | UpdateNorm: 0.0156
+633.5s 254 2026-06-16 13:17:20,410 [aggregation.py] => Client 6 => Q_i: 2.0830 | Acc: 95.13% | ProtoCons: 0.9531 | Novelty: 0.5000 | Drift: 0.1021 | UpdateNorm: 0.1021
+633.5s 255 2026-06-16 13:17:20,413 [aggregation.py] => Client 7 => Q_i: 1.6153 | Acc: 83.79% | ProtoCons: 0.5594 | Novelty: 0.5000 | Drift: 0.0457 | UpdateNorm: 0.0457
+633.5s 256 2026-06-16 13:17:20,417 [aggregation.py] => Client 8 => Q_i: 2.0931 | Acc: 98.44% | ProtoCons: 0.9770 | Novelty: 0.5000 | Drift: 0.1690 | UpdateNorm: 0.1690
+633.5s 257 2026-06-16 13:17:20,418 [aggregation.py] => Client 0 rejected by robust filter | Drift: 4.5554 | UpdateNorm: 4.5554
+633.5s 258 2026-06-16 13:17:20,418 [aggregation.py] => Client 2 rejected by robust filter | Drift: 3.3543 | UpdateNorm: 3.3543
+633.5s 259 2026-06-16 13:17:20,418 [aggregation.py] => Client 3 rejected by robust filter | Drift: 5.1495 | UpdateNorm: 5.1495
+633.5s 260 2026-06-16 13:17:20,418 [aggregation.py] => Client 4 rejected by robust filter | Drift: 1.5730 | UpdateNorm: 1.5730
+633.6s 261 2026-06-16 13:17:20,426 [trainer.py] => Client 1 Aggregation Weight alpha_i: 0.1118
+633.6s 262 2026-06-16 13:17:20,426 [trainer.py] => Client 5 Aggregation Weight alpha_i: 0.1073
+633.6s 263 2026-06-16 13:17:20,426 [trainer.py] => Client 6 Aggregation Weight alpha_i: 0.2962
+633.6s 264 2026-06-16 13:17:20,427 [trainer.py] => Client 7 Aggregation Weight alpha_i: 0.1855
+633.6s 265 2026-06-16 13:17:20,427 [trainer.py] => Client 8 Aggregation Weight alpha_i: 0.2992
+633.8s 266 2026-06-16 13:17:20,644 [trainer.py] => Evaluating on global_test_data filtered to learned classes: 0-5
+691.2s 267 2026-06-16 13:18:18,061 [trainer.py] => [Task 0 | Round 1] Acc: 2.72% | Old Acc: 0.00% | New Acc: 0.00% | Forgetting: 0.00% | Params: 22,561 | Comm Cost: 0.09 MB
+691.2s 268 2026-06-16 13:18:18,072 [trainer.py] => --- Task 0 | Round 2/30 (Global 2) ---
+769.2s 269 2026-06-16 13:19:36,109 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.916, Train_accy 95.82
+862.5s 270 2026-06-16 13:21:09,433 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.723, Train_accy 4.55
+920.5s 271 2026-06-16 13:22:07,378 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.911, Train_accy 98.25
+1065.3s 272 2026-06-16 13:24:32,127 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.030, Train_accy 96.08
+1178.9s 273 2026-06-16 13:26:25,823 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.070, Train_accy 96.79
+1205.6s 274 2026-06-16 13:26:52,414 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.731, Train_accy 6.72
+1207.5s 275 2026-06-16 13:26:54,352 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.655, Train_accy 65.54
+1209.7s 276 2026-06-16 13:26:56,534 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.775, Train_accy 43.66
+1213.0s 277 2026-06-16 13:26:59,899 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.558, Train_accy 71.78
+1215.6s 278 2026-06-16 13:27:02,523 [aggregation.py] => Client 0 => Q_i: -1.1164 | Acc: 94.85% | ProtoCons: 0.8737 | Novelty: 0.5000 | Drift: 4.5551 | UpdateNorm: 4.5551
+1215.6s 279 2026-06-16 13:27:02,527 [aggregation.py] => Client 1 => Q_i: 1.6817 | Acc: 66.33% | ProtoCons: 0.8069 | Novelty: 0.5000 | Drift: 0.0550 | UpdateNorm: 0.0550
+1215.6s 280 2026-06-16 13:27:02,530 [aggregation.py] => Client 2 => Q_i: -0.2674 | Acc: 99.07% | ProtoCons: 0.8396 | Novelty: 0.5000 | Drift: 3.3537 | UpdateNorm: 3.3537
+1215.7s 281 2026-06-16 13:27:02,534 [aggregation.py] => Client 3 => Q_i: -1.4643 | Acc: 96.88% | ProtoCons: 0.9213 | Novelty: 0.5000 | Drift: 5.1492 | UpdateNorm: 5.1492
+1215.7s 282 2026-06-16 13:27:02,538 [aggregation.py] => Client 4 => Q_i: 1.0597 | Acc: 99.54% | ProtoCons: 0.9147 | Novelty: 0.5000 | Drift: 1.5720 | UpdateNorm: 1.5720
+1215.7s 283 2026-06-16 13:27:02,541 [aggregation.py] => Client 5 => Q_i: 1.4091 | Acc: 45.10% | ProtoCons: 0.7179 | Novelty: 0.5000 | Drift: 0.0140 | UpdateNorm: 0.0140
+1215.7s 284 2026-06-16 13:27:02,545 [aggregation.py] => Client 6 => Q_i: 2.1083 | Acc: 94.44% | ProtoCons: 0.9805 | Novelty: 0.5000 | Drift: 0.0951 | UpdateNorm: 0.0951
+1215.7s 285 2026-06-16 13:27:02,548 [aggregation.py] => Client 7 => Q_i: 2.1257 | Acc: 98.32% | ProtoCons: 0.9215 | Novelty: 0.5000 | Drift: 0.0414 | UpdateNorm: 0.0414
+1215.7s 286 2026-06-16 13:27:02,552 [aggregation.py] => Client 8 => Q_i: 2.0629 | Acc: 93.49% | ProtoCons: 0.9909 | Novelty: 0.5000 | Drift: 0.1612 | UpdateNorm: 0.1612
+1215.7s 287 2026-06-16 13:27:02,552 [aggregation.py] => Client 0 rejected by robust filter | Drift: 4.5551 | UpdateNorm: 4.5551
+1215.7s 288 2026-06-16 13:27:02,552 [aggregation.py] => Client 2 rejected by robust filter | Drift: 3.3537 | UpdateNorm: 3.3537
+1215.7s 289 2026-06-16 13:27:02,553 [aggregation.py] => Client 3 rejected by robust filter | Drift: 5.1492 | UpdateNorm: 5.1492
+1215.7s 290 2026-06-16 13:27:02,553 [aggregation.py] => Client 4 rejected by robust filter | Drift: 1.5720 | UpdateNorm: 1.5720
+1215.7s 291 2026-06-16 13:27:02,553 [trainer.py] => Client 1 Aggregation Weight alpha_i: 0.1583
+1215.7s 292 2026-06-16 13:27:02,553 [trainer.py] => Client 5 Aggregation Weight alpha_i: 0.1205
+1215.7s 293 2026-06-16 13:27:02,554 [trainer.py] => Client 6 Aggregation Weight alpha_i: 0.2425
+1215.7s 294 2026-06-16 13:27:02,554 [trainer.py] => Client 7 Aggregation Weight alpha_i: 0.2468
+1215.7s 295 2026-06-16 13:27:02,554 [trainer.py] => Client 8 Aggregation Weight alpha_i: 0.2318
+1215.9s 296 2026-06-16 13:27:02,780 [trainer.py] => Evaluating on global_test_data filtered to learned classes: 0-5
+1273.1s 297 2026-06-16 13:27:59,997 [trainer.py] => [Task 0 | Round 2] Acc: 7.36% | Old Acc: 0.00% | New Acc: 0.00% | Forgetting: 0.00% | Params: 22,561 | Comm Cost: 0.09 MB
+1273.1s 298 2026-06-16 13:28:00,001 [trainer.py] => --- Task 0 | Round 3/30 (Global 3) ---
+1351.4s 299 2026-06-16 13:29:18,289 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.914, Train_accy 96.67
+1444.2s 300 2026-06-16 13:30:51,043 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.638, Train_accy 33.00
+1502.5s 301 2026-06-16 13:31:49,385 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.898, Train_accy 98.25
+1647.0s 302 2026-06-16 13:34:13,906 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.033, Train_accy 96.29
+1761.0s 303 2026-06-16 13:36:07,871 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.033, Train_accy 95.60
+1787.7s 304 2026-06-16 13:36:34,517 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.813, Train_accy 11.96
+1789.6s 305 2026-06-16 13:36:36,517 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.420, Train_accy 79.76
+1792.0s 306 2026-06-16 13:36:38,865 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.490, Train_accy 78.77
+1795.3s 307 2026-06-16 13:36:42,183 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.363, Train_accy 80.62
+1798.0s 308 2026-06-16 13:36:44,880 [aggregation.py] => Client 0 => Q_i: -1.0911 | Acc: 94.69% | ProtoCons: 0.9005 | Novelty: 0.5000 | Drift: 4.5550 | UpdateNorm: 4.5550
+1798.0s 309 2026-06-16 13:36:44,883 [aggregation.py] => Client 1 => Q_i: 1.9040 | Acc: 78.09% | ProtoCons: 0.9106 | Novelty: 0.5000 | Drift: 0.0537 | UpdateNorm: 0.0537
+1798.0s 310 2026-06-16 13:36:44,887 [aggregation.py] => Client 2 => Q_i: -0.2019 | Acc: 99.28% | ProtoCons: 0.9028 | Novelty: 0.5000 | Drift: 3.3536 | UpdateNorm: 3.3536
+1798.0s 311 2026-06-16 13:36:44,891 [aggregation.py] => Client 3 => Q_i: -1.4327 | Acc: 97.16% | ProtoCons: 0.9500 | Novelty: 0.5000 | Drift: 5.1491 | UpdateNorm: 5.1491
+1798.0s 312 2026-06-16 13:36:44,895 [aggregation.py] => Client 4 => Q_i: 1.0730 | Acc: 99.55% | ProtoCons: 0.9277 | Novelty: 0.5000 | Drift: 1.5717 | UpdateNorm: 1.5717
+1798.0s 313 2026-06-16 13:36:44,898 [aggregation.py] => Client 5 => Q_i: 1.5491 | Acc: 44.89% | ProtoCons: 0.8597 | Novelty: 0.5000 | Drift: 0.0135 | UpdateNorm: 0.0135
+1798.1s 314 2026-06-16 13:36:44,902 [aggregation.py] => Client 6 => Q_i: 2.1110 | Acc: 93.56% | ProtoCons: 0.9907 | Novelty: 0.5000 | Drift: 0.0933 | UpdateNorm: 0.0933
+1798.1s 315 2026-06-16 13:36:44,906 [aggregation.py] => Client 7 => Q_i: 2.1209 | Acc: 94.05% | ProtoCons: 0.9585 | Novelty: 0.5000 | Drift: 0.0402 | UpdateNorm: 0.0402
+1798.1s 316 2026-06-16 13:36:44,909 [aggregation.py] => Client 8 => Q_i: 1.9793 | Acc: 84.80% | ProtoCons: 0.9929 | Novelty: 0.5000 | Drift: 0.1594 | UpdateNorm: 0.1594
+1798.1s 317 2026-06-16 13:36:44,910 [aggregation.py] => Client 0 rejected by robust filter | Drift: 4.5550 | UpdateNorm: 4.5550
+1798.1s 318 2026-06-16 13:36:44,910 [aggregation.py] => Client 2 rejected by robust filter | Drift: 3.3536 | UpdateNorm: 3.3536
+1798.1s 319 2026-06-16 13:36:44,910 [aggregation.py] => Client 3 rejected by robust filter | Drift: 5.1491 | UpdateNorm: 5.1491
+1798.1s 320 2026-06-16 13:36:44,910 [aggregation.py] => Client 4 rejected by robust filter | Drift: 1.5717 | UpdateNorm: 1.5717
+1798.1s 321 2026-06-16 13:36:44,911 [trainer.py] => Client 1 Aggregation Weight alpha_i: 0.1904
+1798.1s 322 2026-06-16 13:36:44,911 [trainer.py] => Client 5 Aggregation Weight alpha_i: 0.1335
+1798.1s 323 2026-06-16 13:36:44,911 [trainer.py] => Client 6 Aggregation Weight alpha_i: 0.2342
+1798.1s 324 2026-06-16 13:36:44,911 [trainer.py] => Client 7 Aggregation Weight alpha_i: 0.2365
+1798.1s 325 2026-06-16 13:36:44,911 [trainer.py] => Client 8 Aggregation Weight alpha_i: 0.2053
+1798.3s 326 2026-06-16 13:36:45,142 [trainer.py] => Evaluating on global_test_data filtered to learned classes: 0-5
+1855.8s 327 2026-06-16 13:37:42,643 [trainer.py] => [Task 0 | Round 3] Acc: 7.98% | Old Acc: 0.00% | New Acc: 0.00% | Forgetting: 0.00% | Params: 22,561 | Comm Cost: 0.09 MB
+1855.8s 328 2026-06-16 13:37:42,647 [trainer.py] => --- Task 0 | Round 4/30 (Global 4) ---
+1934.2s 329 2026-06-16 13:39:01,133 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.910, Train_accy 96.59
+2027.4s 330 2026-06-16 13:40:34,237 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.553, Train_accy 48.33
+2085.1s 331 2026-06-16 13:41:31,951 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.896, Train_accy 98.41
+2229.7s 332 2026-06-16 13:43:56,529 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.021, Train_accy 96.31
+2343.0s 333 2026-06-16 13:45:49,871 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.039, Train_accy 95.66
+2369.5s 334 2026-06-16 13:46:16,367 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.682, Train_accy 27.32
+2371.5s 335 2026-06-16 13:46:18,334 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.307, Train_accy 82.16
+2373.7s 336 2026-06-16 13:46:20,579 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.369, Train_accy 80.87
+2377.1s 337 2026-06-16 13:46:23,918 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.268, Train_accy 82.34
+2379.7s 338 2026-06-16 13:46:26,594 [aggregation.py] => Client 0 => Q_i: -1.0980 | Acc: 94.96% | ProtoCons: 0.8909 | Novelty: 0.5000 | Drift: 4.5550 | UpdateNorm: 4.5550
+2379.7s 339 2026-06-16 13:46:26,597 [aggregation.py] => Client 1 => Q_i: 1.9275 | Acc: 78.62% | ProtoCons: 0.9285 | Novelty: 0.5000 | Drift: 0.0532 | UpdateNorm: 0.0532
+2379.7s 340 2026-06-16 13:46:26,601 [aggregation.py] => Client 2 => Q_i: -0.1791 | Acc: 99.79% | ProtoCons: 0.9206 | Novelty: 0.5000 | Drift: 3.3536 | UpdateNorm: 3.3536
+2379.7s 341 2026-06-16 13:46:26,605 [aggregation.py] => Client 3 => Q_i: -1.4355 | Acc: 96.57% | ProtoCons: 0.9532 | Novelty: 0.5000 | Drift: 5.1491 | UpdateNorm: 5.1491
+2379.7s 342 2026-06-16 13:46:26,609 [aggregation.py] => Client 4 => Q_i: 1.0840 | Acc: 99.56% | ProtoCons: 0.9388 | Novelty: 0.5000 | Drift: 1.5720 | UpdateNorm: 1.5720
+2379.7s 343 2026-06-16 13:46:26,613 [aggregation.py] => Client 5 => Q_i: 1.5946 | Acc: 44.69% | ProtoCons: 0.9070 | Novelty: 0.5000 | Drift: 0.0134 | UpdateNorm: 0.0134
+2379.7s 344 2026-06-16 13:46:26,616 [aggregation.py] => Client 6 => Q_i: 2.0974 | Acc: 92.91% | ProtoCons: 0.9833 | Novelty: 0.5000 | Drift: 0.0929 | UpdateNorm: 0.0929
+2379.7s 345 2026-06-16 13:46:26,620 [aggregation.py] => Client 7 => Q_i: 2.1292 | Acc: 92.96% | ProtoCons: 0.9775 | Novelty: 0.5000 | Drift: 0.0399 | UpdateNorm: 0.0399
+2379.7s 346 2026-06-16 13:46:26,624 [aggregation.py] => Client 8 => Q_i: 2.0590 | Acc: 92.85% | ProtoCons: 0.9920 | Novelty: 0.5000 | Drift: 0.1592 | UpdateNorm: 0.1592
+2379.7s 347 2026-06-16 13:46:26,624 [aggregation.py] => Client 0 rejected by robust filter | Drift: 4.5550 | UpdateNorm: 4.5550
+2379.7s 348 2026-06-16 13:46:26,624 [aggregation.py] => Client 2 rejected by robust filter | Drift: 3.3536 | UpdateNorm: 3.3536
+2379.7s 349 2026-06-16 13:46:26,624 [aggregation.py] => Client 3 rejected by robust filter | Drift: 5.1491 | UpdateNorm: 5.1491
+2379.7s 350 2026-06-16 13:46:26,624 [aggregation.py] => Client 4 rejected by robust filter | Drift: 1.5720 | UpdateNorm: 1.5720
+2379.7s 351 2026-06-16 13:46:26,625 [trainer.py] => Client 1 Aggregation Weight alpha_i: 0.1899
+2379.7s 352 2026-06-16 13:46:26,625 [trainer.py] => Client 5 Aggregation Weight alpha_i: 0.1361
+2379.7s 353 2026-06-16 13:46:26,625 [trainer.py] => Client 6 Aggregation Weight alpha_i: 0.2251
+2379.7s 354 2026-06-16 13:46:26,625 [trainer.py] => Client 7 Aggregation Weight alpha_i: 0.2323
+2379.7s 355 2026-06-16 13:46:26,625 [trainer.py] => Client 8 Aggregation Weight alpha_i: 0.2166
+2380.0s 356 2026-06-16 13:46:26,858 [trainer.py] => Evaluating on global_test_data filtered to learned classes: 0-5
+2437.4s 357 2026-06-16 13:47:24,229 [trainer.py] => [Task 0 | Round 4] Acc: 7.81% | Old Acc: 0.00% | New Acc: 0.00% | Forgetting: 0.00% | Params: 22,561 | Comm Cost: 0.09 MB
+2437.4s 358 2026-06-16 13:47:24,233 [trainer.py] => --- Task 0 | Round 5/30 (Global 5) ---
+2515.4s 359 2026-06-16 13:48:42,279 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.905, Train_accy 96.00
+2608.3s 360 2026-06-16 13:50:15,171 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.489, Train_accy 45.66
+2666.3s 361 2026-06-16 13:51:13,143 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.903, Train_accy 98.31
+2812.4s 362 2026-06-16 13:53:39,272 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.027, Train_accy 96.16
+2925.7s 363 2026-06-16 13:55:32,554 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.046, Train_accy 94.57
+2952.4s 364 2026-06-16 13:55:59,290 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.563, Train_accy 27.62
+2954.5s 365 2026-06-16 13:56:01,336 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.265, Train_accy 82.75
+2956.7s 366 2026-06-16 13:56:03,621 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.314, Train_accy 82.07
+2960.2s 367 2026-06-16 13:56:07,065 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.221, Train_accy 82.69
+2962.9s 368 2026-06-16 13:56:09,804 [aggregation.py] => Client 0 => Q_i: -1.0929 | Acc: 94.94% | ProtoCons: 0.8962 | Novelty: 0.5000 | Drift: 4.5550 | UpdateNorm: 4.5550
+2962.9s 369 2026-06-16 13:56:09,808 [aggregation.py] => Client 1 => Q_i: 1.9449 | Acc: 78.95% | ProtoCons: 0.9425 | Novelty: 0.5000 | Drift: 0.0531 | UpdateNorm: 0.0531
+2962.9s 370 2026-06-16 13:56:09,812 [aggregation.py] => Client 2 => Q_i: -0.2086 | Acc: 99.45% | ProtoCons: 0.8944 | Novelty: 0.5000 | Drift: 3.3536 | UpdateNorm: 3.3536
+2962.9s 371 2026-06-16 13:56:09,815 [aggregation.py] => Client 3 => Q_i: -1.4201 | Acc: 98.08% | ProtoCons: 0.9534 | Novelty: 0.5000 | Drift: 5.1491 | UpdateNorm: 5.1491
+2962.9s 372 2026-06-16 13:56:09,819 [aggregation.py] => Client 4 => Q_i: 1.0820 | Acc: 99.56% | ProtoCons: 0.9367 | Novelty: 0.5000 | Drift: 1.5719 | UpdateNorm: 1.5719
+2962.9s 373 2026-06-16 13:56:09,823 [aggregation.py] => Client 5 => Q_i: 1.7033 | Acc: 55.74% | ProtoCons: 0.9052 | Novelty: 0.5000 | Drift: 0.0133 | UpdateNorm: 0.0133
+2962.9s 374 2026-06-16 13:56:09,826 [aggregation.py] => Client 6 => Q_i: 2.0015 | Acc: 83.92% | ProtoCons: 0.9774 | Novelty: 0.5000 | Drift: 0.0930 | UpdateNorm: 0.0930
+2962.9s 375 2026-06-16 13:56:09,830 [aggregation.py] => Client 7 => Q_i: 2.0183 | Acc: 83.69% | ProtoCons: 0.9593 | Novelty: 0.5000 | Drift: 0.0399 | UpdateNorm: 0.0399
+2963.0s 376 2026-06-16 13:56:09,834 [aggregation.py] => Client 8 => Q_i: 1.9500 | Acc: 83.81% | ProtoCons: 0.9736 | Novelty: 0.5000 | Drift: 0.1595 | UpdateNorm: 0.1595
+2963.0s 377 2026-06-16 13:56:09,834 [aggregation.py] => Client 0 rejected by robust filter | Drift: 4.5550 | UpdateNorm: 4.5550
+2963.0s 378 2026-06-16 13:56:09,834 [aggregation.py] => Client 2 rejected by robust filter | Drift: 3.3536 | UpdateNorm: 3.3536
+2963.0s 379 2026-06-16 13:56:09,834 [aggregation.py] => Client 3 rejected by robust filter | Drift: 5.1491 | UpdateNorm: 5.1491
+2963.0s 380 2026-06-16 13:56:09,835 [aggregation.py] => Client 4 rejected by robust filter | Drift: 1.5719 | UpdateNorm: 1.5719
+2963.0s 381 2026-06-16 13:56:09,835 [trainer.py] => Client 1 Aggregation Weight alpha_i: 0.2030
+2963.0s 382 2026-06-16 13:56:09,835 [trainer.py] => Client 5 Aggregation Weight alpha_i: 0.1595
+2963.0s 383 2026-06-16 13:56:09,836 [trainer.py] => Client 6 Aggregation Weight alpha_i: 0.2149
+2963.0s 384 2026-06-16 13:56:09,836 [trainer.py] => Client 7 Aggregation Weight alpha_i: 0.2185
+2963.0s 385 2026-06-16 13:56:09,836 [trainer.py] => Client 8 Aggregation Weight alpha_i: 0.2041
+2963.2s 386 2026-06-16 13:56:10,067 [trainer.py] => Evaluating on global_test_data filtered to learned classes: 0-5
+3020.9s 387 2026-06-16 13:57:07,746 [trainer.py] => [Task 0 | Round 5] Acc: 6.99% | Old Acc: 0.00% | New Acc: 0.00% | Forgetting: 0.00% | Params: 22,561 | Comm Cost: 0.09 MB
+3020.9s 388 2026-06-16 13:57:07,751 [trainer.py] => --- Task 0 | Round 6/30 (Global 6) ---
+3101.7s 389 2026-06-16 13:58:28,586 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.905, Train_accy 96.07
+3195.7s 390 2026-06-16 14:00:02,541 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.411, Train_accy 44.44
+3253.8s 391 2026-06-16 14:01:00,691 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.895, Train_accy 97.49
+3401.7s 392 2026-06-16 14:03:28,593 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.021, Train_accy 95.62
+3514.8s 393 2026-06-16 14:05:21,628 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.041, Train_accy 93.91
+3541.2s 394 2026-06-16 14:05:48,061 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.462, Train_accy 35.95
+3543.2s 395 2026-06-16 14:05:50,036 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.223, Train_accy 82.24
+3545.4s 396 2026-06-16 14:05:52,205 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.286, Train_accy 81.55
+3548.7s 397 2026-06-16 14:05:55,542 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.169, Train_accy 82.10
+3551.3s 398 2026-06-16 14:05:58,232 [aggregation.py] => Client 0 => Q_i: -1.0642 | Acc: 94.86% | ProtoCons: 0.9257 | Novelty: 0.5000 | Drift: 4.5550 | UpdateNorm: 4.5550
+3551.4s 399 2026-06-16 14:05:58,236 [aggregation.py] => Client 1 => Q_i: 1.9421 | Acc: 77.62% | ProtoCons: 0.9531 | Novelty: 0.5000 | Drift: 0.0531 | UpdateNorm: 0.0531
+3551.4s 400 2026-06-16 14:05:58,239 [aggregation.py] => Client 2 => Q_i: -0.2098 | Acc: 99.10% | ProtoCons: 0.8968 | Novelty: 0.5000 | Drift: 3.3537 | UpdateNorm: 3.3537
+3551.4s 401 2026-06-16 14:05:58,243 [aggregation.py] => Client 3 => Q_i: -1.4401 | Acc: 96.55% | ProtoCons: 0.9487 | Novelty: 0.5000 | Drift: 5.1491 | UpdateNorm: 5.1491
+3551.4s 402 2026-06-16 14:05:58,247 [aggregation.py] => Client 4 => Q_i: 1.0879 | Acc: 99.55% | ProtoCons: 0.9430 | Novelty: 0.5000 | Drift: 1.5723 | UpdateNorm: 1.5723
+3551.4s 403 2026-06-16 14:05:58,250 [aggregation.py] => Client 5 => Q_i: 1.6758 | Acc: 52.45% | ProtoCons: 0.9106 | Novelty: 0.5000 | Drift: 0.0133 | UpdateNorm: 0.0133
+3551.4s 404 2026-06-16 14:05:58,254 [aggregation.py] => Client 6 => Q_i: 2.0075 | Acc: 83.49% | ProtoCons: 0.9878 | Novelty: 0.5000 | Drift: 0.0930 | UpdateNorm: 0.0930
+3551.4s 405 2026-06-16 14:05:58,257 [aggregation.py] => Client 7 => Q_i: 2.0196 | Acc: 83.20% | ProtoCons: 0.9656 | Novelty: 0.5000 | Drift: 0.0399 | UpdateNorm: 0.0399
+3551.4s 406 2026-06-16 14:05:58,261 [aggregation.py] => Client 8 => Q_i: 1.9583 | Acc: 83.27% | ProtoCons: 0.9873 | Novelty: 0.5000 | Drift: 0.1596 | UpdateNorm: 0.1596
+3551.4s 407 2026-06-16 14:05:58,261 [aggregation.py] => Client 0 rejected by robust filter | Drift: 4.5550 | UpdateNorm: 4.5550
+3551.4s 408 2026-06-16 14:05:58,261 [aggregation.py] => Client 2 rejected by robust filter | Drift: 3.3537 | UpdateNorm: 3.3537
+3551.4s 409 2026-06-16 14:05:58,261 [aggregation.py] => Client 3 rejected by robust filter | Drift: 5.1491 | UpdateNorm: 5.1491
+3551.4s 410 2026-06-16 14:05:58,261 [aggregation.py] => Client 4 rejected by robust filter | Drift: 1.5723 | UpdateNorm: 1.5723
+3551.4s 411 2026-06-16 14:05:58,262 [trainer.py] => Client 1 Aggregation Weight alpha_i: 0.2028
+3551.4s 412 2026-06-16 14:05:58,262 [trainer.py] => Client 5 Aggregation Weight alpha_i: 0.1554
+3551.4s 413 2026-06-16 14:05:58,262 [trainer.py] => Client 6 Aggregation Weight alpha_i: 0.2165
+3551.4s 414 2026-06-16 14:05:58,262 [trainer.py] => Client 7 Aggregation Weight alpha_i: 0.2192
+3551.4s 415 2026-06-16 14:05:58,262 [trainer.py] => Client 8 Aggregation Weight alpha_i: 0.2061
+3551.6s 416 2026-06-16 14:05:58,500 [trainer.py] => Evaluating on global_test_data filtered to learned classes: 0-5
+3608.9s 417 2026-06-16 14:06:55,786 [trainer.py] => [Task 0 | Round 6] Acc: 6.63% | Old Acc: 0.00% | New Acc: 0.00% | Forgetting: 0.00% | Params: 22,561 | Comm Cost: 0.09 MB
+3608.9s 418 2026-06-16 14:06:55,790 [trainer.py] => --- Task 0 | Round 7/30 (Global 7) ---
+3687.0s 419 2026-06-16 14:08:13,875 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.894, Train_accy 95.91
+3780.2s 420 2026-06-16 14:09:47,073 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.383, Train_accy 46.82
+3838.0s 421 2026-06-16 14:10:44,884 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.898, Train_accy 96.63
+3982.5s 422 2026-06-16 14:13:09,420 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.019, Train_accy 95.15
+4096.4s 423 2026-06-16 14:15:03,215 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.016, Train_accy 92.64
+4122.9s 424 2026-06-16 14:15:29,762 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.433, Train_accy 40.00
+4124.9s 425 2026-06-16 14:15:31,735 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.137, Train_accy 82.16
+4127.1s 426 2026-06-16 14:15:33,993 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.171, Train_accy 81.81
+4130.4s 427 2026-06-16 14:15:37,304 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.111, Train_accy 82.23
+4133.1s 428 2026-06-16 14:15:39,971 [aggregation.py] => Client 0 => Q_i: -1.0523 | Acc: 94.85% | ProtoCons: 0.9379 | Novelty: 0.5000 | Drift: 4.5552 | UpdateNorm: 4.5552
+4133.1s 429 2026-06-16 14:15:39,975 [aggregation.py] => Client 1 => Q_i: 1.8751 | Acc: 71.27% | ProtoCons: 0.9496 | Novelty: 0.5000 | Drift: 0.0531 | UpdateNorm: 0.0531
+4133.1s 430 2026-06-16 14:15:39,979 [aggregation.py] => Client 2 => Q_i: -0.2301 | Acc: 99.07% | ProtoCons: 0.8767 | Novelty: 0.5000 | Drift: 3.3537 | UpdateNorm: 3.3537
+4133.1s 431 2026-06-16 14:15:39,982 [aggregation.py] => Client 3 => Q_i: -1.4511 | Acc: 95.98% | ProtoCons: 0.9435 | Novelty: 0.5000 | Drift: 5.1491 | UpdateNorm: 5.1491
+4133.1s 432 2026-06-16 14:15:39,986 [aggregation.py] => Client 4 => Q_i: 1.0732 | Acc: 99.58% | ProtoCons: 0.9281 | Novelty: 0.5000 | Drift: 1.5724 | UpdateNorm: 1.5724
+4133.1s 433 2026-06-16 14:15:39,989 [aggregation.py] => Client 5 => Q_i: 1.6358 | Acc: 48.98% | ProtoCons: 0.9053 | Novelty: 0.5000 | Drift: 0.0133 | UpdateNorm: 0.0133
+4133.1s 434 2026-06-16 14:15:39,993 [aggregation.py] => Client 6 => Q_i: 2.0116 | Acc: 83.78% | ProtoCons: 0.9890 | Novelty: 0.5000 | Drift: 0.0932 | UpdateNorm: 0.0932
+4133.1s 435 2026-06-16 14:15:39,997 [aggregation.py] => Client 7 => Q_i: 2.0059 | Acc: 83.07% | ProtoCons: 0.9532 | Novelty: 0.5000 | Drift: 0.0400 | UpdateNorm: 0.0400
+4133.1s 436 2026-06-16 14:15:40,001 [aggregation.py] => Client 8 => Q_i: 2.0564 | Acc: 92.41% | ProtoCons: 0.9942 | Novelty: 0.5000 | Drift: 0.1598 | UpdateNorm: 0.1598
+4133.1s 437 2026-06-16 14:15:40,001 [aggregation.py] => Client 0 rejected by robust filter | Drift: 4.5552 | UpdateNorm: 4.5552
+4133.1s 438 2026-06-16 14:15:40,001 [aggregation.py] => Client 2 rejected by robust filter | Drift: 3.3537 | UpdateNorm: 3.3537
+4133.1s 439 2026-06-16 14:15:40,001 [aggregation.py] => Client 3 rejected by robust filter | Drift: 5.1491 | UpdateNorm: 5.1491
+4133.1s 440 2026-06-16 14:15:40,001 [aggregation.py] => Client 4 rejected by robust filter | Drift: 1.5724 | UpdateNorm: 1.5724
+4133.1s 441 2026-06-16 14:15:40,002 [trainer.py] => Client 1 Aggregation Weight alpha_i: 0.1897
+4133.1s 442 2026-06-16 14:15:40,002 [trainer.py] => Client 5 Aggregation Weight alpha_i: 0.1493
+4133.1s 443 2026-06-16 14:15:40,002 [trainer.py] => Client 6 Aggregation Weight alpha_i: 0.2174
+4133.1s 444 2026-06-16 14:15:40,002 [trainer.py] => Client 7 Aggregation Weight alpha_i: 0.2162
+4133.1s 445 2026-06-16 14:15:40,002 [trainer.py] => Client 8 Aggregation Weight alpha_i: 0.2274
+4133.3s 446 2026-06-16 14:15:40,227 [trainer.py] => Evaluating on global_test_data filtered to learned classes: 0-5
+4190.5s 447 2026-06-16 14:16:37,357 [trainer.py] => [Task 0 | Round 7] Acc: 7.57% | Old Acc: 0.00% | New Acc: 0.00% | Forgetting: 0.00% | Params: 22,561 | Comm Cost: 0.09 MB
+4190.5s 448 2026-06-16 14:16:37,361 [trainer.py] => --- Task 0 | Round 8/30 (Global 8) ---
+4268.6s 449 2026-06-16 14:17:55,488 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.885, Train_accy 95.76
+4361.2s 450 2026-06-16 14:19:28,099 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.349, Train_accy 53.76
+4418.9s 451 2026-06-16 14:20:25,770 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.905, Train_accy 95.89
+4565.3s 452 2026-06-16 14:22:52,183 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.011, Train_accy 95.53
+4678.9s 453 2026-06-16 14:24:45,781 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.020, Train_accy 87.59
+4706.2s 454 2026-06-16 14:25:13,120 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.403, Train_accy 44.75
+4708.2s 455 2026-06-16 14:25:15,092 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.129, Train_accy 82.70
+4710.5s 456 2026-06-16 14:25:17,370 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.160, Train_accy 82.18
+4713.9s 457 2026-06-16 14:25:20,776 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.094, Train_accy 83.98
+4716.7s 458 2026-06-16 14:25:23,544 [aggregation.py] => Client 0 => Q_i: -1.0635 | Acc: 94.11% | ProtoCons: 0.9342 | Novelty: 0.5000 | Drift: 4.5555 | UpdateNorm: 4.5555
+4716.7s 459 2026-06-16 14:25:23,548 [aggregation.py] => Client 1 => Q_i: 1.8571 | Acc: 71.41% | ProtoCons: 0.9302 | Novelty: 0.5000 | Drift: 0.0532 | UpdateNorm: 0.0532
+4716.7s 460 2026-06-16 14:25:23,552 [aggregation.py] => Client 2 => Q_i: -0.2095 | Acc: 99.06% | ProtoCons: 0.8975 | Novelty: 0.5000 | Drift: 3.3537 | UpdateNorm: 3.3537
+4716.7s 461 2026-06-16 14:25:23,557 [aggregation.py] => Client 3 => Q_i: -1.4426 | Acc: 96.05% | ProtoCons: 0.9514 | Novelty: 0.5000 | Drift: 5.1492 | UpdateNorm: 5.1492
+4716.7s 462 2026-06-16 14:25:23,561 [aggregation.py] => Client 4 => Q_i: 1.0871 | Acc: 99.54% | ProtoCons: 0.9425 | Novelty: 0.5000 | Drift: 1.5725 | UpdateNorm: 1.5725
+4716.7s 463 2026-06-16 14:25:23,565 [aggregation.py] => Client 5 => Q_i: 1.5089 | Acc: 37.65% | ProtoCons: 0.8918 | Novelty: 0.5000 | Drift: 0.0134 | UpdateNorm: 0.0134
+4716.7s 464 2026-06-16 14:25:23,569 [aggregation.py] => Client 6 => Q_i: 1.9819 | Acc: 84.80% | ProtoCons: 0.9492 | Novelty: 0.5000 | Drift: 0.0933 | UpdateNorm: 0.0933
+4716.7s 465 2026-06-16 14:25:23,573 [aggregation.py] => Client 7 => Q_i: 2.1030 | Acc: 92.29% | ProtoCons: 0.9581 | Novelty: 0.5000 | Drift: 0.0400 | UpdateNorm: 0.0400
+4716.7s 466 2026-06-16 14:25:23,577 [aggregation.py] => Client 8 => Q_i: 2.0556 | Acc: 92.70% | ProtoCons: 0.9907 | Novelty: 0.5000 | Drift: 0.1602 | UpdateNorm: 0.1602
+4716.7s 467 2026-06-16 14:25:23,578 [aggregation.py] => Client 0 rejected by robust filter | Drift: 4.5555 | UpdateNorm: 4.5555
+4716.7s 468 2026-06-16 14:25:23,578 [aggregation.py] => Client 2 rejected by robust filter | Drift: 3.3537 | UpdateNorm: 3.3537
+4716.7s 469 2026-06-16 14:25:23,578 [aggregation.py] => Client 3 rejected by robust filter | Drift: 5.1492 | UpdateNorm: 5.1492
+4716.7s 470 2026-06-16 14:25:23,578 [aggregation.py] => Client 4 rejected by robust filter | Drift: 1.5725 | UpdateNorm: 1.5725
+4716.7s 471 2026-06-16 14:25:23,579 [trainer.py] => Client 1 Aggregation Weight alpha_i: 0.1874
+4716.7s 472 2026-06-16 14:25:23,579 [trainer.py] => Client 5 Aggregation Weight alpha_i: 0.1323
+4716.7s 473 2026-06-16 14:25:23,579 [trainer.py] => Client 6 Aggregation Weight alpha_i: 0.2123
+4716.7s 474 2026-06-16 14:25:23,579 [trainer.py] => Client 7 Aggregation Weight alpha_i: 0.2396
+4716.7s 475 2026-06-16 14:25:23,579 [trainer.py] => Client 8 Aggregation Weight alpha_i: 0.2285
+4716.9s 476 2026-06-16 14:25:23,821 [trainer.py] => Evaluating on global_test_data filtered to learned classes: 0-5
+4775.0s 477 2026-06-16 14:26:21,853 [trainer.py] => [Task 0 | Round 8] Acc: 7.58% | Old Acc: 0.00% | New Acc: 0.00% | Forgetting: 0.00% | Params: 22,561 | Comm Cost: 0.09 MB
+4775.0s 478 2026-06-16 14:26:21,857 [trainer.py] => --- Task 0 | Round 9/30 (Global 9) ---
+4855.2s 479 2026-06-16 14:27:42,069 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.879, Train_accy 95.42
+4950.3s 480 2026-06-16 14:29:17,207 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.321, Train_accy 60.93
+5009.0s 481 2026-06-16 14:30:15,853 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.910, Train_accy 95.48
+5157.1s 482 2026-06-16 14:32:43,949 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.009, Train_accy 95.17
+5272.7s 483 2026-06-16 14:34:39,552 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.002, Train_accy 87.39
+5300.3s 484 2026-06-16 14:35:07,165 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.383, Train_accy 48.39
+5302.4s 485 2026-06-16 14:35:09,243 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.109, Train_accy 84.70
+5304.7s 486 2026-06-16 14:35:11,589 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.127, Train_accy 82.51
+5308.1s 487 2026-06-16 14:35:15,021 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.084, Train_accy 88.55
+5310.9s 488 2026-06-16 14:35:17,743 [aggregation.py] => Client 0 => Q_i: -1.0729 | Acc: 93.77% | ProtoCons: 0.9283 | Novelty: 0.5000 | Drift: 4.5556 | UpdateNorm: 4.5556
+5310.9s 489 2026-06-16 14:35:17,746 [aggregation.py] => Client 1 => Q_i: 1.8899 | Acc: 76.06% | ProtoCons: 0.9166 | Novelty: 0.5000 | Drift: 0.0533 | UpdateNorm: 0.0533
+5310.9s 490 2026-06-16 14:35:17,750 [aggregation.py] => Client 2 => Q_i: -0.2141 | Acc: 99.09% | ProtoCons: 0.8925 | Novelty: 0.5000 | Drift: 3.3536 | UpdateNorm: 3.3536
+5310.9s 491 2026-06-16 14:35:17,754 [aggregation.py] => Client 3 => Q_i: -1.4425 | Acc: 96.25% | ProtoCons: 0.9494 | Novelty: 0.5000 | Drift: 5.1491 | UpdateNorm: 5.1491
+5310.9s 492 2026-06-16 14:35:17,758 [aggregation.py] => Client 4 => Q_i: 1.0675 | Acc: 99.54% | ProtoCons: 0.9230 | Novelty: 0.5000 | Drift: 1.5728 | UpdateNorm: 1.5728
+5310.9s 493 2026-06-16 14:35:17,762 [aggregation.py] => Client 5 => Q_i: 1.5178 | Acc: 38.87% | ProtoCons: 0.8885 | Novelty: 0.5000 | Drift: 0.0134 | UpdateNorm: 0.0134
+5310.9s 494 2026-06-16 14:35:17,765 [aggregation.py] => Client 6 => Q_i: 2.0897 | Acc: 92.80% | ProtoCons: 0.9771 | Novelty: 0.5000 | Drift: 0.0933 | UpdateNorm: 0.0933
+5310.9s 495 2026-06-16 14:35:17,768 [aggregation.py] => Client 7 => Q_i: 2.1220 | Acc: 92.54% | ProtoCons: 0.9746 | Novelty: 0.5000 | Drift: 0.0401 | UpdateNorm: 0.0401
+5310.9s 496 2026-06-16 14:35:17,772 [aggregation.py] => Client 8 => Q_i: 2.0475 | Acc: 92.78% | ProtoCons: 0.9816 | Novelty: 0.5000 | Drift: 0.1600 | UpdateNorm: 0.1600
+5310.9s 497 2026-06-16 14:35:17,772 [aggregation.py] => Client 0 rejected by robust filter | Drift: 4.5556 | UpdateNorm: 4.5556
+5310.9s 498 2026-06-16 14:35:17,772 [aggregation.py] => Client 2 rejected by robust filter | Drift: 3.3536 | UpdateNorm: 3.3536
+5310.9s 499 2026-06-16 14:35:17,772 [aggregation.py] => Client 3 rejected by robust filter | Drift: 5.1491 | UpdateNorm: 5.1491
+5310.9s 500 2026-06-16 14:35:17,772 [aggregation.py] => Client 4 rejected by robust filter | Drift: 1.5728 | UpdateNorm: 1.5728
+5310.9s 501 2026-06-16 14:35:17,773 [trainer.py] => Client 1 Aggregation Weight alpha_i: 0.1872
+5310.9s 502 2026-06-16 14:35:17,773 [trainer.py] => Client 5 Aggregation Weight alpha_i: 0.1290
+5310.9s 503 2026-06-16 14:35:17,773 [trainer.py] => Client 6 Aggregation Weight alpha_i: 0.2286
+5310.9s 504 2026-06-16 14:35:17,773 [trainer.py] => Client 7 Aggregation Weight alpha_i: 0.2361
+5310.9s 505 2026-06-16 14:35:17,774 [trainer.py] => Client 8 Aggregation Weight alpha_i: 0.2191
+5311.1s 506 2026-06-16 14:35:18,016 [trainer.py] => Evaluating on global_test_data filtered to learned classes: 0-5
+5369.3s 507 2026-06-16 14:36:16,196 [trainer.py] => [Task 0 | Round 9] Acc: 7.56% | Old Acc: 0.00% | New Acc: 0.00% | Forgetting: 0.00% | Params: 22,561 | Comm Cost: 0.09 MB
+5369.3s 508 2026-06-16 14:36:16,200 [trainer.py] => --- Task 0 | Round 10/30 (Global 10) ---
+5447.8s 509 2026-06-16 14:37:34,639 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.878, Train_accy 94.68
+5541.5s 510 2026-06-16 14:39:08,366 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.311, Train_accy 63.11
+5599.2s 511 2026-06-16 14:40:06,063 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.877, Train_accy 95.92
+5745.4s 512 2026-06-16 14:42:32,275 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.002, Train_accy 95.24
+5859.6s 513 2026-06-16 14:44:26,433 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.990, Train_accy 87.20
+5886.7s 514 2026-06-16 14:44:53,568 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.368, Train_accy 51.60
+5888.7s 515 2026-06-16 14:44:55,561 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.063, Train_accy 87.46
+5891.0s 516 2026-06-16 14:44:57,883 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.074, Train_accy 83.27
+5894.4s 517 2026-06-16 14:45:01,301 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.024, Train_accy 90.08
+5897.1s 518 2026-06-16 14:45:04,006 [aggregation.py] => Client 0 => Q_i: -1.0589 | Acc: 95.11% | ProtoCons: 0.9288 | Novelty: 0.5000 | Drift: 4.5554 | UpdateNorm: 4.5554
+5897.1s 519 2026-06-16 14:45:04,009 [aggregation.py] => Client 1 => Q_i: 1.9176 | Acc: 78.35% | ProtoCons: 0.9215 | Novelty: 0.5000 | Drift: 0.0535 | UpdateNorm: 0.0535
+5897.2s 520 2026-06-16 14:45:04,014 [aggregation.py] => Client 2 => Q_i: -0.2388 | Acc: 99.19% | ProtoCons: 0.8671 | Novelty: 0.5000 | Drift: 3.3539 | UpdateNorm: 3.3539
+5897.2s 521 2026-06-16 14:45:04,017 [aggregation.py] => Client 3 => Q_i: -1.4281 | Acc: 97.39% | ProtoCons: 0.9525 | Novelty: 0.5000 | Drift: 5.1493 | UpdateNorm: 5.1493
+5897.2s 522 2026-06-16 14:45:04,021 [aggregation.py] => Client 4 => Q_i: 1.0623 | Acc: 99.53% | ProtoCons: 0.9180 | Novelty: 0.5000 | Drift: 1.5728 | UpdateNorm: 1.5728
+5897.2s 523 2026-06-16 14:45:04,025 [aggregation.py] => Client 5 => Q_i: 1.6568 | Acc: 51.54% | ProtoCons: 0.9008 | Novelty: 0.5000 | Drift: 0.0134 | UpdateNorm: 0.0134
+5897.2s 524 2026-06-16 14:45:04,029 [aggregation.py] => Client 6 => Q_i: 2.0987 | Acc: 92.89% | ProtoCons: 0.9853 | Novelty: 0.5000 | Drift: 0.0935 | UpdateNorm: 0.0935
+5897.2s 525 2026-06-16 14:45:04,032 [aggregation.py] => Client 7 => Q_i: 2.0879 | Acc: 92.63% | ProtoCons: 0.9397 | Novelty: 0.5000 | Drift: 0.0402 | UpdateNorm: 0.0402
+5897.2s 526 2026-06-16 14:45:04,036 [aggregation.py] => Client 8 => Q_i: 2.0915 | Acc: 96.48% | ProtoCons: 0.9889 | Novelty: 0.5000 | Drift: 0.1603 | UpdateNorm: 0.1603
+5897.2s 527 2026-06-16 14:45:04,037 [aggregation.py] => Client 0 rejected by robust filter | Drift: 4.5554 | UpdateNorm: 4.5554
+5897.2s 528 2026-06-16 14:45:04,037 [aggregation.py] => Client 2 rejected by robust filter | Drift: 3.3539 | UpdateNorm: 3.3539
+5897.2s 529 2026-06-16 14:45:04,037 [aggregation.py] => Client 3 rejected by robust filter | Drift: 5.1493 | UpdateNorm: 5.1493
+5897.2s 530 2026-06-16 14:45:04,037 [aggregation.py] => Client 4 rejected by robust filter | Drift: 1.5728 | UpdateNorm: 1.5728
+5897.2s 531 2026-06-16 14:45:04,038 [trainer.py] => Client 1 Aggregation Weight alpha_i: 0.1871
+5897.2s 532 2026-06-16 14:45:04,038 [trainer.py] => Client 5 Aggregation Weight alpha_i: 0.1442
+5897.2s 533 2026-06-16 14:45:04,038 [trainer.py] => Client 6 Aggregation Weight alpha_i: 0.2243
+5897.2s 534 2026-06-16 14:45:04,038 [trainer.py] => Client 7 Aggregation Weight alpha_i: 0.2218
+5897.2s 535 2026-06-16 14:45:04,038 [trainer.py] => Client 8 Aggregation Weight alpha_i: 0.2227
+5897.4s 536 2026-06-16 14:45:04,275 [trainer.py] => Evaluating on global_test_data filtered to learned classes: 0-5
+5956.1s 537 2026-06-16 14:46:03,003 [trainer.py] => [Task 0 | Round 10] Acc: 35.70% | Old Acc: 0.00% | New Acc: 0.00% | Forgetting: 0.00% | Params: 22,561 | Comm Cost: 0.09 MB
+5956.2s 538 2026-06-16 14:46:03,007 [trainer.py] => --- Task 0 | Round 11/30 (Global 11) ---
+6035.5s 539 2026-06-16 14:47:22,394 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.871, Train_accy 95.26
+6130.1s 540 2026-06-16 14:48:57,030 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.286, Train_accy 66.58
+6188.8s 541 2026-06-16 14:49:55,612 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.896, Train_accy 96.20
+6335.7s 542 2026-06-16 14:52:22,558 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.998, Train_accy 95.67
+6450.3s 543 2026-06-16 14:54:17,132 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.976, Train_accy 87.99
+6477.4s 544 2026-06-16 14:54:44,264 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.345, Train_accy 53.14
+6479.5s 545 2026-06-16 14:54:46,323 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.052, Train_accy 92.17
+6481.8s 546 2026-06-16 14:54:48,628 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.074, Train_accy 91.89
+6485.1s 547 2026-06-16 14:54:51,985 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.021, Train_accy 92.29
+6487.8s 548 2026-06-16 14:54:54,668 [aggregation.py] => Client 0 => Q_i: -1.0693 | Acc: 93.98% | ProtoCons: 0.9297 | Novelty: 0.5000 | Drift: 4.5554 | UpdateNorm: 4.5554
+6487.8s 549 2026-06-16 14:54:54,672 [aggregation.py] => Client 1 => Q_i: 1.9717 | Acc: 81.04% | ProtoCons: 0.9488 | Novelty: 0.5000 | Drift: 0.0536 | UpdateNorm: 0.0536
+6487.8s 550 2026-06-16 14:54:54,676 [aggregation.py] => Client 2 => Q_i: -0.2179 | Acc: 99.08% | ProtoCons: 0.8890 | Novelty: 0.5000 | Drift: 3.3538 | UpdateNorm: 3.3538
+6487.8s 551 2026-06-16 14:54:54,681 [aggregation.py] => Client 3 => Q_i: -1.4316 | Acc: 96.83% | ProtoCons: 0.9546 | Novelty: 0.5000 | Drift: 5.1493 | UpdateNorm: 5.1493
+6487.8s 552 2026-06-16 14:54:54,684 [aggregation.py] => Client 4 => Q_i: 1.0581 | Acc: 99.54% | ProtoCons: 0.9137 | Novelty: 0.5000 | Drift: 1.5728 | UpdateNorm: 1.5728
+6487.8s 553 2026-06-16 14:54:54,688 [aggregation.py] => Client 5 => Q_i: 1.6588 | Acc: 50.53% | ProtoCons: 0.9130 | Novelty: 0.5000 | Drift: 0.0135 | UpdateNorm: 0.0135
+6487.8s 554 2026-06-16 14:54:54,692 [aggregation.py] => Client 6 => Q_i: 2.1056 | Acc: 93.31% | ProtoCons: 0.9880 | Novelty: 0.5000 | Drift: 0.0936 | UpdateNorm: 0.0936
+6487.8s 555 2026-06-16 14:54:54,695 [aggregation.py] => Client 7 => Q_i: 2.1365 | Acc: 93.14% | ProtoCons: 0.9833 | Novelty: 0.5000 | Drift: 0.0402 | UpdateNorm: 0.0402
+6487.8s 556 2026-06-16 14:54:54,699 [aggregation.py] => Client 8 => Q_i: 2.0855 | Acc: 96.18% | ProtoCons: 0.9859 | Novelty: 0.5000 | Drift: 0.1603 | UpdateNorm: 0.1603
+6487.8s 557 2026-06-16 14:54:54,699 [aggregation.py] => Client 0 rejected by robust filter | Drift: 4.5554 | UpdateNorm: 4.5554
+6487.8s 558 2026-06-16 14:54:54,699 [aggregation.py] => Client 2 rejected by robust filter | Drift: 3.3538 | UpdateNorm: 3.3538
+6487.8s 559 2026-06-16 14:54:54,700 [aggregation.py] => Client 3 rejected by robust filter | Drift: 5.1493 | UpdateNorm: 5.1493
+6487.8s 560 2026-06-16 14:54:54,700 [aggregation.py] => Client 4 rejected by robust filter | Drift: 1.5728 | UpdateNorm: 1.5728
+6487.8s 561 2026-06-16 14:54:54,700 [trainer.py] => Client 1 Aggregation Weight alpha_i: 0.1933
+6487.8s 562 2026-06-16 14:54:54,700 [trainer.py] => Client 5 Aggregation Weight alpha_i: 0.1413
+6487.8s 563 2026-06-16 14:54:54,701 [trainer.py] => Client 6 Aggregation Weight alpha_i: 0.2209
+6487.8s 564 2026-06-16 14:54:54,701 [trainer.py] => Client 7 Aggregation Weight alpha_i: 0.2279
+6487.8s 565 2026-06-16 14:54:54,701 [trainer.py] => Client 8 Aggregation Weight alpha_i: 0.2166
+6488.0s 566 2026-06-16 14:54:54,929 [trainer.py] => Evaluating on global_test_data filtered to learned classes: 0-5
+6546.3s 567 2026-06-16 14:55:53,179 [trainer.py] => [Task 0 | Round 11] Acc: 36.29% | Old Acc: 0.00% | New Acc: 0.00% | Forgetting: 0.00% | Params: 22,561 | Comm Cost: 0.09 MB
+6546.3s 568 2026-06-16 14:55:53,183 [trainer.py] => --- Task 0 | Round 12/30 (Global 12) ---
+6625.5s 569 2026-06-16 14:57:12,348 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.864, Train_accy 95.19
+6720.1s 570 2026-06-16 14:58:46,941 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.258, Train_accy 70.79
+6778.7s 571 2026-06-16 14:59:45,577 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.889, Train_accy 96.20
+6925.8s 572 2026-06-16 15:02:12,626 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.991, Train_accy 95.49
+7040.3s 573 2026-06-16 15:04:07,192 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.959, Train_accy 88.56
+7067.2s 574 2026-06-16 15:04:34,078 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.315, Train_accy 55.36
+7069.3s 575 2026-06-16 15:04:36,132 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.021, Train_accy 92.56
+7071.7s 576 2026-06-16 15:04:38,533 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.048, Train_accy 92.19
+7075.1s 577 2026-06-16 15:04:41,963 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.983, Train_accy 94.67
+7077.9s 578 2026-06-16 15:04:44,751 [aggregation.py] => Client 0 => Q_i: -1.0575 | Acc: 94.14% | ProtoCons: 0.9399 | Novelty: 0.5000 | Drift: 4.5554 | UpdateNorm: 4.5554
+7077.9s 579 2026-06-16 15:04:44,755 [aggregation.py] => Client 1 => Q_i: 1.9677 | Acc: 82.00% | ProtoCons: 0.9353 | Novelty: 0.5000 | Drift: 0.0537 | UpdateNorm: 0.0537
+7077.9s 580 2026-06-16 15:04:44,759 [aggregation.py] => Client 2 => Q_i: -0.2389 | Acc: 99.05% | ProtoCons: 0.8683 | Novelty: 0.5000 | Drift: 3.3539 | UpdateNorm: 3.3539
+7077.9s 581 2026-06-16 15:04:44,763 [aggregation.py] => Client 3 => Q_i: -1.4271 | Acc: 96.80% | ProtoCons: 0.9596 | Novelty: 0.5000 | Drift: 5.1495 | UpdateNorm: 5.1495
+7077.9s 582 2026-06-16 15:04:44,767 [aggregation.py] => Client 4 => Q_i: 1.0802 | Acc: 99.55% | ProtoCons: 0.9362 | Novelty: 0.5000 | Drift: 1.5735 | UpdateNorm: 1.5735
+7077.9s 583 2026-06-16 15:04:44,771 [aggregation.py] => Client 5 => Q_i: 1.6472 | Acc: 50.80% | ProtoCons: 0.8988 | Novelty: 0.5000 | Drift: 0.0136 | UpdateNorm: 0.0136
+7077.9s 584 2026-06-16 15:04:44,774 [aggregation.py] => Client 6 => Q_i: 2.1200 | Acc: 96.96% | ProtoCons: 0.9662 | Novelty: 0.5000 | Drift: 0.0939 | UpdateNorm: 0.0939
+7077.9s 585 2026-06-16 15:04:44,778 [aggregation.py] => Client 7 => Q_i: 2.1295 | Acc: 95.04% | ProtoCons: 0.9573 | Novelty: 0.5000 | Drift: 0.0403 | UpdateNorm: 0.0403
+7077.9s 586 2026-06-16 15:04:44,782 [aggregation.py] => Client 8 => Q_i: 2.1051 | Acc: 97.61% | ProtoCons: 0.9916 | Novelty: 0.5000 | Drift: 0.1609 | UpdateNorm: 0.1609
+7077.9s 587 2026-06-16 15:04:44,782 [aggregation.py] => Client 0 rejected by robust filter | Drift: 4.5554 | UpdateNorm: 4.5554
+7077.9s 588 2026-06-16 15:04:44,782 [aggregation.py] => Client 2 rejected by robust filter | Drift: 3.3539 | UpdateNorm: 3.3539
+7077.9s 589 2026-06-16 15:04:44,782 [aggregation.py] => Client 3 rejected by robust filter | Drift: 5.1495 | UpdateNorm: 5.1495
+7077.9s 590 2026-06-16 15:04:44,782 [aggregation.py] => Client 4 rejected by robust filter | Drift: 1.5735 | UpdateNorm: 1.5735
+7077.9s 591 2026-06-16 15:04:44,783 [trainer.py] => Client 1 Aggregation Weight alpha_i: 0.1918
+7077.9s 592 2026-06-16 15:04:44,783 [trainer.py] => Client 5 Aggregation Weight alpha_i: 0.1392
+7077.9s 593 2026-06-16 15:04:44,783 [trainer.py] => Client 6 Aggregation Weight alpha_i: 0.2234
+7077.9s 594 2026-06-16 15:04:44,783 [trainer.py] => Client 7 Aggregation Weight alpha_i: 0.2255
+7077.9s 595 2026-06-16 15:04:44,783 [trainer.py] => Client 8 Aggregation Weight alpha_i: 0.2201
+7078.2s 596 2026-06-16 15:04:45,022 [trainer.py] => Evaluating on global_test_data filtered to learned classes: 0-5
+7137.0s 597 2026-06-16 15:05:43,795 [trainer.py] => [Task 0 | Round 12] Acc: 36.27% | Old Acc: 0.00% | New Acc: 0.00% | Forgetting: 0.00% | Params: 22,561 | Comm Cost: 0.09 MB
+7137.0s 598 2026-06-16 15:05:43,800 [trainer.py] => --- Task 0 | Round 13/30 (Global 13) ---
+7216.5s 599 2026-06-16 15:07:03,359 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.861, Train_accy 95.78
+7310.4s 600 2026-06-16 15:08:37,291 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.235, Train_accy 75.52
+7369.5s 601 2026-06-16 15:09:36,392 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.864, Train_accy 96.55
+7516.6s 602 2026-06-16 15:12:03,471 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.988, Train_accy 95.53
+7630.8s 603 2026-06-16 15:13:57,720 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.948, Train_accy 89.45
+7657.8s 604 2026-06-16 15:14:24,613 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.287, Train_accy 58.73
+7659.7s 605 2026-06-16 15:14:26,552 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.002, Train_accy 93.68
+7661.9s 606 2026-06-16 15:14:28,778 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.018, Train_accy 92.37
+7665.4s 607 2026-06-16 15:14:32,214 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.976, Train_accy 95.07
+7668.1s 608 2026-06-16 15:14:34,968 [aggregation.py] => Client 0 => Q_i: -1.0625 | Acc: 94.93% | ProtoCons: 0.9270 | Novelty: 0.5000 | Drift: 4.5554 | UpdateNorm: 4.5554
+7668.1s 609 2026-06-16 15:14:34,971 [aggregation.py] => Client 1 => Q_i: 1.9712 | Acc: 83.64% | ProtoCons: 0.9226 | Novelty: 0.5000 | Drift: 0.0540 | UpdateNorm: 0.0540
+7668.1s 610 2026-06-16 15:14:34,975 [aggregation.py] => Client 2 => Q_i: -0.2160 | Acc: 99.01% | ProtoCons: 0.8920 | Novelty: 0.5000 | Drift: 3.3544 | UpdateNorm: 3.3544
+7668.1s 611 2026-06-16 15:14:34,979 [aggregation.py] => Client 3 => Q_i: -1.4266 | Acc: 97.02% | ProtoCons: 0.9576 | Novelty: 0.5000 | Drift: 5.1492 | UpdateNorm: 5.1492
+7668.1s 612 2026-06-16 15:14:34,982 [aggregation.py] => Client 4 => Q_i: 1.0829 | Acc: 99.56% | ProtoCons: 0.9386 | Novelty: 0.5000 | Drift: 1.5733 | UpdateNorm: 1.5733
+7668.1s 613 2026-06-16 15:14:34,986 [aggregation.py] => Client 5 => Q_i: 1.6483 | Acc: 51.60% | ProtoCons: 0.8919 | Novelty: 0.5000 | Drift: 0.0137 | UpdateNorm: 0.0137
+7668.1s 614 2026-06-16 15:14:34,990 [aggregation.py] => Client 6 => Q_i: 2.1497 | Acc: 97.27% | ProtoCons: 0.9929 | Novelty: 0.5000 | Drift: 0.0941 | UpdateNorm: 0.0941
+7668.1s 615 2026-06-16 15:14:34,993 [aggregation.py] => Client 7 => Q_i: 2.1595 | Acc: 96.56% | ProtoCons: 0.9723 | Novelty: 0.5000 | Drift: 0.0406 | UpdateNorm: 0.0406
+7668.2s 616 2026-06-16 15:14:34,996 [aggregation.py] => Client 8 => Q_i: 2.1048 | Acc: 97.60% | ProtoCons: 0.9913 | Novelty: 0.5000 | Drift: 0.1608 | UpdateNorm: 0.1608
+7668.2s 617 2026-06-16 15:14:34,997 [aggregation.py] => Client 0 rejected by robust filter | Drift: 4.5554 | UpdateNorm: 4.5554
+7668.2s 618 2026-06-16 15:14:34,997 [aggregation.py] => Client 2 rejected by robust filter | Drift: 3.3544 | UpdateNorm: 3.3544
+7668.2s 619 2026-06-16 15:14:34,997 [aggregation.py] => Client 3 rejected by robust filter | Drift: 5.1492 | UpdateNorm: 5.1492
+7668.2s 620 2026-06-16 15:14:34,997 [aggregation.py] => Client 4 rejected by robust filter | Drift: 1.5733 | UpdateNorm: 1.5733
+7668.2s 621 2026-06-16 15:14:34,998 [trainer.py] => Client 1 Aggregation Weight alpha_i: 0.1898
+7668.2s 622 2026-06-16 15:14:34,998 [trainer.py] => Client 5 Aggregation Weight alpha_i: 0.1374
+7668.2s 623 2026-06-16 15:14:34,998 [trainer.py] => Client 6 Aggregation Weight alpha_i: 0.2269
+7668.2s 624 2026-06-16 15:14:34,998 [trainer.py] => Client 7 Aggregation Weight alpha_i: 0.2291
+7668.2s 625 2026-06-16 15:14:34,998 [trainer.py] => Client 8 Aggregation Weight alpha_i: 0.2169
+7668.4s 626 2026-06-16 15:14:35,228 [trainer.py] => Evaluating on global_test_data filtered to learned classes: 0-5
+7726.1s 627 2026-06-16 15:15:32,967 [trainer.py] => [Task 0 | Round 13] Acc: 6.98% | Old Acc: 0.00% | New Acc: 0.00% | Forgetting: 0.00% | Params: 22,561 | Comm Cost: 0.09 MB
+7726.1s 628 2026-06-16 15:15:32,971 [trainer.py] => --- Task 0 | Round 14/30 (Global 14) ---
+7807.0s 629 2026-06-16 15:16:53,852 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.858, Train_accy 95.15
+7901.8s 630 2026-06-16 15:18:28,663 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.217, Train_accy 77.87
+7960.5s 631 2026-06-16 15:19:27,391 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.873, Train_accy 96.15
+8106.1s 632 2026-06-16 15:21:52,944 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.981, Train_accy 95.29
+8219.3s 633 2026-06-16 15:23:46,132 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.943, Train_accy 90.60
+8246.5s 634 2026-06-16 15:24:13,377 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.268, Train_accy 60.28
+8248.4s 635 2026-06-16 15:24:15,308 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.968, Train_accy 95.05
+8250.7s 636 2026-06-16 15:24:17,536 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.993, Train_accy 93.11
+8254.0s 637 2026-06-16 15:24:20,905 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.946, Train_accy 95.85
+8256.8s 638 2026-06-16 15:24:23,657 [aggregation.py] => Client 0 => Q_i: -1.0586 | Acc: 94.10% | ProtoCons: 0.9390 | Novelty: 0.5000 | Drift: 4.5552 | UpdateNorm: 4.5552
+8256.8s 639 2026-06-16 15:24:23,661 [aggregation.py] => Client 1 => Q_i: 1.9640 | Acc: 83.76% | ProtoCons: 0.9143 | Novelty: 0.5000 | Drift: 0.0542 | UpdateNorm: 0.0542
+8256.8s 640 2026-06-16 15:24:23,665 [aggregation.py] => Client 2 => Q_i: -0.2635 | Acc: 99.00% | ProtoCons: 0.8451 | Novelty: 0.5000 | Drift: 3.3551 | UpdateNorm: 3.3551
+8256.8s 641 2026-06-16 15:24:23,669 [aggregation.py] => Client 3 => Q_i: -1.4224 | Acc: 97.34% | ProtoCons: 0.9588 | Novelty: 0.5000 | Drift: 5.1494 | UpdateNorm: 5.1494
+8256.8s 642 2026-06-16 15:24:23,672 [aggregation.py] => Client 4 => Q_i: 1.0803 | Acc: 99.57% | ProtoCons: 0.9365 | Novelty: 0.5000 | Drift: 1.5740 | UpdateNorm: 1.5740
+8256.8s 643 2026-06-16 15:24:23,676 [aggregation.py] => Client 5 => Q_i: 1.5106 | Acc: 37.62% | ProtoCons: 0.8942 | Novelty: 0.5000 | Drift: 0.0139 | UpdateNorm: 0.0139
+8256.8s 644 2026-06-16 15:24:23,680 [aggregation.py] => Client 6 => Q_i: 2.1221 | Acc: 97.59% | ProtoCons: 0.9623 | Novelty: 0.5000 | Drift: 0.0944 | UpdateNorm: 0.0944
+8256.8s 645 2026-06-16 15:24:23,684 [aggregation.py] => Client 7 => Q_i: 2.1634 | Acc: 96.87% | ProtoCons: 0.9730 | Novelty: 0.5000 | Drift: 0.0405 | UpdateNorm: 0.0405
+8256.8s 646 2026-06-16 15:24:23,688 [aggregation.py] => Client 8 => Q_i: 2.1071 | Acc: 97.69% | ProtoCons: 0.9931 | Novelty: 0.5000 | Drift: 0.1613 | UpdateNorm: 0.1613
+8256.8s 647 2026-06-16 15:24:23,688 [aggregation.py] => Client 0 rejected by robust filter | Drift: 4.5552 | UpdateNorm: 4.5552
+8256.8s 648 2026-06-16 15:24:23,688 [aggregation.py] => Client 2 rejected by robust filter | Drift: 3.3551 | UpdateNorm: 3.3551
+8256.8s 649 2026-06-16 15:24:23,688 [aggregation.py] => Client 3 rejected by robust filter | Drift: 5.1494 | UpdateNorm: 5.1494
+8256.8s 650 2026-06-16 15:24:23,688 [aggregation.py] => Client 4 rejected by robust filter | Drift: 1.5740 | UpdateNorm: 1.5740
+8256.8s 651 2026-06-16 15:24:23,689 [trainer.py] => Client 1 Aggregation Weight alpha_i: 0.1930
+8256.8s 652 2026-06-16 15:24:23,689 [trainer.py] => Client 5 Aggregation Weight alpha_i: 0.1227
+8256.8s 653 2026-06-16 15:24:23,689 [trainer.py] => Client 6 Aggregation Weight alpha_i: 0.2261
+8256.8s 654 2026-06-16 15:24:23,690 [trainer.py] => Client 7 Aggregation Weight alpha_i: 0.2356
+8256.8s 655 2026-06-16 15:24:23,690 [trainer.py] => Client 8 Aggregation Weight alpha_i: 0.2227
+8257.1s 656 2026-06-16 15:24:23,944 [trainer.py] => Evaluating on global_test_data filtered to learned classes: 0-5
+8315.1s 657 2026-06-16 15:25:21,983 [trainer.py] => [Task 0 | Round 14] Acc: 7.08% | Old Acc: 0.00% | New Acc: 0.00% | Forgetting: 0.00% | Params: 22,561 | Comm Cost: 0.09 MB
+8315.1s 658 2026-06-16 15:25:21,987 [trainer.py] => --- Task 0 | Round 15/30 (Global 15) ---
+8394.5s 659 2026-06-16 15:26:41,343 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.859, Train_accy 95.18
+8488.3s 660 2026-06-16 15:28:15,204 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.209, Train_accy 79.78
+8547.4s 661 2026-06-16 15:29:14,264 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.852, Train_accy 97.33
+8696.7s 662 2026-06-16 15:31:43,607 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.974, Train_accy 95.03
+8812.5s 663 2026-06-16 15:33:39,327 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.929, Train_accy 91.25
+8839.7s 664 2026-06-16 15:34:06,597 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.256, Train_accy 62.55
+8841.8s 665 2026-06-16 15:34:08,662 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.947, Train_accy 96.93
+8844.1s 666 2026-06-16 15:34:10,940 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.958, Train_accy 96.70
+8847.5s 667 2026-06-16 15:34:14,361 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.918, Train_accy 97.13
+8850.3s 668 2026-06-16 15:34:17,143 [aggregation.py] => Client 0 => Q_i: -1.0634 | Acc: 93.93% | ProtoCons: 0.9360 | Novelty: 0.5000 | Drift: 4.5553 | UpdateNorm: 4.5553
+8850.3s 669 2026-06-16 15:34:17,147 [aggregation.py] => Client 1 => Q_i: 2.0032 | Acc: 85.48% | ProtoCons: 0.9366 | Novelty: 0.5000 | Drift: 0.0546 | UpdateNorm: 0.0546
+8850.3s 670 2026-06-16 15:34:17,151 [aggregation.py] => Client 2 => Q_i: -0.1935 | Acc: 99.01% | ProtoCons: 0.9146 | Novelty: 0.5000 | Drift: 3.3545 | UpdateNorm: 3.3545
+8850.3s 671 2026-06-16 15:34:17,155 [aggregation.py] => Client 3 => Q_i: -1.4321 | Acc: 96.51% | ProtoCons: 0.9574 | Novelty: 0.5000 | Drift: 5.1494 | UpdateNorm: 5.1494
+8850.3s 672 2026-06-16 15:34:17,159 [aggregation.py] => Client 4 => Q_i: 1.0722 | Acc: 99.59% | ProtoCons: 0.9279 | Novelty: 0.5000 | Drift: 1.5737 | UpdateNorm: 1.5737
+8850.3s 673 2026-06-16 15:34:17,163 [aggregation.py] => Client 5 => Q_i: 1.5029 | Acc: 36.88% | ProtoCons: 0.8939 | Novelty: 0.5000 | Drift: 0.0140 | UpdateNorm: 0.0140
+8850.3s 674 2026-06-16 15:34:17,166 [aggregation.py] => Client 6 => Q_i: 2.1472 | Acc: 97.86% | ProtoCons: 0.9843 | Novelty: 0.5000 | Drift: 0.0939 | UpdateNorm: 0.0939
+8850.3s 675 2026-06-16 15:34:17,170 [aggregation.py] => Client 7 => Q_i: 2.1271 | Acc: 97.80% | ProtoCons: 0.9275 | Novelty: 0.5000 | Drift: 0.0406 | UpdateNorm: 0.0406
+8850.3s 676 2026-06-16 15:34:17,174 [aggregation.py] => Client 8 => Q_i: 2.1125 | Acc: 97.87% | ProtoCons: 0.9962 | Novelty: 0.5000 | Drift: 0.1607 | UpdateNorm: 0.1607
+8850.3s 677 2026-06-16 15:34:17,174 [aggregation.py] => Client 0 rejected by robust filter | Drift: 4.5553 | UpdateNorm: 4.5553
+8850.3s 678 2026-06-16 15:34:17,174 [aggregation.py] => Client 2 rejected by robust filter | Drift: 3.3545 | UpdateNorm: 3.3545
+8850.3s 679 2026-06-16 15:34:17,174 [aggregation.py] => Client 3 rejected by robust filter | Drift: 5.1494 | UpdateNorm: 5.1494
+8850.3s 680 2026-06-16 15:34:17,174 [aggregation.py] => Client 4 rejected by robust filter | Drift: 1.5737 | UpdateNorm: 1.5737
+8850.3s 681 2026-06-16 15:34:17,175 [trainer.py] => Client 1 Aggregation Weight alpha_i: 0.1997
+8850.3s 682 2026-06-16 15:34:17,175 [trainer.py] => Client 5 Aggregation Weight alpha_i: 0.1211
+8850.3s 683 2026-06-16 15:34:17,175 [trainer.py] => Client 6 Aggregation Weight alpha_i: 0.2306
+8850.3s 684 2026-06-16 15:34:17,175 [trainer.py] => Client 7 Aggregation Weight alpha_i: 0.2260
+8850.3s 685 2026-06-16 15:34:17,175 [trainer.py] => Client 8 Aggregation Weight alpha_i: 0.2227
+8850.5s 686 2026-06-16 15:34:17,414 [trainer.py] => Evaluating on global_test_data filtered to learned classes: 0-5
+8909.7s 687 2026-06-16 15:35:16,584 [trainer.py] => [Task 0 | Round 15] Acc: 6.95% | Old Acc: 0.00% | New Acc: 0.00% | Forgetting: 0.00% | Params: 22,561 | Comm Cost: 0.09 MB
+8909.7s 688 2026-06-16 15:35:16,588 [trainer.py] => --- Task 0 | Round 16/30 (Global 16) ---
+8989.0s 689 2026-06-16 15:36:35,798 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.858, Train_accy 95.22
+9084.3s 690 2026-06-16 15:38:11,111 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.197, Train_accy 81.76
+9143.1s 691 2026-06-16 15:39:09,917 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.837, Train_accy 97.58
+9290.5s 692 2026-06-16 15:41:37,392 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.979, Train_accy 94.81
+9404.5s 693 2026-06-16 15:43:31,358 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.928, Train_accy 91.46
+9431.7s 694 2026-06-16 15:43:58,617 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.244, Train_accy 58.32
+9433.7s 695 2026-06-16 15:44:00,615 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.901, Train_accy 97.41
+9436.0s 696 2026-06-16 15:44:02,849 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.918, Train_accy 97.35
+9439.6s 697 2026-06-16 15:44:06,448 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.876, Train_accy 97.50
+9442.3s 698 2026-06-16 15:44:09,204 [aggregation.py] => Client 0 => Q_i: -1.0580 | Acc: 94.42% | ProtoCons: 0.9364 | Novelty: 0.5000 | Drift: 4.5551 | UpdateNorm: 4.5551
+9442.3s 699 2026-06-16 15:44:09,208 [aggregation.py] => Client 1 => Q_i: 2.0293 | Acc: 87.40% | ProtoCons: 0.9438 | Novelty: 0.5000 | Drift: 0.0550 | UpdateNorm: 0.0550
+9442.3s 700 2026-06-16 15:44:09,212 [aggregation.py] => Client 2 => Q_i: -0.1859 | Acc: 98.97% | ProtoCons: 0.9226 | Novelty: 0.5000 | Drift: 3.3545 | UpdateNorm: 3.3545
+9442.3s 701 2026-06-16 15:44:09,216 [aggregation.py] => Client 3 => Q_i: -1.4211 | Acc: 96.81% | ProtoCons: 0.9653 | Novelty: 0.5000 | Drift: 5.1493 | UpdateNorm: 5.1493
+9442.3s 702 2026-06-16 15:44:09,219 [aggregation.py] => Client 4 => Q_i: 1.0717 | Acc: 99.60% | ProtoCons: 0.9273 | Novelty: 0.5000 | Drift: 1.5737 | UpdateNorm: 1.5737
+9442.3s 703 2026-06-16 15:44:09,223 [aggregation.py] => Client 5 => Q_i: 1.5703 | Acc: 42.41% | ProtoCons: 0.9062 | Novelty: 0.5000 | Drift: 0.0143 | UpdateNorm: 0.0143
+9442.3s 704 2026-06-16 15:44:09,226 [aggregation.py] => Client 6 => Q_i: 2.1471 | Acc: 98.01% | ProtoCons: 0.9826 | Novelty: 0.5000 | Drift: 0.0936 | UpdateNorm: 0.0936
+9442.3s 705 2026-06-16 15:44:09,230 [aggregation.py] => Client 7 => Q_i: 2.1681 | Acc: 97.99% | ProtoCons: 0.9665 | Novelty: 0.5000 | Drift: 0.0404 | UpdateNorm: 0.0404
+9442.3s 706 2026-06-16 15:44:09,234 [aggregation.py] => Client 8 => Q_i: 2.1174 | Acc: 98.12% | ProtoCons: 0.9980 | Novelty: 0.5000 | Drift: 0.1598 | UpdateNorm: 0.1598
+9442.3s 707 2026-06-16 15:44:09,234 [aggregation.py] => Client 0 rejected by robust filter | Drift: 4.5551 | UpdateNorm: 4.5551
+9442.3s 708 2026-06-16 15:44:09,234 [aggregation.py] => Client 2 rejected by robust filter | Drift: 3.3545 | UpdateNorm: 3.3545
+9442.3s 709 2026-06-16 15:44:09,234 [aggregation.py] => Client 3 rejected by robust filter | Drift: 5.1493 | UpdateNorm: 5.1493
+9442.3s 710 2026-06-16 15:44:09,234 [aggregation.py] => Client 4 rejected by robust filter | Drift: 1.5737 | UpdateNorm: 1.5737
+9442.3s 711 2026-06-16 15:44:09,235 [trainer.py] => Client 1 Aggregation Weight alpha_i: 0.2001
+9442.3s 712 2026-06-16 15:44:09,235 [trainer.py] => Client 5 Aggregation Weight alpha_i: 0.1264
+9442.3s 713 2026-06-16 15:44:09,235 [trainer.py] => Client 6 Aggregation Weight alpha_i: 0.2251
+9442.3s 714 2026-06-16 15:44:09,235 [trainer.py] => Client 7 Aggregation Weight alpha_i: 0.2299
+9442.3s 715 2026-06-16 15:44:09,236 [trainer.py] => Client 8 Aggregation Weight alpha_i: 0.2185
+9442.6s 716 2026-06-16 15:44:09,467 [trainer.py] => Evaluating on global_test_data filtered to learned classes: 0-5
+9500.7s 717 2026-06-16 15:45:07,528 [trainer.py] => [Task 0 | Round 16] Acc: 7.24% | Old Acc: 0.00% | New Acc: 0.00% | Forgetting: 0.00% | Params: 22,561 | Comm Cost: 0.09 MB
+9500.7s 718 2026-06-16 15:45:07,533 [trainer.py] => --- Task 0 | Round 17/30 (Global 17) ---
+9579.6s 719 2026-06-16 15:46:26,457 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.857, Train_accy 96.28
+9675.3s 720 2026-06-16 15:48:02,099 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.196, Train_accy 72.50
+9734.1s 721 2026-06-16 15:49:00,991 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.826, Train_accy 98.03
+9880.4s 722 2026-06-16 15:51:27,219 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.972, Train_accy 94.90
+9993.9s 723 2026-06-16 15:53:20,765 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.919, Train_accy 92.47
+10020.8s 724 2026-06-16 15:53:47,645 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.242, Train_accy 44.19
+10022.8s 725 2026-06-16 15:53:49,645 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.865, Train_accy 97.67
+10025.0s 726 2026-06-16 15:53:51,910 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.883, Train_accy 97.59
+10028.4s 727 2026-06-16 15:53:55,283 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.847, Train_accy 97.76
+10031.2s 728 2026-06-16 15:53:58,041 [aggregation.py] => Client 0 => Q_i: -1.0536 | Acc: 93.45% | ProtoCons: 0.9505 | Novelty: 0.5000 | Drift: 4.5551 | UpdateNorm: 4.5551
+10031.2s 729 2026-06-16 15:53:58,045 [aggregation.py] => Client 1 => Q_i: 2.0412 | Acc: 88.49% | ProtoCons: 0.9451 | Novelty: 0.5000 | Drift: 0.0554 | UpdateNorm: 0.0554
+10031.2s 730 2026-06-16 15:53:58,050 [aggregation.py] => Client 2 => Q_i: -0.1688 | Acc: 98.99% | ProtoCons: 0.9395 | Novelty: 0.5000 | Drift: 3.3545 | UpdateNorm: 3.3545
+10031.2s 731 2026-06-16 15:53:58,055 [aggregation.py] => Client 3 => Q_i: -1.4167 | Acc: 97.06% | ProtoCons: 0.9673 | Novelty: 0.5000 | Drift: 5.1494 | UpdateNorm: 5.1494
+10031.2s 732 2026-06-16 15:53:58,059 [aggregation.py] => Client 4 => Q_i: 1.0717 | Acc: 99.60% | ProtoCons: 0.9273 | Novelty: 0.5000 | Drift: 1.5738 | UpdateNorm: 1.5738
+10031.2s 733 2026-06-16 15:53:58,064 [aggregation.py] => Client 5 => Q_i: 1.5712 | Acc: 43.36% | ProtoCons: 0.8977 | Novelty: 0.5000 | Drift: 0.0144 | UpdateNorm: 0.0144
+10031.2s 734 2026-06-16 15:53:58,072 [aggregation.py] => Client 6 => Q_i: 2.1606 | Acc: 98.22% | ProtoCons: 0.9936 | Novelty: 0.5000 | Drift: 0.0931 | UpdateNorm: 0.0931
+10031.2s 735 2026-06-16 15:53:58,080 [aggregation.py] => Client 7 => Q_i: 2.1839 | Acc: 98.15% | ProtoCons: 0.9804 | Novelty: 0.5000 | Drift: 0.0400 | UpdateNorm: 0.0400
+10031.2s 736 2026-06-16 15:53:58,090 [aggregation.py] => Client 8 => Q_i: 2.1186 | Acc: 98.33% | ProtoCons: 0.9971 | Novelty: 0.5000 | Drift: 0.1597 | UpdateNorm: 0.1597
+10031.2s 737 2026-06-16 15:53:58,090 [aggregation.py] => Client 0 rejected by robust filter | Drift: 4.5551 | UpdateNorm: 4.5551
+10031.2s 738 2026-06-16 15:53:58,091 [aggregation.py] => Client 2 rejected by robust filter | Drift: 3.3545 | UpdateNorm: 3.3545
+10031.2s 739 2026-06-16 15:53:58,091 [aggregation.py] => Client 3 rejected by robust filter | Drift: 5.1494 | UpdateNorm: 5.1494
+10031.2s 740 2026-06-16 15:53:58,091 [aggregation.py] => Client 4 rejected by robust filter | Drift: 1.5738 | UpdateNorm: 1.5738
+10031.2s 741 2026-06-16 15:53:58,092 [trainer.py] => Client 1 Aggregation Weight alpha_i: 0.2006
+10031.2s 742 2026-06-16 15:53:58,092 [trainer.py] => Client 5 Aggregation Weight alpha_i: 0.1254
+10031.2s 743 2026-06-16 15:53:58,092 [trainer.py] => Client 6 Aggregation Weight alpha_i: 0.2260
+10031.2s 744 2026-06-16 15:53:58,092 [trainer.py] => Client 7 Aggregation Weight alpha_i: 0.2313
+10031.2s 745 2026-06-16 15:53:58,093 [trainer.py] => Client 8 Aggregation Weight alpha_i: 0.2167
+10031.5s 746 2026-06-16 15:53:58,329 [trainer.py] => Evaluating on global_test_data filtered to learned classes: 0-5
+10089.4s 747 2026-06-16 15:54:56,233 [trainer.py] => [Task 0 | Round 17] Acc: 7.08% | Old Acc: 0.00% | New Acc: 0.00% | Forgetting: 0.00% | Params: 22,561 | Comm Cost: 0.09 MB
+10089.4s 748 2026-06-16 15:54:56,238 [trainer.py] => --- Task 0 | Round 18/30 (Global 18) ---
+10168.5s 749 2026-06-16 15:56:15,347 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.855, Train_accy 95.39
+10263.4s 750 2026-06-16 15:57:50,248 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.198, Train_accy 69.95
+10321.3s 751 2026-06-16 15:58:48,149 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.826, Train_accy 97.58
+10467.7s 752 2026-06-16 16:01:14,496 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.967, Train_accy 95.26
+10581.8s 753 2026-06-16 16:03:08,636 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.928, Train_accy 91.86
+10608.6s 754 2026-06-16 16:03:35,442 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.247, Train_accy 44.52
+10610.6s 755 2026-06-16 16:03:37,466 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.837, Train_accy 97.84
+10612.9s 756 2026-06-16 16:03:39,790 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.856, Train_accy 97.77
+10616.4s 757 2026-06-16 16:03:43,255 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.815, Train_accy 97.99
+10619.1s 758 2026-06-16 16:03:45,994 [aggregation.py] => Client 0 => Q_i: -1.0453 | Acc: 93.96% | ProtoCons: 0.9537 | Novelty: 0.5000 | Drift: 4.5551 | UpdateNorm: 4.5551
+10619.1s 759 2026-06-16 16:03:45,998 [aggregation.py] => Client 1 => Q_i: 2.0743 | Acc: 89.53% | ProtoCons: 0.9679 | Novelty: 0.5000 | Drift: 0.0556 | UpdateNorm: 0.0556
+10619.1s 760 2026-06-16 16:03:46,003 [aggregation.py] => Client 2 => Q_i: -0.1742 | Acc: 98.95% | ProtoCons: 0.9340 | Novelty: 0.5000 | Drift: 3.3539 | UpdateNorm: 3.3539
+10619.1s 761 2026-06-16 16:03:46,007 [aggregation.py] => Client 3 => Q_i: -1.4200 | Acc: 96.73% | ProtoCons: 0.9673 | Novelty: 0.5000 | Drift: 5.1495 | UpdateNorm: 5.1495
+10619.1s 762 2026-06-16 16:03:46,011 [aggregation.py] => Client 4 => Q_i: 1.0702 | Acc: 99.60% | ProtoCons: 0.9254 | Novelty: 0.5000 | Drift: 1.5731 | UpdateNorm: 1.5731
+10619.1s 763 2026-06-16 16:03:46,015 [aggregation.py] => Client 5 => Q_i: 1.6017 | Acc: 44.61% | ProtoCons: 0.9158 | Novelty: 0.5000 | Drift: 0.0145 | UpdateNorm: 0.0145
+10619.1s 764 2026-06-16 16:03:46,019 [aggregation.py] => Client 6 => Q_i: 2.1513 | Acc: 98.23% | ProtoCons: 0.9841 | Novelty: 0.5000 | Drift: 0.0931 | UpdateNorm: 0.0931
+10619.1s 765 2026-06-16 16:03:46,023 [aggregation.py] => Client 7 => Q_i: 2.1730 | Acc: 98.28% | ProtoCons: 0.9681 | Novelty: 0.5000 | Drift: 0.0399 | UpdateNorm: 0.0399
+10619.2s 766 2026-06-16 16:03:46,028 [aggregation.py] => Client 8 => Q_i: 2.1190 | Acc: 98.62% | ProtoCons: 0.9946 | Novelty: 0.5000 | Drift: 0.1598 | UpdateNorm: 0.1598
+10619.2s 767 2026-06-16 16:03:46,028 [aggregation.py] => Client 0 rejected by robust filter | Drift: 4.5551 | UpdateNorm: 4.5551
+10619.2s 768 2026-06-16 16:03:46,028 [aggregation.py] => Client 2 rejected by robust filter | Drift: 3.3539 | UpdateNorm: 3.3539
+10619.2s 769 2026-06-16 16:03:46,028 [aggregation.py] => Client 3 rejected by robust filter | Drift: 5.1495 | UpdateNorm: 5.1495
+10619.2s 770 2026-06-16 16:03:46,028 [aggregation.py] => Client 4 rejected by robust filter | Drift: 1.5731 | UpdateNorm: 1.5731
+10619.2s 771 2026-06-16 16:03:46,029 [trainer.py] => Client 1 Aggregation Weight alpha_i: 0.2061
+10619.2s 772 2026-06-16 16:03:46,029 [trainer.py] => Client 5 Aggregation Weight alpha_i: 0.1285
+10619.2s 773 2026-06-16 16:03:46,029 [trainer.py] => Client 6 Aggregation Weight alpha_i: 0.2225
+10619.2s 774 2026-06-16 16:03:46,029 [trainer.py] => Client 7 Aggregation Weight alpha_i: 0.2274
+10619.2s 775 2026-06-16 16:03:46,030 [trainer.py] => Client 8 Aggregation Weight alpha_i: 0.2155
+10619.4s 776 2026-06-16 16:03:46,264 [trainer.py] => Evaluating on global_test_data filtered to learned classes: 0-5
+10678.0s 777 2026-06-16 16:04:44,849 [trainer.py] => [Task 0 | Round 18] Acc: 7.05% | Old Acc: 0.00% | New Acc: 0.00% | Forgetting: 0.00% | Params: 22,561 | Comm Cost: 0.09 MB
+10678.0s 778 2026-06-16 16:04:44,853 [trainer.py] => --- Task 0 | Round 19/30 (Global 19) ---
+10757.0s 779 2026-06-16 16:06:03,881 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.842, Train_accy 95.59
+10849.8s 780 2026-06-16 16:07:36,656 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.182, Train_accy 69.59
+10907.8s 781 2026-06-16 16:08:34,605 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.843, Train_accy 97.12
+11052.5s 782 2026-06-16 16:10:59,333 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.960, Train_accy 95.29
+11166.0s 783 2026-06-16 16:12:52,806 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.929, Train_accy 92.44
+11192.5s 784 2026-06-16 16:13:19,381 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.229, Train_accy 42.98
+11194.4s 785 2026-06-16 16:13:21,319 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.845, Train_accy 98.02
+11196.7s 786 2026-06-16 16:13:23,560 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.857, Train_accy 97.94
+11200.0s 787 2026-06-16 16:13:26,839 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.831, Train_accy 98.04
+11202.7s 788 2026-06-16 16:13:29,564 [aggregation.py] => Client 0 => Q_i: -1.0431 | Acc: 95.06% | ProtoCons: 0.9449 | Novelty: 0.5000 | Drift: 4.5551 | UpdateNorm: 4.5551
+11202.7s 789 2026-06-16 16:13:29,568 [aggregation.py] => Client 1 => Q_i: 2.0777 | Acc: 90.54% | ProtoCons: 0.9609 | Novelty: 0.5000 | Drift: 0.0552 | UpdateNorm: 0.0552
+11202.7s 790 2026-06-16 16:13:29,572 [aggregation.py] => Client 2 => Q_i: -0.1972 | Acc: 98.99% | ProtoCons: 0.9110 | Novelty: 0.5000 | Drift: 3.3544 | UpdateNorm: 3.3544
+11202.7s 791 2026-06-16 16:13:29,576 [aggregation.py] => Client 3 => Q_i: -1.4127 | Acc: 97.67% | ProtoCons: 0.9651 | Novelty: 0.5000 | Drift: 5.1493 | UpdateNorm: 5.1493
+11202.7s 792 2026-06-16 16:13:29,579 [aggregation.py] => Client 4 => Q_i: 1.0685 | Acc: 99.60% | ProtoCons: 0.9237 | Novelty: 0.5000 | Drift: 1.5732 | UpdateNorm: 1.5732
+11202.7s 793 2026-06-16 16:13:29,583 [aggregation.py] => Client 5 => Q_i: 1.6139 | Acc: 45.19% | ProtoCons: 0.9220 | Novelty: 0.5000 | Drift: 0.0143 | UpdateNorm: 0.0143
+11202.7s 794 2026-06-16 16:13:29,587 [aggregation.py] => Client 6 => Q_i: 2.1540 | Acc: 98.62% | ProtoCons: 0.9831 | Novelty: 0.5000 | Drift: 0.0933 | UpdateNorm: 0.0933
+11202.7s 795 2026-06-16 16:13:29,591 [aggregation.py] => Client 7 => Q_i: 2.1897 | Acc: 98.43% | ProtoCons: 0.9834 | Novelty: 0.5000 | Drift: 0.0399 | UpdateNorm: 0.0399
+11202.7s 796 2026-06-16 16:13:29,595 [aggregation.py] => Client 8 => Q_i: 2.1213 | Acc: 98.51% | ProtoCons: 0.9980 | Novelty: 0.5000 | Drift: 0.1597 | UpdateNorm: 0.1597
+11202.7s 797 2026-06-16 16:13:29,596 [aggregation.py] => Client 0 rejected by robust filter | Drift: 4.5551 | UpdateNorm: 4.5551
+11202.7s 798 2026-06-16 16:13:29,596 [aggregation.py] => Client 2 rejected by robust filter | Drift: 3.3544 | UpdateNorm: 3.3544
+11202.7s 799 2026-06-16 16:13:29,596 [aggregation.py] => Client 3 rejected by robust filter | Drift: 5.1493 | UpdateNorm: 5.1493
+11202.7s 800 2026-06-16 16:13:29,596 [aggregation.py] => Client 4 rejected by robust filter | Drift: 1.5732 | UpdateNorm: 1.5732
+11202.7s 801 2026-06-16 16:13:29,597 [trainer.py] => Client 1 Aggregation Weight alpha_i: 0.2053
+11202.7s 802 2026-06-16 16:13:29,597 [trainer.py] => Client 5 Aggregation Weight alpha_i: 0.1291
+11202.7s 803 2026-06-16 16:13:29,597 [trainer.py] => Client 6 Aggregation Weight alpha_i: 0.2216
+11202.7s 804 2026-06-16 16:13:29,597 [trainer.py] => Client 7 Aggregation Weight alpha_i: 0.2296
+11202.7s 805 2026-06-16 16:13:29,597 [trainer.py] => Client 8 Aggregation Weight alpha_i: 0.2144
+11203.0s 806 2026-06-16 16:13:29,838 [trainer.py] => Evaluating on global_test_data filtered to learned classes: 0-5
+11260.4s 807 2026-06-16 16:14:27,274 [trainer.py] => [Task 0 | Round 19] Acc: 6.81% | Old Acc: 0.00% | New Acc: 0.00% | Forgetting: 0.00% | Params: 22,561 | Comm Cost: 0.09 MB
+11260.4s 808 2026-06-16 16:14:27,278 [trainer.py] => --- Task 0 | Round 20/30 (Global 20) ---
+11338.6s 809 2026-06-16 16:15:45,496 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.837, Train_accy 95.93
+11432.5s 810 2026-06-16 16:17:19,338 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.163, Train_accy 73.08
+11491.1s 811 2026-06-16 16:18:17,957 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.854, Train_accy 97.90
+11636.1s 812 2026-06-16 16:20:42,942 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.958, Train_accy 95.88
+11748.6s 813 2026-06-16 16:22:35,413 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.912, Train_accy 93.43
+11775.3s 814 2026-06-16 16:23:02,144 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.207, Train_accy 45.58
+11777.3s 815 2026-06-16 16:23:04,138 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.834, Train_accy 98.15
+11779.6s 816 2026-06-16 16:23:06,424 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.849, Train_accy 98.01
+11782.9s 817 2026-06-16 16:23:09,776 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.816, Train_accy 98.27
+11785.6s 818 2026-06-16 16:23:12,436 [aggregation.py] => Client 0 => Q_i: -1.0359 | Acc: 94.92% | ProtoCons: 0.9534 | Novelty: 0.5000 | Drift: 4.5551 | UpdateNorm: 4.5551
+11785.6s 819 2026-06-16 16:23:12,440 [aggregation.py] => Client 1 => Q_i: 2.0970 | Acc: 90.81% | ProtoCons: 0.9772 | Novelty: 0.5000 | Drift: 0.0547 | UpdateNorm: 0.0547
+11785.6s 820 2026-06-16 16:23:12,443 [aggregation.py] => Client 2 => Q_i: -0.2611 | Acc: 99.04% | ProtoCons: 0.8463 | Novelty: 0.5000 | Drift: 3.3540 | UpdateNorm: 3.3540
+11785.6s 821 2026-06-16 16:23:12,447 [aggregation.py] => Client 3 => Q_i: -1.4197 | Acc: 96.56% | ProtoCons: 0.9692 | Novelty: 0.5000 | Drift: 5.1493 | UpdateNorm: 5.1493
+11785.6s 822 2026-06-16 16:23:12,451 [aggregation.py] => Client 4 => Q_i: 1.0552 | Acc: 99.60% | ProtoCons: 0.9101 | Novelty: 0.5000 | Drift: 1.5726 | UpdateNorm: 1.5726
+11785.6s 823 2026-06-16 16:23:12,454 [aggregation.py] => Client 5 => Q_i: 1.6277 | Acc: 45.49% | ProtoCons: 0.9328 | Novelty: 0.5000 | Drift: 0.0142 | UpdateNorm: 0.0142
+11785.6s 824 2026-06-16 16:23:12,458 [aggregation.py] => Client 6 => Q_i: 2.1609 | Acc: 98.86% | ProtoCons: 0.9877 | Novelty: 0.5000 | Drift: 0.0934 | UpdateNorm: 0.0934
+11785.6s 825 2026-06-16 16:23:12,461 [aggregation.py] => Client 7 => Q_i: 2.1816 | Acc: 98.71% | ProtoCons: 0.9725 | Novelty: 0.5000 | Drift: 0.0400 | UpdateNorm: 0.0400
+11785.6s 826 2026-06-16 16:23:12,465 [aggregation.py] => Client 8 => Q_i: 2.1174 | Acc: 98.87% | ProtoCons: 0.9909 | Novelty: 0.5000 | Drift: 0.1603 | UpdateNorm: 0.1603
+11785.6s 827 2026-06-16 16:23:12,465 [aggregation.py] => Client 0 rejected by robust filter | Drift: 4.5551 | UpdateNorm: 4.5551
+11785.6s 828 2026-06-16 16:23:12,465 [aggregation.py] => Client 2 rejected by robust filter | Drift: 3.3540 | UpdateNorm: 3.3540
+11785.6s 829 2026-06-16 16:23:12,465 [aggregation.py] => Client 3 rejected by robust filter | Drift: 5.1493 | UpdateNorm: 5.1493
+11785.6s 830 2026-06-16 16:23:12,465 [aggregation.py] => Client 4 rejected by robust filter | Drift: 1.5726 | UpdateNorm: 1.5726
+11785.6s 831 2026-06-16 16:23:12,466 [trainer.py] => Client 1 Aggregation Weight alpha_i: 0.2083
+11785.6s 832 2026-06-16 16:23:12,466 [trainer.py] => Client 5 Aggregation Weight alpha_i: 0.1303
+11785.6s 833 2026-06-16 16:23:12,466 [trainer.py] => Client 6 Aggregation Weight alpha_i: 0.2221
+11785.6s 834 2026-06-16 16:23:12,466 [trainer.py] => Client 7 Aggregation Weight alpha_i: 0.2267
+11785.6s 835 2026-06-16 16:23:12,466 [trainer.py] => Client 8 Aggregation Weight alpha_i: 0.2126
+11785.8s 836 2026-06-16 16:23:12,692 [trainer.py] => Evaluating on global_test_data filtered to learned classes: 0-5
+11843.0s 837 2026-06-16 16:24:09,837 [trainer.py] => [Task 0 | Round 20] Acc: 6.69% | Old Acc: 0.00% | New Acc: 0.00% | Forgetting: 0.00% | Params: 22,561 | Comm Cost: 0.09 MB
+11843.0s 838 2026-06-16 16:24:09,841 [trainer.py] => --- Task 0 | Round 21/30 (Global 21) ---
+11921.0s 839 2026-06-16 16:25:27,903 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.835, Train_accy 96.41
+12015.1s 840 2026-06-16 16:27:01,940 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.181, Train_accy 72.75
+12073.3s 841 2026-06-16 16:28:00,140 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.835, Train_accy 97.76
+12218.9s 842 2026-06-16 16:30:25,772 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.956, Train_accy 95.88
+12333.3s 843 2026-06-16 16:32:20,179 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.907, Train_accy 93.12
+12360.2s 844 2026-06-16 16:32:47,050 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.230, Train_accy 44.52
+12362.2s 845 2026-06-16 16:32:49,085 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.871, Train_accy 98.33
+12364.5s 846 2026-06-16 16:32:51,305 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.875, Train_accy 98.26
+12367.9s 847 2026-06-16 16:32:54,709 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.847, Train_accy 98.43
+12370.5s 848 2026-06-16 16:32:57,409 [aggregation.py] => Client 0 => Q_i: -1.0514 | Acc: 94.59% | ProtoCons: 0.9413 | Novelty: 0.5000 | Drift: 4.5551 | UpdateNorm: 4.5551
+12370.5s 849 2026-06-16 16:32:57,413 [aggregation.py] => Client 1 => Q_i: 2.0954 | Acc: 91.14% | ProtoCons: 0.9722 | Novelty: 0.5000 | Drift: 0.0546 | UpdateNorm: 0.0546
+12370.5s 850 2026-06-16 16:32:57,417 [aggregation.py] => Client 2 => Q_i: -0.2387 | Acc: 98.99% | ProtoCons: 0.8692 | Novelty: 0.5000 | Drift: 3.3541 | UpdateNorm: 3.3541
+12370.5s 851 2026-06-16 16:32:57,420 [aggregation.py] => Client 3 => Q_i: -1.4210 | Acc: 97.22% | ProtoCons: 0.9613 | Novelty: 0.5000 | Drift: 5.1493 | UpdateNorm: 5.1493
+12370.5s 852 2026-06-16 16:32:57,424 [aggregation.py] => Client 4 => Q_i: 1.0643 | Acc: 99.60% | ProtoCons: 0.9192 | Novelty: 0.5000 | Drift: 1.5727 | UpdateNorm: 1.5727
+12370.5s 853 2026-06-16 16:32:57,427 [aggregation.py] => Client 5 => Q_i: 1.6156 | Acc: 45.64% | ProtoCons: 0.9192 | Novelty: 0.5000 | Drift: 0.0142 | UpdateNorm: 0.0142
+12370.5s 854 2026-06-16 16:32:57,431 [aggregation.py] => Client 6 => Q_i: 2.1515 | Acc: 98.88% | ProtoCons: 0.9781 | Novelty: 0.5000 | Drift: 0.0935 | UpdateNorm: 0.0935
+12370.5s 855 2026-06-16 16:32:57,434 [aggregation.py] => Client 7 => Q_i: 2.0131 | Acc: 99.01% | ProtoCons: 0.8010 | Novelty: 0.5000 | Drift: 0.0401 | UpdateNorm: 0.0401
+12370.6s 856 2026-06-16 16:32:57,438 [aggregation.py] => Client 8 => Q_i: 2.1082 | Acc: 99.02% | ProtoCons: 0.9803 | Novelty: 0.5000 | Drift: 0.1603 | UpdateNorm: 0.1603
+12370.6s 857 2026-06-16 16:32:57,438 [aggregation.py] => Client 0 rejected by robust filter | Drift: 4.5551 | UpdateNorm: 4.5551
+12370.6s 858 2026-06-16 16:32:57,439 [aggregation.py] => Client 2 rejected by robust filter | Drift: 3.3541 | UpdateNorm: 3.3541
+12370.6s 859 2026-06-16 16:32:57,439 [aggregation.py] => Client 3 rejected by robust filter | Drift: 5.1493 | UpdateNorm: 5.1493
+12370.6s 860 2026-06-16 16:32:57,439 [aggregation.py] => Client 4 rejected by robust filter | Drift: 1.5727 | UpdateNorm: 1.5727
+12370.6s 861 2026-06-16 16:32:57,439 [trainer.py] => Client 1 Aggregation Weight alpha_i: 0.2169
+12370.6s 862 2026-06-16 16:32:57,440 [trainer.py] => Client 5 Aggregation Weight alpha_i: 0.1342
+12370.6s 863 2026-06-16 16:32:57,440 [trainer.py] => Client 6 Aggregation Weight alpha_i: 0.2294
+12370.6s 864 2026-06-16 16:32:57,440 [trainer.py] => Client 7 Aggregation Weight alpha_i: 0.1998
+12370.6s 865 2026-06-16 16:32:57,440 [trainer.py] => Client 8 Aggregation Weight alpha_i: 0.2197
+12370.8s 866 2026-06-16 16:32:57,671 [trainer.py] => Evaluating on global_test_data filtered to learned classes: 0-5
+12428.6s 867 2026-06-16 16:33:55,430 [trainer.py] => [Task 0 | Round 21] Acc: 6.79% | Old Acc: 0.00% | New Acc: 0.00% | Forgetting: 0.00% | Params: 22,561 | Comm Cost: 0.09 MB
+12428.6s 868 2026-06-16 16:33:55,434 [trainer.py] => --- Task 0 | Round 22/30 (Global 22) ---
+12507.1s 869 2026-06-16 16:35:13,987 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.836, Train_accy 96.02
+12601.4s 870 2026-06-16 16:36:48,308 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.188, Train_accy 73.45
+12659.9s 871 2026-06-16 16:37:46,808 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.804, Train_accy 97.53
+12805.9s 872 2026-06-16 16:40:12,772 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.959, Train_accy 96.03
+12918.4s 873 2026-06-16 16:42:05,308 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.885, Train_accy 94.66
+12945.2s 874 2026-06-16 16:42:32,084 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.243, Train_accy 44.94
+12947.2s 875 2026-06-16 16:42:34,050 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.932, Train_accy 98.43
+12949.4s 876 2026-06-16 16:42:36,256 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.986, Train_accy 98.38
+12952.8s 877 2026-06-16 16:42:39,617 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.893, Train_accy 98.45
+12955.4s 878 2026-06-16 16:42:42,272 [aggregation.py] => Client 0 => Q_i: -1.0573 | Acc: 94.51% | ProtoCons: 0.9362 | Novelty: 0.5000 | Drift: 4.5551 | UpdateNorm: 4.5551
+12955.4s 879 2026-06-16 16:42:42,275 [aggregation.py] => Client 1 => Q_i: 2.1003 | Acc: 92.34% | ProtoCons: 0.9651 | Novelty: 0.5000 | Drift: 0.0545 | UpdateNorm: 0.0545
+12955.4s 880 2026-06-16 16:42:42,279 [aggregation.py] => Client 2 => Q_i: -0.1845 | Acc: 98.98% | ProtoCons: 0.9236 | Novelty: 0.5000 | Drift: 3.3542 | UpdateNorm: 3.3542
+12955.4s 881 2026-06-16 16:42:42,282 [aggregation.py] => Client 3 => Q_i: -1.4158 | Acc: 97.15% | ProtoCons: 0.9673 | Novelty: 0.5000 | Drift: 5.1494 | UpdateNorm: 5.1494
+12955.4s 882 2026-06-16 16:42:42,287 [aggregation.py] => Client 4 => Q_i: 1.0748 | Acc: 99.61% | ProtoCons: 0.9295 | Novelty: 0.5000 | Drift: 1.5726 | UpdateNorm: 1.5726
+12955.4s 883 2026-06-16 16:42:42,290 [aggregation.py] => Client 5 => Q_i: 1.6096 | Acc: 45.50% | ProtoCons: 0.9144 | Novelty: 0.5000 | Drift: 0.0140 | UpdateNorm: 0.0140
+12955.4s 884 2026-06-16 16:42:42,294 [aggregation.py] => Client 6 => Q_i: 2.1451 | Acc: 98.85% | ProtoCons: 0.9719 | Novelty: 0.5000 | Drift: 0.0933 | UpdateNorm: 0.0933
+12955.4s 885 2026-06-16 16:42:42,297 [aggregation.py] => Client 7 => Q_i: 2.2015 | Acc: 99.13% | ProtoCons: 0.9882 | Novelty: 0.5000 | Drift: 0.0400 | UpdateNorm: 0.0400
+12955.4s 886 2026-06-16 16:42:42,301 [aggregation.py] => Client 8 => Q_i: 2.1176 | Acc: 99.08% | ProtoCons: 0.9886 | Novelty: 0.5000 | Drift: 0.1597 | UpdateNorm: 0.1597
+12955.4s 887 2026-06-16 16:42:42,301 [aggregation.py] => Client 0 rejected by robust filter | Drift: 4.5551 | UpdateNorm: 4.5551
+12955.4s 888 2026-06-16 16:42:42,301 [aggregation.py] => Client 2 rejected by robust filter | Drift: 3.3542 | UpdateNorm: 3.3542
+12955.4s 889 2026-06-16 16:42:42,301 [aggregation.py] => Client 3 rejected by robust filter | Drift: 5.1494 | UpdateNorm: 5.1494
+12955.4s 890 2026-06-16 16:42:42,301 [aggregation.py] => Client 4 rejected by robust filter | Drift: 1.5726 | UpdateNorm: 1.5726
+12955.4s 891 2026-06-16 16:42:42,302 [trainer.py] => Client 1 Aggregation Weight alpha_i: 0.2091
+12955.4s 892 2026-06-16 16:42:42,302 [trainer.py] => Client 5 Aggregation Weight alpha_i: 0.1280
+12955.4s 893 2026-06-16 16:42:42,302 [trainer.py] => Client 6 Aggregation Weight alpha_i: 0.2187
+12955.4s 894 2026-06-16 16:42:42,302 [trainer.py] => Client 7 Aggregation Weight alpha_i: 0.2314
+12955.4s 895 2026-06-16 16:42:42,302 [trainer.py] => Client 8 Aggregation Weight alpha_i: 0.2128
+12955.7s 896 2026-06-16 16:42:42,543 [trainer.py] => Evaluating on global_test_data filtered to learned classes: 0-5
+13013.5s 897 2026-06-16 16:43:40,379 [trainer.py] => [Task 0 | Round 22] Acc: 6.81% | Old Acc: 0.00% | New Acc: 0.00% | Forgetting: 0.00% | Params: 22,561 | Comm Cost: 0.09 MB
+13013.5s 898 2026-06-16 16:43:40,383 [trainer.py] => --- Task 0 | Round 23/30 (Global 23) ---
+13092.7s 899 2026-06-16 16:44:59,583 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.824, Train_accy 96.02
+13187.1s 900 2026-06-16 16:46:33,925 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.157, Train_accy 78.63
+13246.1s 901 2026-06-16 16:47:32,969 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.802, Train_accy 98.05
+13393.0s 902 2026-06-16 16:49:59,854 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.951, Train_accy 96.00
+13506.9s 903 2026-06-16 16:51:53,682 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.878, Train_accy 93.55
+13533.9s 904 2026-06-16 16:52:20,729 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.226, Train_accy 47.73
+13535.9s 905 2026-06-16 16:52:22,744 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.858, Train_accy 98.53
+13538.1s 906 2026-06-16 16:52:24,979 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.881, Train_accy 98.46
+13541.5s 907 2026-06-16 16:52:28,376 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.831, Train_accy 98.68
+13544.2s 908 2026-06-16 16:52:31,077 [aggregation.py] => Client 0 => Q_i: -1.0299 | Acc: 95.33% | ProtoCons: 0.9553 | Novelty: 0.5000 | Drift: 4.5551 | UpdateNorm: 4.5551
+13544.2s 909 2026-06-16 16:52:31,081 [aggregation.py] => Client 1 => Q_i: 2.1202 | Acc: 92.95% | ProtoCons: 0.9784 | Novelty: 0.5000 | Drift: 0.0538 | UpdateNorm: 0.0538
+13544.2s 910 2026-06-16 16:52:31,084 [aggregation.py] => Client 2 => Q_i: -0.1983 | Acc: 98.97% | ProtoCons: 0.9098 | Novelty: 0.5000 | Drift: 3.3541 | UpdateNorm: 3.3541
+13544.2s 911 2026-06-16 16:52:31,088 [aggregation.py] => Client 3 => Q_i: -1.4129 | Acc: 96.99% | ProtoCons: 0.9718 | Novelty: 0.5000 | Drift: 5.1495 | UpdateNorm: 5.1495
+13544.2s 912 2026-06-16 16:52:31,092 [aggregation.py] => Client 4 => Q_i: 1.0900 | Acc: 99.61% | ProtoCons: 0.9445 | Novelty: 0.5000 | Drift: 1.5723 | UpdateNorm: 1.5723
+13544.2s 913 2026-06-16 16:52:31,095 [aggregation.py] => Client 5 => Q_i: 1.6188 | Acc: 45.90% | ProtoCons: 0.9194 | Novelty: 0.5000 | Drift: 0.0137 | UpdateNorm: 0.0137
+13544.3s 914 2026-06-16 16:52:31,099 [aggregation.py] => Client 6 => Q_i: 2.1564 | Acc: 99.17% | ProtoCons: 0.9798 | Novelty: 0.5000 | Drift: 0.0930 | UpdateNorm: 0.0930
+13544.3s 915 2026-06-16 16:52:31,103 [aggregation.py] => Client 7 => Q_i: 2.1995 | Acc: 99.17% | ProtoCons: 0.9857 | Novelty: 0.5000 | Drift: 0.0399 | UpdateNorm: 0.0399
+13544.3s 916 2026-06-16 16:52:31,106 [aggregation.py] => Client 8 => Q_i: 2.1263 | Acc: 99.33% | ProtoCons: 0.9946 | Novelty: 0.5000 | Drift: 0.1595 | UpdateNorm: 0.1595
+13544.3s 917 2026-06-16 16:52:31,107 [aggregation.py] => Client 0 rejected by robust filter | Drift: 4.5551 | UpdateNorm: 4.5551
+13544.3s 918 2026-06-16 16:52:31,107 [aggregation.py] => Client 2 rejected by robust filter | Drift: 3.3541 | UpdateNorm: 3.3541
+13544.3s 919 2026-06-16 16:52:31,107 [aggregation.py] => Client 3 rejected by robust filter | Drift: 5.1495 | UpdateNorm: 5.1495
+13544.3s 920 2026-06-16 16:52:31,107 [aggregation.py] => Client 4 rejected by robust filter | Drift: 1.5723 | UpdateNorm: 1.5723
+13544.3s 921 2026-06-16 16:52:31,108 [trainer.py] => Client 1 Aggregation Weight alpha_i: 0.2114
+13544.3s 922 2026-06-16 16:52:31,108 [trainer.py] => Client 5 Aggregation Weight alpha_i: 0.1280
+13544.3s 923 2026-06-16 16:52:31,108 [trainer.py] => Client 6 Aggregation Weight alpha_i: 0.2192
+13544.3s 924 2026-06-16 16:52:31,108 [trainer.py] => Client 7 Aggregation Weight alpha_i: 0.2288
+13544.3s 925 2026-06-16 16:52:31,108 [trainer.py] => Client 8 Aggregation Weight alpha_i: 0.2127
+13544.5s 926 2026-06-16 16:52:31,345 [trainer.py] => Evaluating on global_test_data filtered to learned classes: 0-5
+13602.8s 927 2026-06-16 16:53:29,652 [trainer.py] => [Task 0 | Round 23] Acc: 6.72% | Old Acc: 0.00% | New Acc: 0.00% | Forgetting: 0.00% | Params: 22,561 | Comm Cost: 0.09 MB
+13602.8s 928 2026-06-16 16:53:29,656 [trainer.py] => --- Task 0 | Round 24/30 (Global 24) ---
+13682.0s 929 2026-06-16 16:54:48,833 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.825, Train_accy 95.36
+13776.9s 930 2026-06-16 16:56:23,748 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.162, Train_accy 76.13
+13835.8s 931 2026-06-16 16:57:22,637 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.819, Train_accy 97.96
+13982.0s 932 2026-06-16 16:59:48,817 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.940, Train_accy 95.94
+14095.4s 933 2026-06-16 17:01:42,215 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.892, Train_accy 92.89
+14122.3s 934 2026-06-16 17:02:09,109 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.228, Train_accy 45.36
+14124.2s 935 2026-06-16 17:02:11,064 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.836, Train_accy 98.76
+14126.5s 936 2026-06-16 17:02:13,312 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.868, Train_accy 98.67
+14129.9s 937 2026-06-16 17:02:16,707 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.816, Train_accy 98.91
+14132.6s 938 2026-06-16 17:02:19,447 [aggregation.py] => Client 0 => Q_i: -1.0286 | Acc: 94.77% | ProtoCons: 0.9622 | Novelty: 0.5000 | Drift: 4.5550 | UpdateNorm: 4.5550
+14132.6s 939 2026-06-16 17:02:19,451 [aggregation.py] => Client 1 => Q_i: 2.1157 | Acc: 93.05% | ProtoCons: 0.9727 | Novelty: 0.5000 | Drift: 0.0536 | UpdateNorm: 0.0536
+14132.6s 940 2026-06-16 17:02:19,454 [aggregation.py] => Client 2 => Q_i: -0.2643 | Acc: 99.03% | ProtoCons: 0.8431 | Novelty: 0.5000 | Drift: 3.3539 | UpdateNorm: 3.3539
+14132.6s 941 2026-06-16 17:02:19,458 [aggregation.py] => Client 3 => Q_i: -1.4063 | Acc: 97.30% | ProtoCons: 0.9753 | Novelty: 0.5000 | Drift: 5.1494 | UpdateNorm: 5.1494
+14132.6s 942 2026-06-16 17:02:19,462 [aggregation.py] => Client 4 => Q_i: 1.0745 | Acc: 99.60% | ProtoCons: 0.9290 | Novelty: 0.5000 | Drift: 1.5722 | UpdateNorm: 1.5722
+14132.6s 943 2026-06-16 17:02:19,466 [aggregation.py] => Client 5 => Q_i: 1.6059 | Acc: 46.05% | ProtoCons: 0.9049 | Novelty: 0.5000 | Drift: 0.0136 | UpdateNorm: 0.0136
+14132.6s 944 2026-06-16 17:02:19,469 [aggregation.py] => Client 6 => Q_i: 2.1489 | Acc: 99.36% | ProtoCons: 0.9703 | Novelty: 0.5000 | Drift: 0.0929 | UpdateNorm: 0.0929
+14132.6s 945 2026-06-16 17:02:19,473 [aggregation.py] => Client 7 => Q_i: 2.1575 | Acc: 99.28% | ProtoCons: 0.9427 | Novelty: 0.5000 | Drift: 0.0399 | UpdateNorm: 0.0399
+14132.6s 946 2026-06-16 17:02:19,477 [aggregation.py] => Client 8 => Q_i: 2.1201 | Acc: 99.46% | ProtoCons: 0.9870 | Novelty: 0.5000 | Drift: 0.1593 | UpdateNorm: 0.1593
+14132.6s 947 2026-06-16 17:02:19,477 [aggregation.py] => Client 0 rejected by robust filter | Drift: 4.5550 | UpdateNorm: 4.5550
+14132.6s 948 2026-06-16 17:02:19,477 [aggregation.py] => Client 2 rejected by robust filter | Drift: 3.3539 | UpdateNorm: 3.3539
+14132.6s 949 2026-06-16 17:02:19,477 [aggregation.py] => Client 3 rejected by robust filter | Drift: 5.1494 | UpdateNorm: 5.1494
+14132.6s 950 2026-06-16 17:02:19,477 [aggregation.py] => Client 4 rejected by robust filter | Drift: 1.5722 | UpdateNorm: 1.5722
+14132.6s 951 2026-06-16 17:02:19,478 [trainer.py] => Client 1 Aggregation Weight alpha_i: 0.2136
+14132.6s 952 2026-06-16 17:02:19,478 [trainer.py] => Client 5 Aggregation Weight alpha_i: 0.1283
+14132.6s 953 2026-06-16 17:02:19,478 [trainer.py] => Client 6 Aggregation Weight alpha_i: 0.2208
+14132.6s 954 2026-06-16 17:02:19,478 [trainer.py] => Client 7 Aggregation Weight alpha_i: 0.2227
+14132.6s 955 2026-06-16 17:02:19,478 [trainer.py] => Client 8 Aggregation Weight alpha_i: 0.2146
+14132.8s 956 2026-06-16 17:02:19,717 [trainer.py] => Evaluating on global_test_data filtered to learned classes: 0-5
+14191.1s 957 2026-06-16 17:03:17,922 [trainer.py] => [Task 0 | Round 24] Acc: 6.53% | Old Acc: 0.00% | New Acc: 0.00% | Forgetting: 0.00% | Params: 22,561 | Comm Cost: 0.09 MB
+14191.1s 958 2026-06-16 17:03:17,926 [trainer.py] => --- Task 0 | Round 25/30 (Global 25) ---
+14270.0s 959 2026-06-16 17:04:36,822 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.817, Train_accy 96.82
+14363.7s 960 2026-06-16 17:06:10,495 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.159, Train_accy 76.01
+14421.9s 961 2026-06-16 17:07:08,776 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.812, Train_accy 97.66
+14567.7s 962 2026-06-16 17:09:34,485 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.941, Train_accy 95.79
+14679.6s 963 2026-06-16 17:11:26,447 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.882, Train_accy 93.53
+14706.1s 964 2026-06-16 17:11:52,979 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.220, Train_accy 45.35
+14708.1s 965 2026-06-16 17:11:54,942 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.816, Train_accy 98.94
+14710.2s 966 2026-06-16 17:11:57,096 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.836, Train_accy 99.00
+14713.6s 967 2026-06-16 17:12:00,492 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.843, Train_accy 98.97
+14716.2s 968 2026-06-16 17:12:03,126 [aggregation.py] => Client 0 => Q_i: -1.0312 | Acc: 94.44% | ProtoCons: 0.9630 | Novelty: 0.5000 | Drift: 4.5552 | UpdateNorm: 4.5552
+14716.2s 969 2026-06-16 17:12:03,130 [aggregation.py] => Client 1 => Q_i: 2.1070 | Acc: 92.82% | ProtoCons: 0.9661 | Novelty: 0.5000 | Drift: 0.0533 | UpdateNorm: 0.0533
+14716.2s 970 2026-06-16 17:12:03,134 [aggregation.py] => Client 2 => Q_i: -0.2409 | Acc: 99.02% | ProtoCons: 0.8668 | Novelty: 0.5000 | Drift: 3.3542 | UpdateNorm: 3.3542
+14716.2s 971 2026-06-16 17:12:03,137 [aggregation.py] => Client 3 => Q_i: -1.4068 | Acc: 97.84% | ProtoCons: 0.9694 | Novelty: 0.5000 | Drift: 5.1494 | UpdateNorm: 5.1494
+14716.3s 972 2026-06-16 17:12:03,141 [aggregation.py] => Client 4 => Q_i: 1.0881 | Acc: 99.60% | ProtoCons: 0.9427 | Novelty: 0.5000 | Drift: 1.5723 | UpdateNorm: 1.5723
+14716.3s 973 2026-06-16 17:12:03,145 [aggregation.py] => Client 5 => Q_i: 1.5999 | Acc: 46.17% | ProtoCons: 0.8977 | Novelty: 0.5000 | Drift: 0.0135 | UpdateNorm: 0.0135
+14716.3s 974 2026-06-16 17:12:03,148 [aggregation.py] => Client 6 => Q_i: 2.1620 | Acc: 99.45% | ProtoCons: 0.9825 | Novelty: 0.5000 | Drift: 0.0928 | UpdateNorm: 0.0928
+14716.3s 975 2026-06-16 17:12:03,152 [aggregation.py] => Client 7 => Q_i: 2.1634 | Acc: 99.42% | ProtoCons: 0.9471 | Novelty: 0.5000 | Drift: 0.0398 | UpdateNorm: 0.0398
+14716.3s 976 2026-06-16 17:12:03,155 [aggregation.py] => Client 8 => Q_i: 2.1161 | Acc: 99.33% | ProtoCons: 0.9841 | Novelty: 0.5000 | Drift: 0.1589 | UpdateNorm: 0.1589
+14716.3s 977 2026-06-16 17:12:03,156 [aggregation.py] => Client 0 rejected by robust filter | Drift: 4.5552 | UpdateNorm: 4.5552
+14716.3s 978 2026-06-16 17:12:03,156 [aggregation.py] => Client 2 rejected by robust filter | Drift: 3.3542 | UpdateNorm: 3.3542
+14716.3s 979 2026-06-16 17:12:03,156 [aggregation.py] => Client 3 rejected by robust filter | Drift: 5.1494 | UpdateNorm: 5.1494
+14716.3s 980 2026-06-16 17:12:03,156 [aggregation.py] => Client 4 rejected by robust filter | Drift: 1.5723 | UpdateNorm: 1.5723
+14716.3s 981 2026-06-16 17:12:03,157 [trainer.py] => Client 1 Aggregation Weight alpha_i: 0.2116
+14716.3s 982 2026-06-16 17:12:03,157 [trainer.py] => Client 5 Aggregation Weight alpha_i: 0.1274
+14716.3s 983 2026-06-16 17:12:03,157 [trainer.py] => Client 6 Aggregation Weight alpha_i: 0.2236
+14716.3s 984 2026-06-16 17:12:03,157 [trainer.py] => Client 7 Aggregation Weight alpha_i: 0.2239
+14716.3s 985 2026-06-16 17:12:03,157 [trainer.py] => Client 8 Aggregation Weight alpha_i: 0.2135
+14716.5s 986 2026-06-16 17:12:03,389 [trainer.py] => Evaluating on global_test_data filtered to learned classes: 0-5
+14774.0s 987 2026-06-16 17:13:00,831 [trainer.py] => [Task 0 | Round 25] Acc: 6.61% | Old Acc: 0.00% | New Acc: 0.00% | Forgetting: 0.00% | Params: 22,561 | Comm Cost: 0.09 MB
+14774.0s 988 2026-06-16 17:13:00,835 [trainer.py] => --- Task 0 | Round 26/30 (Global 26) ---
+14852.2s 989 2026-06-16 17:14:19,028 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.813, Train_accy 96.23
+14945.2s 990 2026-06-16 17:15:52,075 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.167, Train_accy 70.13
+15003.2s 991 2026-06-16 17:16:49,989 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.800, Train_accy 97.03
+15148.6s 992 2026-06-16 17:19:15,455 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.940, Train_accy 95.64
+15260.4s 993 2026-06-16 17:21:07,228 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.896, Train_accy 93.07
+15286.7s 994 2026-06-16 17:21:33,613 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.231, Train_accy 39.71
+15288.7s 995 2026-06-16 17:21:35,548 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.851, Train_accy 99.07
+15290.9s 996 2026-06-16 17:21:37,734 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.865, Train_accy 99.10
+15294.3s 997 2026-06-16 17:21:41,115 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.829, Train_accy 99.11
+15296.8s 998 2026-06-16 17:21:43,700 [aggregation.py] => Client 0 => Q_i: -1.0290 | Acc: 95.01% | ProtoCons: 0.9594 | Novelty: 0.5000 | Drift: 4.5550 | UpdateNorm: 4.5550
+15296.9s 999 2026-06-16 17:21:43,704 [aggregation.py] => Client 1 => Q_i: 2.1244 | Acc: 92.72% | ProtoCons: 0.9845 | Novelty: 0.5000 | Drift: 0.0532 | UpdateNorm: 0.0532
+15296.9s 1000 2026-06-16 17:21:43,707 [aggregation.py] => Client 2 => Q_i: -0.2409 | Acc: 98.98% | ProtoCons: 0.8670 | Novelty: 0.5000 | Drift: 3.3540 | UpdateNorm: 3.3540
+15296.9s 1001 2026-06-16 17:21:43,711 [aggregation.py] => Client 3 => Q_i: -1.4161 | Acc: 96.86% | ProtoCons: 0.9698 | Novelty: 0.5000 | Drift: 5.1493 | UpdateNorm: 5.1493
+15296.9s 1002 2026-06-16 17:21:43,714 [aggregation.py] => Client 4 => Q_i: 1.0729 | Acc: 99.61% | ProtoCons: 0.9278 | Novelty: 0.5000 | Drift: 1.5728 | UpdateNorm: 1.5728
+15296.9s 1003 2026-06-16 17:21:43,718 [aggregation.py] => Client 5 => Q_i: 1.6059 | Acc: 46.20% | ProtoCons: 0.9034 | Novelty: 0.5000 | Drift: 0.0135 | UpdateNorm: 0.0135
+15296.9s 1004 2026-06-16 17:21:43,722 [aggregation.py] => Client 6 => Q_i: 2.1532 | Acc: 99.46% | ProtoCons: 0.9735 | Novelty: 0.5000 | Drift: 0.0927 | UpdateNorm: 0.0927
+15296.9s 1005 2026-06-16 17:21:43,725 [aggregation.py] => Client 7 => Q_i: 2.1683 | Acc: 99.46% | ProtoCons: 0.9516 | Novelty: 0.5000 | Drift: 0.0398 | UpdateNorm: 0.0398
+15296.9s 1006 2026-06-16 17:21:43,729 [aggregation.py] => Client 8 => Q_i: 2.1274 | Acc: 99.61% | ProtoCons: 0.9926 | Novelty: 0.5000 | Drift: 0.1589 | UpdateNorm: 0.1589
+15296.9s 1007 2026-06-16 17:21:43,729 [aggregation.py] => Client 0 rejected by robust filter | Drift: 4.5550 | UpdateNorm: 4.5550
+15296.9s 1008 2026-06-16 17:21:43,729 [aggregation.py] => Client 2 rejected by robust filter | Drift: 3.3540 | UpdateNorm: 3.3540
+15296.9s 1009 2026-06-16 17:21:43,729 [aggregation.py] => Client 3 rejected by robust filter | Drift: 5.1493 | UpdateNorm: 5.1493
+15296.9s 1010 2026-06-16 17:21:43,729 [aggregation.py] => Client 4 rejected by robust filter | Drift: 1.5728 | UpdateNorm: 1.5728
+15296.9s 1011 2026-06-16 17:21:43,730 [trainer.py] => Client 1 Aggregation Weight alpha_i: 0.2140
+15296.9s 1012 2026-06-16 17:21:43,730 [trainer.py] => Client 5 Aggregation Weight alpha_i: 0.1274
+15296.9s 1013 2026-06-16 17:21:43,730 [trainer.py] => Client 6 Aggregation Weight alpha_i: 0.2203
+15296.9s 1014 2026-06-16 17:21:43,730 [trainer.py] => Client 7 Aggregation Weight alpha_i: 0.2236
+15296.9s 1015 2026-06-16 17:21:43,730 [trainer.py] => Client 8 Aggregation Weight alpha_i: 0.2147
+15297.1s 1016 2026-06-16 17:21:43,961 [trainer.py] => Evaluating on global_test_data filtered to learned classes: 0-5
+15354.2s 1017 2026-06-16 17:22:41,029 [trainer.py] => [Task 0 | Round 26] Acc: 6.03% | Old Acc: 0.00% | New Acc: 0.00% | Forgetting: 0.00% | Params: 22,561 | Comm Cost: 0.09 MB
+15354.2s 1018 2026-06-16 17:22:41,033 [trainer.py] => --- Task 0 | Round 27/30 (Global 27) ---
+15432.6s 1019 2026-06-16 17:23:59,449 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.809, Train_accy 96.56
+15525.1s 1020 2026-06-16 17:25:31,934 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.152, Train_accy 81.93
+15583.0s 1021 2026-06-16 17:26:29,843 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.782, Train_accy 98.12
+15727.4s 1022 2026-06-16 17:28:54,297 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.941, Train_accy 95.68
+15839.1s 1023 2026-06-16 17:30:45,899 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.875, Train_accy 93.34
+15865.5s 1024 2026-06-16 17:31:12,354 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.221, Train_accy 56.56
+15867.4s 1025 2026-06-16 17:31:14,306 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.816, Train_accy 99.15
+15869.6s 1026 2026-06-16 17:31:16,454 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.830, Train_accy 99.17
+15872.9s 1027 2026-06-16 17:31:19,779 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.804, Train_accy 99.14
+15875.5s 1028 2026-06-16 17:31:22,386 [aggregation.py] => Client 0 => Q_i: -1.0313 | Acc: 94.53% | ProtoCons: 0.9620 | Novelty: 0.5000 | Drift: 4.5551 | UpdateNorm: 4.5551
+15875.5s 1029 2026-06-16 17:31:22,390 [aggregation.py] => Client 1 => Q_i: 2.1220 | Acc: 93.22% | ProtoCons: 0.9770 | Novelty: 0.5000 | Drift: 0.0532 | UpdateNorm: 0.0532
+15875.5s 1030 2026-06-16 17:31:22,394 [aggregation.py] => Client 2 => Q_i: -0.1585 | Acc: 99.02% | ProtoCons: 0.9494 | Novelty: 0.5000 | Drift: 3.3544 | UpdateNorm: 3.3544
+15875.5s 1031 2026-06-16 17:31:22,397 [aggregation.py] => Client 3 => Q_i: -1.4135 | Acc: 96.74% | ProtoCons: 0.9737 | Novelty: 0.5000 | Drift: 5.1494 | UpdateNorm: 5.1494
+15875.5s 1032 2026-06-16 17:31:22,401 [aggregation.py] => Client 4 => Q_i: 1.0852 | Acc: 99.60% | ProtoCons: 0.9401 | Novelty: 0.5000 | Drift: 1.5728 | UpdateNorm: 1.5728
+15875.5s 1033 2026-06-16 17:31:22,404 [aggregation.py] => Client 5 => Q_i: 1.5789 | Acc: 43.91% | ProtoCons: 0.8992 | Novelty: 0.5000 | Drift: 0.0134 | UpdateNorm: 0.0134
+15875.5s 1034 2026-06-16 17:31:22,408 [aggregation.py] => Client 6 => Q_i: 2.1718 | Acc: 99.63% | ProtoCons: 0.9904 | Novelty: 0.5000 | Drift: 0.0927 | UpdateNorm: 0.0927
+15875.5s 1035 2026-06-16 17:31:22,411 [aggregation.py] => Client 7 => Q_i: 2.1831 | Acc: 99.52% | ProtoCons: 0.9657 | Novelty: 0.5000 | Drift: 0.0398 | UpdateNorm: 0.0398
+15875.5s 1036 2026-06-16 17:31:22,415 [aggregation.py] => Client 8 => Q_i: 2.1285 | Acc: 99.40% | ProtoCons: 0.9957 | Novelty: 0.5000 | Drift: 0.1588 | UpdateNorm: 0.1588
+15875.5s 1037 2026-06-16 17:31:22,415 [aggregation.py] => Client 0 rejected by robust filter | Drift: 4.5551 | UpdateNorm: 4.5551
+15875.5s 1038 2026-06-16 17:31:22,415 [aggregation.py] => Client 2 rejected by robust filter | Drift: 3.3544 | UpdateNorm: 3.3544
+15875.5s 1039 2026-06-16 17:31:22,416 [aggregation.py] => Client 3 rejected by robust filter | Drift: 5.1494 | UpdateNorm: 5.1494
+15875.5s 1040 2026-06-16 17:31:22,416 [aggregation.py] => Client 4 rejected by robust filter | Drift: 1.5728 | UpdateNorm: 1.5728
+15875.5s 1041 2026-06-16 17:31:22,416 [trainer.py] => Client 1 Aggregation Weight alpha_i: 0.2127
+15875.5s 1042 2026-06-16 17:31:22,416 [trainer.py] => Client 5 Aggregation Weight alpha_i: 0.1236
+15875.5s 1043 2026-06-16 17:31:22,417 [trainer.py] => Client 6 Aggregation Weight alpha_i: 0.2236
+15875.5s 1044 2026-06-16 17:31:22,417 [trainer.py] => Client 7 Aggregation Weight alpha_i: 0.2261
+15875.5s 1045 2026-06-16 17:31:22,417 [trainer.py] => Client 8 Aggregation Weight alpha_i: 0.2141
+15875.8s 1046 2026-06-16 17:31:22,640 [trainer.py] => Evaluating on global_test_data filtered to learned classes: 0-5
+15932.8s 1047 2026-06-16 17:32:19,682 [trainer.py] => [Task 0 | Round 27] Acc: 7.49% | Old Acc: 0.00% | New Acc: 0.00% | Forgetting: 0.00% | Params: 22,561 | Comm Cost: 0.09 MB
+15932.8s 1048 2026-06-16 17:32:19,686 [trainer.py] => --- Task 0 | Round 28/30 (Global 28) ---
+16010.8s 1049 2026-06-16 17:33:37,689 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.814, Train_accy 96.50
+16103.6s 1050 2026-06-16 17:35:10,454 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.152, Train_accy 90.40
+16161.4s 1051 2026-06-16 17:36:08,252 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.793, Train_accy 97.72
+16306.0s 1052 2026-06-16 17:38:32,820 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.937, Train_accy 95.73
+16418.8s 1053 2026-06-16 17:40:25,622 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.878, Train_accy 93.15
+16446.3s 1054 2026-06-16 17:40:53,140 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.231, Train_accy 68.46
+16448.3s 1055 2026-06-16 17:40:55,144 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.817, Train_accy 99.16
+16450.5s 1056 2026-06-16 17:40:57,383 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.834, Train_accy 99.22
+16454.0s 1057 2026-06-16 17:41:00,898 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.801, Train_accy 99.22
+16456.7s 1058 2026-06-16 17:41:03,586 [aggregation.py] => Client 0 => Q_i: -1.0358 | Acc: 94.80% | ProtoCons: 0.9546 | Novelty: 0.5000 | Drift: 4.5550 | UpdateNorm: 4.5550
+16456.7s 1059 2026-06-16 17:41:03,590 [aggregation.py] => Client 1 => Q_i: 2.1242 | Acc: 93.35% | ProtoCons: 0.9779 | Novelty: 0.5000 | Drift: 0.0532 | UpdateNorm: 0.0532
+16456.7s 1060 2026-06-16 17:41:03,594 [aggregation.py] => Client 2 => Q_i: -0.1707 | Acc: 99.06% | ProtoCons: 0.9371 | Novelty: 0.5000 | Drift: 3.3548 | UpdateNorm: 3.3548
+16456.7s 1061 2026-06-16 17:41:03,598 [aggregation.py] => Client 3 => Q_i: -1.4169 | Acc: 96.98% | ProtoCons: 0.9677 | Novelty: 0.5000 | Drift: 5.1492 | UpdateNorm: 5.1492
+16456.7s 1062 2026-06-16 17:41:03,602 [aggregation.py] => Client 4 => Q_i: 1.0866 | Acc: 99.61% | ProtoCons: 0.9416 | Novelty: 0.5000 | Drift: 1.5729 | UpdateNorm: 1.5729
+16456.8s 1063 2026-06-16 17:41:03,606 [aggregation.py] => Client 5 => Q_i: 1.5077 | Acc: 36.24% | ProtoCons: 0.9047 | Novelty: 0.5000 | Drift: 0.0134 | UpdateNorm: 0.0134
+16456.8s 1064 2026-06-16 17:41:03,611 [aggregation.py] => Client 6 => Q_i: 2.1423 | Acc: 99.57% | ProtoCons: 0.9615 | Novelty: 0.5000 | Drift: 0.0927 | UpdateNorm: 0.0927
+16456.8s 1065 2026-06-16 17:41:03,614 [aggregation.py] => Client 7 => Q_i: 2.1839 | Acc: 99.52% | ProtoCons: 0.9665 | Novelty: 0.5000 | Drift: 0.0397 | UpdateNorm: 0.0397
+16456.8s 1066 2026-06-16 17:41:03,618 [aggregation.py] => Client 8 => Q_i: 2.1084 | Acc: 99.64% | ProtoCons: 0.9732 | Novelty: 0.5000 | Drift: 0.1589 | UpdateNorm: 0.1589
+16456.8s 1067 2026-06-16 17:41:03,619 [aggregation.py] => Client 0 rejected by robust filter | Drift: 4.5550 | UpdateNorm: 4.5550
+16456.8s 1068 2026-06-16 17:41:03,619 [aggregation.py] => Client 2 rejected by robust filter | Drift: 3.3548 | UpdateNorm: 3.3548
+16456.8s 1069 2026-06-16 17:41:03,619 [aggregation.py] => Client 3 rejected by robust filter | Drift: 5.1492 | UpdateNorm: 5.1492
+16456.8s 1070 2026-06-16 17:41:03,619 [aggregation.py] => Client 4 rejected by robust filter | Drift: 1.5729 | UpdateNorm: 1.5729
+16456.8s 1071 2026-06-16 17:41:03,619 [trainer.py] => Client 1 Aggregation Weight alpha_i: 0.2172
+16456.8s 1072 2026-06-16 17:41:03,620 [trainer.py] => Client 5 Aggregation Weight alpha_i: 0.1173
+16456.8s 1073 2026-06-16 17:41:03,620 [trainer.py] => Client 6 Aggregation Weight alpha_i: 0.2212
+16456.8s 1074 2026-06-16 17:41:03,620 [trainer.py] => Client 7 Aggregation Weight alpha_i: 0.2306
+16456.8s 1075 2026-06-16 17:41:03,620 [trainer.py] => Client 8 Aggregation Weight alpha_i: 0.2138
+16457.0s 1076 2026-06-16 17:41:03,852 [trainer.py] => Evaluating on global_test_data filtered to learned classes: 0-5
+16514.4s 1077 2026-06-16 17:42:01,241 [trainer.py] => [Task 0 | Round 28] Acc: 7.40% | Old Acc: 0.00% | New Acc: 0.00% | Forgetting: 0.00% | Params: 22,561 | Comm Cost: 0.09 MB
+16514.4s 1078 2026-06-16 17:42:01,245 [trainer.py] => --- Task 0 | Round 29/30 (Global 29) ---
+16592.8s 1079 2026-06-16 17:43:19,690 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.811, Train_accy 95.81
+16685.8s 1080 2026-06-16 17:44:52,664 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 1.148, Train_accy 91.73
+16743.9s 1081 2026-06-16 17:45:50,726 [afsic_ids.py] => Task 0, Epoch 1/1 => Loss 0.807, Train_accy 98.14

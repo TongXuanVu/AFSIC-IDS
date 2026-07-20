@@ -17,9 +17,9 @@ _LOCAL_DATA_DIR = os.path.join(_SPCIL_ROOT, "data", "CIC_IoT23")
 
 # Mặc định lấy theo local
 _TEST_FILE = os.path.join(_LOCAL_DATA_DIR, "global_test_data.pt")
-_FEDERATED_DIR = os.path.join(_LOCAL_DATA_DIR, "federated_data_fewshot")
+_FEDERATED_DIR = os.path.join(_LOCAL_DATA_DIR, "federated_data_10shot")
 if not os.path.exists(_FEDERATED_DIR):
-    _FEDERATED_DIR = os.path.join(_LOCAL_DATA_DIR, "federated_data_10shot")
+    _FEDERATED_DIR = os.path.join(_LOCAL_DATA_DIR, "federated_data_fewshot")
 if not os.path.exists(_FEDERATED_DIR):
     _FEDERATED_DIR = os.path.join(_LOCAL_DATA_DIR, "federated_data")
 
@@ -35,23 +35,29 @@ if os.path.exists("/kaggle/input"):
         print(f"[iCICIoT23] Auto-detected Test File: {_TEST_FILE}")
 
     # 2. Tìm thư mục chứa file huấn luyện của client
-    # Thử fewshot (1%) trước
-    fewshot_files = glob.glob("/kaggle/input/**/federated_data_fewshot/client_*_task_*.pt", recursive=True)
-    if fewshot_files:
-        _FEDERATED_DIR = os.path.dirname(fewshot_files[0])
-        print(f"[iCICIoT23] Auto-detected Few-Shot Data Dir: {_FEDERATED_DIR}")
+    # Thử 10shot trước
+    tenshot_files = glob.glob("/kaggle/input/**/federated_data_10shot/client_*_task_*.pt", recursive=True)
+    if tenshot_files:
+        _FEDERATED_DIR = os.path.dirname(tenshot_files[0])
+        print(f"[iCICIoT23] Auto-detected 10-Shot Data Dir: {_FEDERATED_DIR}")
     else:
-        # Thử 10shot
-        tenshot_files = glob.glob("/kaggle/input/**/federated_data_10shot/client_*_task_*.pt", recursive=True)
-        if tenshot_files:
-            _FEDERATED_DIR = os.path.dirname(tenshot_files[0])
-            print(f"[iCICIoT23] Auto-detected 10-Shot Data Dir: {_FEDERATED_DIR}")
+        # Thử fewshot
+        fewshot_files = glob.glob("/kaggle/input/**/federated_data_fewshot/client_*_task_*.pt", recursive=True)
+        if fewshot_files:
+            _FEDERATED_DIR = os.path.dirname(fewshot_files[0])
+            print(f"[iCICIoT23] Auto-detected Few-Shot Data Dir: {_FEDERATED_DIR}")
         else:
             # Fallback data thường
             normal_files = glob.glob("/kaggle/input/**/federated_data/client_*_task_*.pt", recursive=True)
             if normal_files:
                 _FEDERATED_DIR = os.path.dirname(normal_files[0])
                 print(f"[iCICIoT23] Auto-detected Normal Data Dir: {_FEDERATED_DIR}")
+            else:
+                # Layout PHANG: Kaggle dataset khong giu thu muc con federated_data
+                flat_files = glob.glob("/kaggle/input/**/client_*_task_*.pt", recursive=True)
+                if flat_files:
+                    _FEDERATED_DIR = os.path.dirname(flat_files[0])
+                    print(f"[iCICIoT23] Auto-detected Flat Data Dir: {_FEDERATED_DIR}")
 _NUM_TASKS = 6
 
 # Default supervised task-incremental order from data/final_pt_data_distribution.png.
@@ -63,6 +69,41 @@ _NUM_TASKS = 6
 # Task 5: [5, 13, 10, 17, 18]
 # Task 6: [4, 31, 32, 33, 9]
 DEFAULT_TASK_CLASS_ORDER = list(range(34))
+
+
+def _load_task_class_order():
+    """
+    Bo data 100-client GIU NGUYEN label ID goc (preserve_original_label_ids) voi thu tu task
+    phi tuan tu, kem file `task_mapping_label_ids.json`. DataManager remap label bang
+    `class_order.index(y)` nen chi can dat class_order = thu tu label goc la khop hoan toan.
+
+    Bo data cu (da remap tuan tu 0..33) khong co file json nay -> giu list(range(34)).
+    """
+    import json
+    candidates = []
+    if os.path.exists("/kaggle/input"):
+        import glob as _glob
+        candidates += _glob.glob("/kaggle/input/**/task_mapping_label_ids.json", recursive=True)
+    candidates += [
+        os.path.join(_FEDERATED_DIR, "task_mapping_label_ids.json"),
+        os.path.join(os.path.dirname(_FEDERATED_DIR), "task_mapping_label_ids.json"),
+        os.path.join(_LOCAL_DATA_DIR, "task_mapping_label_ids.json"),
+        os.path.join(os.path.dirname(os.path.abspath(__file__)), "task_mapping_label_ids.json"),
+    ]
+    for path in candidates:
+        if path and os.path.exists(path):
+            with open(path, "r") as f:
+                task_orders = json.load(f)
+            flat = [int(c) for task in task_orders for c in task]
+            if sorted(flat) == list(range(len(flat))):
+                print(f"[iCICIoT23] class_order theo label goc tu: {path}")
+                print(f"[iCICIoT23] class_order = {flat}")
+                return flat
+            print(f"[iCICIoT23] CANH BAO: {path} khong phu kin 0..N-1, bo qua.")
+    return list(range(34))
+
+
+DEFAULT_TASK_CLASS_ORDER = _load_task_class_order()
 
 
 class iCICIoT23:

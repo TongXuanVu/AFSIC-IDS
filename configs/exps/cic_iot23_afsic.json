@@ -18,7 +18,7 @@
   ],
   "_comment_training": "Tham số vòng lặp: 10 client (gia nhập dần), 30 vòng/task, 1 epoch nội bộ",
   "batch_size": 8192,
-  "num_clients": 10,
+  "num_clients": 100,
   "num_rounds": 30,
   "local_epochs": 1,
   "lr": 0.001,

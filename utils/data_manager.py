@@ -321,7 +321,20 @@ class SubDummyDataset(Dataset):
 
 
 def _map_new_class_index(y, order):
-    return np.array(list(map(lambda x: order.index(x), y)))
+    """Remap label goc -> chi so trong `order`. Dung LUT numpy thay vi order.index()
+    trong vong lap Python: ket qua Y HET nhung nhanh hon nhieu lan tren 14M mau test."""
+    y = np.asarray(y)
+    if y.size == 0:
+        return np.array([], dtype=np.int64)
+    order = [int(o) for o in order]
+    lut = np.full(max(order) + 1, -1, dtype=np.int64)
+    for idx, cls in enumerate(order):
+        lut[cls] = idx
+    mapped = lut[y.astype(np.int64)]
+    if (mapped < 0).any():
+        bad = np.unique(y[mapped < 0]).tolist()
+        raise ValueError(f"[DataManager] Label {bad} khong co trong class_order.")
+    return mapped
 
 
 def _get_idata(dataset_name):
