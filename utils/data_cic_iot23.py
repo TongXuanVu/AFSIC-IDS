@@ -58,6 +58,26 @@ if os.path.exists("/kaggle/input"):
                 if flat_files:
                     _FEDERATED_DIR = os.path.dirname(flat_files[0])
                     print(f"[iCICIoT23] Auto-detected Flat Data Dir: {_FEDERATED_DIR}")
+# ── Uu tien CAO NHAT: --fed_dir (truyen qua bien moi truong AFSIC_FED_DIR) ──────
+# Auto-detect o tren uu tien 10shot > fewshot > full, nen khi attach nhieu dataset
+# cung luc rat de chon nham thu muc. Co --fed_dir thi chi dinh tuong minh.
+# Chap nhan ca duong dan day du lan chi TEN thu muc (vd: federated_data_fewshot).
+_ENV_FED_DIR = os.environ.get("AFSIC_FED_DIR", "").strip()
+if _ENV_FED_DIR:
+    if os.path.isdir(_ENV_FED_DIR):
+        _FEDERATED_DIR = _ENV_FED_DIR
+    else:
+        import glob as _g
+        _hits = _g.glob(f"/kaggle/input/**/{_ENV_FED_DIR}/client_*_task_*.pt", recursive=True)
+        if _hits:
+            _FEDERATED_DIR = os.path.dirname(_hits[0])
+        else:
+            raise FileNotFoundError(
+                f"[iCICIoT23] --fed_dir='{_ENV_FED_DIR}' khong phai thu muc ton tai "
+                f"va cung khong tim thay trong /kaggle/input."
+            )
+    print(f"[iCICIoT23] --fed_dir override -> {_FEDERATED_DIR}")
+
 _NUM_TASKS = 6
 
 # Default supervised task-incremental order from data/final_pt_data_distribution.png.

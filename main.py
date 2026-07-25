@@ -25,6 +25,11 @@ def setup_parser():
                         help='Che do debug: giam so epoch xuong 2 de test nhanh.')
     parser.add_argument('--resume', type=str, default='',
                         help='Duong dan den checkpoint (.pth) de tiep tuc training.')
+    parser.add_argument('--fed_dir', type=str, default=None,
+                        help='Chi dinh TUONG MINH thu muc du lieu client, thay vi auto-detect. '
+                             'Nhan duong dan day du hoac ten thu muc, vd: federated_data_fewshot / '
+                             'federated_data_10shot / federated_data. Bat buoc dung khi attach '
+                             'nhieu dataset cung luc (auto-detect uu tien 10shot > fewshot > full).')
     parser.add_argument('--memory_size', type=int, default=None,
                         help='Tong so luong mau luu trong bo nho dem (Exemplar memory).')
     parser.add_argument('--batch_size', type=int, default=None,
@@ -57,6 +62,12 @@ def main():
     # Final args: JSON base + CLI overrides
     args = config
     args.update(cli_args)
+
+    # Phai set TRUOC khi bat ky cho nao import utils.data_cic_iot23 (module do
+    # tinh _FEDERATED_DIR ngay luc import lan dau).
+    if args.get("fed_dir"):
+        os.environ["AFSIC_FED_DIR"] = str(args["fed_dir"])
+        print(f"[CONFIG] fed_dir = {args['fed_dir']}")
 
     if args.get("debug"):
         print("[DEBUG] Che do debug: set init_epoch=2, epochs=2, local_epochs=1, num_rounds=2")
